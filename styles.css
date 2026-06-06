@@ -185,6 +185,7 @@ img {
   align-items: center;
   gap: 10px;
   min-width: max-content;
+  flex-shrink: 0;
 }
 
 .logo-wrapper {
@@ -1781,8 +1782,14 @@ h3 {
     font-size: 0.68rem;
   }
 
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   .nav-shell {
     border-radius: 22px;
+    padding: 10px 14px;
   }
 
   .hero {
