@@ -15,20 +15,14 @@ window.addEventListener('scroll', () => {
 if (menuToggle) {
   menuToggle.addEventListener('click', () => {
     mainNav.classList.toggle('active');
-    const icon = menuToggle.querySelector('i');
-    icon.classList.toggle('fa-bars');
-    icon.classList.toggle('fa-xmark');
+    menuToggle.classList.toggle('active');
   });
 }
 
 document.querySelectorAll('.main-nav a').forEach(link => {
   link.addEventListener('click', () => {
     mainNav.classList.remove('active');
-    const icon = menuToggle?.querySelector('i');
-    if (icon) {
-      icon.classList.add('fa-bars');
-      icon.classList.remove('fa-xmark');
-    }
+    menuToggle?.classList.remove('active');
   });
 });
 
@@ -43,7 +37,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 reveals.forEach(el => observer.observe(el));
 
-// Contact form sends prepared WhatsApp message only; no backend/database.
+// Contact form sends prepared WhatsApp message or copies and redirects to Telegram Bot.
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
@@ -52,6 +46,7 @@ if (contactForm) {
     const data = new FormData(contactForm);
     const text = `
 طلب خدمة جديد من موقع الجحفلي للحلول الرقمية:
+------------------------------------------
 الاسم: ${data.get('name') || ''}
 الهاتف: ${data.get('phone') || ''}
 البريد الإلكتروني: ${data.get('email') || ''}
@@ -59,12 +54,37 @@ if (contactForm) {
 الميزانية التقريبية: ${data.get('budget') || ''}
 وصف المشروع:
 ${data.get('message') || ''}
+------------------------------------------
+تم الإرسال من موقع: aljahfalidigital.com
     `.trim();
 
-    const url = `https://wa.me/967782611415?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
-
+    const submitter = e.submitter;
+    const action = submitter ? submitter.getAttribute('data-action') : 'whatsapp';
     const note = document.getElementById('formNote');
-    if (note) note.textContent = 'تم تجهيز رسالتك، سيتم فتح واتساب لإرسال الطلب.';
+
+    if (action === 'telegram') {
+      // Copy to clipboard and open Telegram bot
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          if (note) note.textContent = 'تم نسخ تفاصيل طلبك تلقائياً! سيفتح تليجرام الآن، يرجى لصق الرسالة وإرسالها للبوت.';
+          setTimeout(() => {
+            window.open('https://t.me/AljahfaliDigitalBot', '_blank');
+          }, 1500);
+        }).catch(() => {
+          if (note) note.textContent = 'يرجى فتح تليجرام ومراسلة البوت @AljahfaliDigitalBot مباشرة.';
+          window.open('https://t.me/AljahfaliDigitalBot', '_blank');
+        });
+      } else {
+        // Fallback if clipboard API is not supported
+        if (note) note.textContent = 'سيفتح تليجرام الآن لمراسلة البوت @AljahfaliDigitalBot.';
+        window.open('https://t.me/AljahfaliDigitalBot', '_blank');
+      }
+    } else {
+      // Default: WhatsApp redirection
+      const url = `https://wa.me/967782611415?text=${encodeURIComponent(text)}`;
+      if (note) note.textContent = 'تم تجهيز رسالتك، سيتم فتح واتساب لإرسال الطلب.';
+      window.open(url, '_blank');
+    }
   });
 }
+

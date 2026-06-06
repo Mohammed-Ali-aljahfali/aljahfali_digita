@@ -1,27 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://example.com/</loc>
+    <loc>https://aljahfalidigital.com/</loc>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://example.com/about.html</loc>
+    <loc>https://aljahfalidigital.com/about.html</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://example.com/services.html</loc>
+    <loc>https://aljahfalidigital.com/services.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://aljahfalidigital.com/web-development.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aljahfalidigital.com/mobile-app-development.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aljahfalidigital.com/graphic-design.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aljahfalidigital.com/telegram-bots.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aljahfalidigital.com/digital-marketing.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aljahfalidigital.com/technical-support.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aljahfalidigital.com/portfolio.html</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://example.com/portfolio.html</loc>
+    <loc>https://aljahfalidigital.com/pricing.html</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://example.com/pricing.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://example.com/contact.html</loc>
+    <loc>https://aljahfalidigital.com/contact.html</loc>
     <priority>0.80</priority>
   </url>
 </urlset>
