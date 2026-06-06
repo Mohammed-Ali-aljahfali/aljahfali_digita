@@ -187,9 +187,42 @@ img {
   min-width: max-content;
 }
 
-.brand img {
+.logo-wrapper {
+  position: relative;
   width: 58px;
   height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-draw-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.logo-draw-circle circle {
+  stroke: rgba(0, 217, 255, 0.4);
+  stroke-width: 1.5px;
+  stroke-dasharray: 120 40;
+  transform-origin: center;
+  animation: logo-rotate 6s linear infinite;
+}
+
+@keyframes logo-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.brand img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 0 16px rgba(0, 217, 255, .42));
 }
@@ -201,13 +234,16 @@ img {
 .brand strong {
   display: block;
   color: var(--white);
-  font-size: 1.1rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .brand span {
   color: var(--cyan);
-  font-size: .82rem;
-  font-weight: 800;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .main-nav {
@@ -1722,9 +1758,14 @@ h3 {
     padding: 120px 0 60px;
   }
 
-  .brand img {
+  .logo-wrapper {
     width: 44px;
     height: 44px;
+  }
+
+  .brand img {
+    width: 100%;
+    height: 100%;
   }
 
   .brand div {
@@ -1733,11 +1774,11 @@ h3 {
   }
 
   .brand strong {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .brand span {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
   }
 
   .nav-shell {
