@@ -88,3 +88,47 @@ ${data.get('message') || ''}
   });
 }
 
+// Dynamic Section Glow Background Observer (Design Inspiration from e-jaib.com)
+const glowSections = document.querySelectorAll('section[data-glow-color], header[data-glow-color], footer[data-glow-color]');
+const glowContainer = document.getElementById('dynamicGlowContainer');
+const glowLayers = [
+  document.getElementById('glowLayer1'),
+  document.getElementById('glowLayer2')
+];
+let activeGlowLayerIdx = 0;
+
+if (glowContainer && glowLayers[0] && glowLayers[1]) {
+  const glowObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const section = entry.target;
+        const color = section.getAttribute('data-glow-color') || 'rgba(0, 217, 255, 0.15)';
+        const posX = section.getAttribute('data-glow-x') || '50%';
+        const posY = section.getAttribute('data-glow-y') || '50%';
+        
+        // Target the inactive layer
+        const inactiveLayerIdx = 1 - activeGlowLayerIdx;
+        const inactiveLayer = glowLayers[inactiveLayerIdx];
+        const activeLayer = glowLayers[activeGlowLayerIdx];
+        
+        // Update styling of the inactive layer
+        inactiveLayer.style.setProperty('--glow-color', color);
+        inactiveLayer.style.setProperty('--glow-x', posX);
+        inactiveLayer.style.setProperty('--glow-y', posY);
+        
+        // Crossfade layers
+        inactiveLayer.classList.add('active');
+        activeLayer.classList.remove('active');
+        
+        // Swap indices
+        activeGlowLayerIdx = inactiveLayerIdx;
+      }
+    });
+  }, {
+    threshold: 0.15, // trigger when 15% of the section enters the viewport
+    rootMargin: '-20% 0px -30% 0px' // offset boundaries to focus on current scroll section
+  });
+
+  glowSections.forEach(sec => glowObserver.observe(sec));
+}
+

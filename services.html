@@ -30,6 +30,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="styles.css" />
 
@@ -51,10 +55,21 @@
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
 
+  <!-- Dynamic Section Background Glow (Design Inspiration from e-jaib.com) -->
+  <div class="dynamic-bg-glow-container" id="dynamicGlowContainer" aria-hidden="true">
+    <div class="glow-layer active" id="glowLayer1" style="--glow-color: rgba(0, 217, 255, 0.18); --glow-x: 80%; --glow-y: 40%;"></div>
+    <div class="glow-layer" id="glowLayer2"></div>
+  </div>
+
   <header class="site-header" id="siteHeader">
     <div class="container nav-shell">
       <a href="index.html" class="brand" aria-label="الجحفلي للحلول الرقمية">
-        <img src="assets/logo-aljahfali.png" alt="شعار الجحفلي للحلول الرقمية" />
+        <div class="logo-wrapper">
+          <svg class="logo-draw-circle" viewBox="0 0 58 58" width="58" height="58">
+            <circle cx="29" cy="29" r="27"></circle>
+          </svg>
+          <img src="assets/logo-aljahfali.png" alt="شعار الجحفلي للحلول الرقمية" />
+        </div>
         <div><strong>الجحفلي</strong><span>للحلول الرقمية</span></div>
       </a>
       <nav class="main-nav" id="mainNav" aria-label="القائمة الرئيسية">
@@ -72,7 +87,7 @@
 
   <main>
     
-<section class="page-hero">
+<section class="page-hero" data-glow-color="rgba(0, 217, 255, 0.18)" data-glow-x="80%" data-glow-y="40%">
   <div class="container page-hero-content reveal">
     <span class="label">خدماتنا</span>
     <h1>خدمات رقمية كثيرة ومتكاملة تحت هوية واحدة.</h1>
@@ -80,99 +95,117 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container services-list">
-    <article class="service-detail glass reveal" id="web">
-      <div class="service-num">01</div>
-      <div>
-        <h2>تصميم وتطوير المواقع الإلكترونية</h2>
-        <p>نصمم مواقع تعريفية وتجارية ومتاجر متجاوبة وسريعة تعكس قوة نشاطك وتعمل بسلاسة على جميع الأجهزة.</p>
-        <ul class="checked">
-          <li>تصميم متجاوب للجوال والتابلت والكمبيوتر (Responsive Web Design).</li>
-          <li>برمجة مواقع مخصصة ومتاجر إلكترونية متطورة.</li>
-          <li>حجز دومين واستضافة سريعة وربطها بالموقع.</li>
-          <li>تحسين سرعة الصفحات وتهيئة الـ SEO الأساسية للظهور في Google.</li>
-        </ul>
-        <a href="web-development.html" class="btn btn-ghost" style="margin-top:15px;">شاهد تفاصيل الخدمة والأسعار ←</a>
+<section class="section" data-glow-color="rgba(0, 123, 255, 0.15)" data-glow-x="25%" data-glow-y="50%">
+  <div class="container">
+    <div class="services-grid-interactive">
+      
+      <!-- Card 1: Web Development -->
+      <div class="service-interactive-card reveal" id="web">
+        <div class="service-card-header">
+          <div class="service-card-num">01</div>
+          <h2>تصميم وتطوير المواقع</h2>
+        </div>
+        <div class="service-card-body">
+          <p>نصمم ونطور مواقع تعريفية ومتاجر إلكترونية متجاوبة وسريعة تعكس قوة علامتك التجارية وتعمل بسلاسة على جميع الأجهزة.</p>
+          <ul class="checked">
+            <li>تصميم متجاوب بالكامل لكافة الهواتف الذكية والأجهزة اللوحية.</li>
+            <li>برمجة متكاملة ومتاجر إلكترونية حديثة مع لوحة تحكم.</li>
+            <li>تهيئة كاملة للسيو التقني (SEO) لمساعدتك في الظهور في بحث قوقل.</li>
+          </ul>
+          <a href="web-development.html" class="btn btn-ghost service-card-btn">قراءة المزيد <span class="arrow">←</span></a>
+        </div>
       </div>
-    </article>
 
-    <article class="service-detail glass reveal" id="apps">
-      <div class="service-num">02</div>
-      <div>
-        <h2>تطبيقات الجوال الذكية</h2>
-        <p>تطبيقات عملية لعرض الخدمات، استقبال الطلبات، أو تقديم تجربة رقمية سهلة للأعمال والمتاجر.</p>
-        <ul class="checked">
-          <li>تطبيقات أندرويد وآيفون متكاملة باستخدام Flutter.</li>
-          <li>واجهات استخدام حديثة وسهلة للعملاء.</li>
-          <li>ربط فوري بقواعد البيانات ولوحات التحكم الإدارية.</li>
-          <li>نظام إشعارات وتتبع مباشر للطلبات.</li>
-        </ul>
-        <a href="mobile-app-development.html" class="btn btn-ghost" style="margin-top:15px;">شاهد تفاصيل الخدمة والأسعار ←</a>
+      <!-- Card 2: Mobile Apps -->
+      <div class="service-interactive-card reveal" id="apps">
+        <div class="service-card-header">
+          <div class="service-card-num">02</div>
+          <h2>تطبيقات الجوال الذكية</h2>
+        </div>
+        <div class="service-card-body">
+          <p>برمجة تطبيقات هواتف ذكية متكاملة لنظامي Android و iOS باستخدام إطار عمل Flutter مع أداء سريع وواجهات جذابة.</p>
+          <ul class="checked">
+            <li>تطبيقات أندرويد وآيفون متكاملة وتفاعلية.</li>
+            <li>نظام إشعارات فورية وتتبع وتكامل مع الخرائط.</li>
+            <li>ربط بقواعد البيانات ولوحات التحكم الإدارية.</li>
+          </ul>
+          <a href="mobile-app-development.html" class="btn btn-ghost service-card-btn">قراءة المزيد <span class="arrow">←</span></a>
+        </div>
       </div>
-    </article>
 
-    <article class="service-detail glass reveal" id="design">
-      <div class="service-num">03</div>
-      <div>
-        <h2>الهوية الرقمية والتصميم الإعلاني</h2>
-        <p>نصمم شعارات وهوية بصرية ومنشورات تساعد علامتك على الظهور بشكل احترافي وجذاب.</p>
-        <ul class="checked">
-          <li>تصميم شعار احترافي وهوية بصرية كاملة للشركات.</li>
-          <li>تصميم منشورات وإعلانات سوشيال ميديا مميزة.</li>
-          <li>بروفايل شركات وبطاقات أعمال وعروض تقديمية.</li>
-          <li>تصاميم تهاني مناسبات شخصية وتجارية.</li>
-        </ul>
-        <a href="graphic-design.html" class="btn btn-ghost" style="margin-top:15px;">شاهد تفاصيل الخدمة والأسعار ←</a>
+      <!-- Card 3: Graphic Design & Branding -->
+      <div class="service-interactive-card reveal" id="design">
+        <div class="service-card-header">
+          <div class="service-card-num">03</div>
+          <h2>الهوية الرقمية والتصميم الإعلاني</h2>
+        </div>
+        <div class="service-card-body">
+          <p>بناء هويات بصرية متكاملة وشعارات احترافية تعبر عن قيم مشروعك وتجذب عملاءك بشكل فعال في منصات التواصل.</p>
+          <ul class="checked">
+            <li>تصميم شعار فريد وهوية بصرية كاملة ومتميزة.</li>
+            <li>تصاميم منشورات إعلانية وتفاعلية للسوشيال ميديا.</li>
+            <li>بروفايل شركات وبطاقات عمل احترافية.</li>
+          </ul>
+          <a href="graphic-design.html" class="btn btn-ghost service-card-btn">قراءة المزيد <span class="arrow">←</span></a>
+        </div>
       </div>
-    </article>
 
-    <article class="service-detail glass reveal" id="telegram">
-      <div class="service-num">04</div>
-      <div>
-        <h2>برمجة بوتات تيليجرام للأعمال</h2>
-        <p>قم بأتمتة خدمة عملائك، وتلقي طلبات المبيعات، وتوليد الردود تلقائياً عبر بوت تليجرام.</p>
-        <ul class="checked">
-          <li>برمجة بوت تيليجرام للرد التلقائي وإجابة الأسئلة الشائعة.</li>
-          <li>بوتات مخصصة لتلقي الطلبات وحجز المواعيد.</li>
-          <li>ربط البوت بقواعد البيانات وأنظمة الإدارة لإصدار التقارير.</li>
-        </ul>
-        <a href="telegram-bots.html" class="btn btn-ghost" style="margin-top:15px;">شاهد تفاصيل الخدمة والأسعار ←</a>
+      <!-- Card 4: Telegram Bots -->
+      <div class="service-interactive-card reveal" id="telegram">
+        <div class="service-card-header">
+          <div class="service-card-num">04</div>
+          <h2>برمجة بوتات تيليجرام للأعمال</h2>
+        </div>
+        <div class="service-card-body">
+          <p>قم بأتمتة أعمالك وتلقي طلبات المبيعات وإجابة استفسارات عملائك تلقائياً وبسرعة فائقة عبر بوتات تليجرام.</p>
+          <ul class="checked">
+            <li>ردود تفاعلية ذكية لحل أسئلة واستفسارات عملائك.</li>
+            <li>بوتات استقبال الطلبات وحجز الخدمات مدمجة ومؤتمتة.</li>
+            <li>ربط مباشر بقواعد البيانات لإرسال الإحصائيات للوحة تحكمك.</li>
+          </ul>
+          <a href="telegram-bots.html" class="btn btn-ghost service-card-btn">قراءة المزيد <span class="arrow">←</span></a>
+        </div>
       </div>
-    </article>
 
-    <article class="service-detail glass reveal" id="marketing">
-      <div class="service-num">05</div>
-      <div>
-        <h2>التسويق الرقمي وإدارة الحملات</h2>
-        <p>زد من مبيعاتك وحقق انتشاراً أوسع عبر خطط تسويق مدروسة وحملات ممولة مستهدفة.</p>
-        <ul class="checked">
-          <li>إدارة الحملات الإعلانية الممولة على فيسبوك وإنستغرام.</li>
-          <li>إدارة صفحات التواصل الاجتماعي وصناعة المحتوى التفاعلي.</li>
-          <li>تحسين وصول العلامة التجارية وتخفيض تكلفة الإعلانات.</li>
-        </ul>
-        <a href="digital-marketing.html" class="btn btn-ghost" style="margin-top:15px;">شاهد تفاصيل الخدمة والأسعار ←</a>
+      <!-- Card 5: Digital Marketing -->
+      <div class="service-interactive-card reveal" id="marketing">
+        <div class="service-card-header">
+          <div class="service-card-num">05</div>
+          <h2>التسويق الرقمي وإدارة الحملات</h2>
+        </div>
+        <div class="service-card-body">
+          <p>زد من مبيعاتك وحقق انتشاراً أوسع من خلال خطط إعلانية ممولة ومستهدفة للوصول إلى جمهورك الفعلي.</p>
+          <ul class="checked">
+            <li>إدارة حملات إعلانية ممولة ومحسنة على شبكات التواصل.</li>
+            <li>صناعة محتوى تفاعلي وتحسين انتشار هويتك التجارية.</li>
+            <li>تحسين مستمر لنتائج الإعلانات وتقليل تكلفة النقرة.</li>
+          </ul>
+          <a href="digital-marketing.html" class="btn btn-ghost service-card-btn">قراءة المزيد <span class="arrow">←</span></a>
+        </div>
       </div>
-    </article>
 
-    <article class="service-detail glass reveal" id="support">
-      <div class="service-num">06</div>
-      <div>
-        <h2>الدعم الفني وصيانة الحاسوب للشركات</h2>
-        <p>صيانة الأجهزة والشبكات، تنصيب أنظمة تشغيل أصلية، ودعم فني دوري ومستمر للمكاتب والمؤسسات.</p>
-        <ul class="checked">
-          <li>صيانة الحاسوب وحل مشاكل الهاردوير والسوفتوير.</li>
-          <li>تثبيت ويندوز والتعريفات والبرامج الخدمية والهندسية المتخصصة.</li>
-          <li>إعداد الأنظمة وحمايتها وعمل نسخ احتياطي للبيانات.</li>
-          <li>عقود دعم فني سنوية للشركات والمؤسسات.</li>
-        </ul>
-        <a href="technical-support.html" class="btn btn-ghost" style="margin-top:15px;">شاهد تفاصيل الخدمة والأسعار ←</a>
+      <!-- Card 6: Technical Support -->
+      <div class="service-interactive-card reveal" id="support">
+        <div class="service-card-header">
+          <div class="service-card-num">06</div>
+          <h2>الدعم الفني وصيانة الحاسوب</h2>
+        </div>
+        <div class="service-card-body">
+          <p>صيانة الأجهزة والشبكات، دعم فني مستمر، وحلول تقنية متكاملة لضمان استمرارية عمل أنظمة مكاتبكم بلا انقطاع.</p>
+          <ul class="checked">
+            <li>صيانة برمجية وتثبيت أنظمة وبرامج خدمة وهندسة متخصصة.</li>
+            <li>حلول نسخ احتياطي وتأمين شبكات المؤسسات ومكاتب العمل.</li>
+            <li>عقود دعم فني وصيانة دورية سنوية أو شهرية للشركات.</li>
+          </ul>
+          <a href="technical-support.html" class="btn btn-ghost service-card-btn">قراءة المزيد <span class="arrow">←</span></a>
+        </div>
       </div>
-    </article>
+
+    </div>
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" data-glow-color="rgba(255, 20, 147, 0.14)" data-glow-x="50%" data-glow-y="50%">
   <div class="container cta-box reveal">
     <div><h2>هل تريد خدمة مخصصة غير موجودة في القائمة؟</h2><p>أرسل فكرتك وسنقترح لك طريقة التنفيذ المناسبة.</p></div>
     <a href="contact.html" class="btn btn-primary">اطلب الخدمة الآن</a>

@@ -30,6 +30,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="styles.css" />
 
@@ -51,10 +55,21 @@
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
 
+  <!-- Dynamic Section Background Glow (Design Inspiration from e-jaib.com) -->
+  <div class="dynamic-bg-glow-container" id="dynamicGlowContainer" aria-hidden="true">
+    <div class="glow-layer active" id="glowLayer1" style="--glow-color: rgba(0, 217, 255, 0.2); --glow-x: 75%; --glow-y: 45%;"></div>
+    <div class="glow-layer" id="glowLayer2"></div>
+  </div>
+
   <header class="site-header" id="siteHeader">
     <div class="container nav-shell">
       <a href="index.html" class="brand" aria-label="الجحفلي للحلول الرقمية">
-        <img src="assets/logo-aljahfali.png" alt="شعار الجحفلي للحلول الرقمية" />
+        <div class="logo-wrapper">
+          <svg class="logo-draw-circle" viewBox="0 0 58 58" width="58" height="58">
+            <circle cx="29" cy="29" r="27"></circle>
+          </svg>
+          <img src="assets/logo-aljahfali.png" alt="شعار الجحفلي للحلول الرقمية" />
+        </div>
         <div><strong>الجحفلي</strong><span>للحلول الرقمية</span></div>
       </a>
       <nav class="main-nav" id="mainNav" aria-label="القائمة الرئيسية">
@@ -73,7 +88,7 @@
   <main>
     
 <!-- Hero -->
-<section class="hero" id="home">
+<section class="hero" id="home" data-glow-color="rgba(0, 217, 255, 0.2)" data-glow-x="75%" data-glow-y="45%">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="pixel-cloud" aria-hidden="true">
     <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
@@ -124,7 +139,7 @@
 <div class="section-divider"></div>
 
 <!-- Intro / Methodology -->
-<section class="section section-alt intro">
+<section class="section section-alt intro" data-glow-color="rgba(138, 43, 226, 0.18)" data-glow-x="20%" data-glow-y="40%">
   <div class="container">
     <div class="section-title center reveal">
       <span class="label">منهجية وقيم العمل</span>
@@ -156,8 +171,206 @@
 
 <div class="section-divider"></div>
 
+<!-- Alternating Features (Design Inspiration from e-jaib.com) -->
+<section class="features-alternating section-alt" data-glow-color="rgba(0, 217, 255, 0.16)" data-glow-x="50%" data-glow-y="50%">
+  <div class="container">
+    <div class="section-title center reveal">
+      <span class="label">تكنولوجيا برمجية مخصصة</span>
+      <h2>أعطِ نشاطك البصمة الرقمية التي تميزه</h2>
+      <p>نصمم ونطور حلولاً برمجية متكاملة تهدف إلى جذب العملاء وبناء هوية رقمية موثوقة لأعمالك.</p>
+    </div>
+
+    <!-- Row 1: Web solutions -->
+    <div class="info-row reveal">
+      <div class="info-row-content">
+        <h3>مواقع إلكترونية سريعة وجذابة</h3>
+        <p>
+          نصمم ونطور موقعك الإلكتروني بتصميم فريد يعكس جودة أعمالك. نهتم بالاستقرار البرمجي وسرعة التصفح لضمان تفاعل سلس ومستمر لعملائك.
+        </p>
+        <ul class="checked-list">
+          <li>تصميم عصري متناسق يعبر عن هوية أعمالك الفريدة.</li>
+          <li>سرعة تحميل فائقة وتجاوب كامل مع الهواتف الذكية.</li>
+          <li>تهيئة تقنية متكاملة لتصدر نتائج البحث في محركات البحث.</li>
+        </ul>
+        <a href="web-development.html" class="btn btn-ghost" style="align-self: flex-start;">تفاصيل باقات الويب</a>
+      </div>
+      <div class="info-row-img">
+        <!-- SVG Web Mockup -->
+        <svg class="feature-svg" viewBox="0 0 500 400" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="250" cy="200" r="150" fill="url(#glow1)" opacity="0.15" />
+          <rect x="50" y="80" width="400" height="260" rx="16" fill="#081b31" stroke="rgba(0, 217, 255, 0.2)" stroke-width="2" />
+          <rect x="50" y="80" width="400" height="40" rx="16" fill="rgba(6, 20, 38, 0.8)" />
+          <circle cx="80" cy="100" r="6" fill="#ff5f56" />
+          <circle cx="100" cy="100" r="6" fill="#ffbd2e" />
+          <circle cx="120" cy="100" r="6" fill="#27c93f" />
+          <rect x="150" y="90" width="260" height="20" rx="10" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(0, 217, 255, 0.1)" />
+          <rect x="80" y="150" width="140" height="12" rx="6" fill="#00D9FF" opacity="0.8" />
+          <rect x="80" y="175" width="220" height="8" rx="4" fill="rgba(255, 255, 255, 0.3)" />
+          <rect x="80" y="195" width="180" height="8" rx="4" fill="rgba(255, 255, 255, 0.3)" />
+          <rect x="80" y="215" width="250" height="8" rx="4" fill="#007BFF" opacity="0.8" />
+          <g filter="url(#dropShadow1)">
+            <rect x="240" y="190" width="180" height="120" rx="12" fill="rgba(6, 20, 38, 0.75)" stroke="#00D9FF" stroke-width="1.5" style="backdrop-filter: blur(10px);" />
+            <circle cx="280" cy="230" r="20" fill="url(#gradCyanBlue1)" />
+            <rect x="315" y="220" width="80" height="8" rx="4" fill="#ffffff" />
+            <rect x="315" y="235" width="60" height="6" rx="3" fill="rgba(255,255,255,0.4)" />
+            <line x1="260" y1="275" x2="400" y2="275" stroke="rgba(0, 217, 255, 0.2)" stroke-width="2" />
+            <rect x="260" y="285" width="140" height="10" rx="5" fill="#00D9FF" />
+          </g>
+          <defs>
+            <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#00D9FF" />
+              <stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+            <linearGradient id="gradCyanBlue1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00D9FF" />
+              <stop offset="100%" stop-color="#007BFF" />
+            </linearGradient>
+            <filter id="dropShadow1" x="220" y="170" width="220" height="160" filterUnits="userSpaceOnUse">
+              <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity="0.5" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Row 2: Mobile apps -->
+    <div class="info-row reveal">
+      <div class="info-row-content">
+        <h3>تطبيقات جوال تفاعلية بأحدث التقنيات</h3>
+        <p>
+          نبتكر تطبيقات هواتف ذكية (iOS و Android) باستخدام Flutter تتميز بالخفة والجمال. نهدف لتبسيط حياة عملائك وتمكينهم من إجراء تعاملاتهم وطلباتهم بلمسة زر واحدة.
+        </p>
+        <ul class="checked-list">
+          <li>واجهات عصرية وواضحة جداً سهلة التصفح والاستعمال.</li>
+          <li>إشعارات فورية وربط مع الخرائط والمدفوعات.</li>
+          <li>لوحة تحكم كاملة تمنحك تحليلاً دقيقاً ومتابعة مستمرة.</li>
+        </ul>
+        <a href="mobile-app-development.html" class="btn btn-ghost" style="align-self: flex-start;">استكشف باقات التطبيقات</a>
+      </div>
+      <div class="info-row-img">
+        <!-- SVG Mobile Mockup -->
+        <svg class="feature-svg" viewBox="0 0 500 400" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="250" cy="200" r="150" fill="url(#glow2)" opacity="0.15" />
+          <g transform="translate(160, 50)">
+            <rect x="0" y="0" width="180" height="310" rx="32" fill="#081b31" stroke="rgba(0, 217, 255, 0.2)" stroke-width="2" />
+            <rect x="50" y="10" width="80" height="18" rx="9" fill="rgba(6, 20, 38, 0.8)" />
+            <circle cx="115" cy="19" r="4" fill="#111" />
+            <rect x="65" y="16" width="30" height="4" rx="2" fill="#333" />
+            <rect x="12" y="40" width="156" height="258" rx="22" fill="rgba(6, 20, 38, 0.6)" />
+            <circle cx="34" cy="65" r="12" fill="url(#gradCyanBlue2)" />
+            <rect x="54" y="60" width="70" height="8" rx="4" fill="#ffffff" />
+            <rect x="24" y="95" width="132" height="50" rx="10" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)" />
+            <rect x="36" y="107" width="40" height="26" rx="4" fill="#00D9FF" opacity="0.7" />
+            <rect x="86" y="112" width="60" height="6" rx="3" fill="#fff" />
+            <rect x="86" y="124" width="40" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
+            <rect x="24" y="155" width="132" height="50" rx="10" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)" />
+            <rect x="36" y="167" width="40" height="26" rx="4" fill="#007BFF" opacity="0.7" />
+            <rect x="86" y="172" width="60" height="6" rx="3" fill="#fff" />
+            <rect x="86" y="184" width="40" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
+            <rect x="60" y="294" width="60" height="4" rx="2" fill="rgba(255,255,255,0.3)" />
+          </g>
+          <g filter="url(#dropShadow2_1)" transform="translate(45, 120)">
+            <rect x="0" y="0" width="100" height="80" rx="16" fill="rgba(6, 20, 38, 0.8)" stroke="#00D9FF" stroke-width="1.5" style="backdrop-filter: blur(8px);" />
+            <path d="M15 55 L35 35 L55 45 L85 15" stroke="#00D9FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="85" cy="15" r="4" fill="#ffffff" />
+            <rect x="15" y="15" width="50" height="6" rx="3" fill="#ffffff" />
+          </g>
+          <g filter="url(#dropShadow2_2)" transform="translate(340, 190)">
+            <rect x="0" y="0" width="110" height="60" rx="16" fill="rgba(6, 20, 38, 0.8)" stroke="#007BFF" stroke-width="1.5" style="backdrop-filter: blur(8px);" />
+            <circle cx="28" cy="30" r="12" fill="#007BFF" opacity="0.2" />
+            <path d="M22 30 L26 34 L34 25" stroke="#00D9FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="48" y="22" width="45" height="6" rx="3" fill="#ffffff" />
+            <rect x="48" y="32" width="30" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
+          </g>
+          <defs>
+            <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#007BFF" />
+              <stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+            <linearGradient id="gradCyanBlue2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00D9FF" />
+              <stop offset="100%" stop-color="#007BFF" />
+            </linearGradient>
+            <filter id="dropShadow2_1" x="25" y="0" width="140" height="120" filterUnits="userSpaceOnUse">
+              <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity="0.4" />
+            </filter>
+            <filter id="dropShadow2_2" x="320" y="170" width="150" height="100" filterUnits="userSpaceOnUse">
+              <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity="0.4" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Row 3: Telegram bots -->
+    <div class="info-row reveal">
+      <div class="info-row-content">
+        <h3>أتمتة ذكية عبر بوتات تليجرام للأعمال</h3>
+        <p>
+          نطور بوتات تليجرام مخصصة تقوم بأتمتة المهام اليومية لمتجرك أو نشاطك. نوفر ردوداً تلقائية تفاعلية، نظام استقبال طلبات ومبيعات متكامل، وربطاً مباشراً بقواعد البيانات.
+        </p>
+        <ul class="checked-list">
+          <li>ردود فورية ذكية على استفسارات عملائك على مدار الساعة.</li>
+          <li>أتمتة المبيعات والطلبات والاشتراكات بشكل كامل.</li>
+          <li>إصدار تقارير وإحصائيات دورية ترسل مباشرة لإدارتك.</li>
+        </ul>
+        <a href="telegram-bots.html" class="btn btn-ghost" style="align-self: flex-start;">اطلب بوتك الخاص</a>
+      </div>
+      <div class="info-row-img">
+        <!-- SVG Bot Mockup -->
+        <svg class="feature-svg" viewBox="0 0 500 400" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="250" cy="200" r="150" fill="url(#glow3)" opacity="0.15" />
+          <rect x="90" y="80" width="320" height="240" rx="20" fill="#081b31" stroke="rgba(0, 217, 255, 0.2)" stroke-width="2" />
+          <g transform="translate(180, 110)">
+            <rect x="0" y="0" width="140" height="110" rx="30" fill="rgba(6, 20, 38, 0.8)" stroke="#00D9FF" stroke-width="2.5" />
+            <ellipse cx="40" cy="50" rx="14" ry="10" fill="url(#gradCyanBlue3)" />
+            <circle cx="40" cy="50" r="4" fill="#ffffff" />
+            <ellipse cx="100" cy="50" rx="14" ry="10" fill="url(#gradCyanBlue3)" />
+            <circle cx="100" cy="50" r="4" fill="#ffffff" />
+            <path d="M45 80 Q70 95 95 80" stroke="#00D9FF" stroke-width="3" stroke-linecap="round" fill="none" />
+            <rect x="-10" y="40" width="10" height="30" rx="5" fill="#007BFF" />
+            <rect x="140" y="40" width="10" height="30" rx="5" fill="#007BFF" />
+            <line x1="70" y1="0" x2="70" y2="-20" stroke="#00D9FF" stroke-width="3" />
+            <circle cx="70" cy="-22" r="6" fill="#00D9FF" />
+          </g>
+          <g filter="url(#dropShadow3_1)" transform="translate(250, 200)">
+            <rect x="0" y="0" width="170" height="80" rx="16" fill="rgba(0, 136, 204, 0.15)" stroke="#0088cc" stroke-width="1.5" style="backdrop-filter: blur(10px);" />
+            <path d="M10 20 L28 29 L21 48 L17 32 Z" fill="#0088cc" />
+            <rect x="35" y="22" width="115" height="6" rx="3" fill="#ffffff" />
+            <rect x="35" y="37" width="90" height="6" rx="3" fill="rgba(255,255,255,0.4)" />
+            <rect x="35" y="52" width="60" height="6" rx="3" fill="#00D9FF" />
+          </g>
+          <g filter="url(#dropShadow3_2)" transform="translate(45, 175)">
+            <rect x="0" y="0" width="110" height="60" rx="12" fill="rgba(6, 20, 38, 0.8)" stroke="#00D9FF" stroke-width="1.5" style="backdrop-filter: blur(8px);" />
+            <text x="12" y="26" fill="#00D9FF" font-size="9" font-family="monospace">bot.on('message')</text>
+            <text x="12" y="42" fill="#fff" font-size="9" font-family="monospace">reply("مرحباً بك!");</text>
+          </g>
+          <defs>
+            <radialGradient id="glow3" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#00D9FF" />
+              <stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+            <linearGradient id="gradCyanBlue3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00D9FF" />
+              <stop offset="100%" stop-color="#007BFF" />
+            </linearGradient>
+            <filter id="dropShadow3_1" x="230" y="180" width="210" height="120" filterUnits="userSpaceOnUse">
+              <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity="0.4" />
+            </filter>
+            <filter id="dropShadow3_2" x="25" y="155" width="150" height="100" filterUnits="userSpaceOnUse">
+              <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity="0.4" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
 <!-- Services Preview -->
-<section class="section services-preview">
+<section class="section services-preview" data-glow-color="rgba(0, 123, 255, 0.18)" data-glow-x="80%" data-glow-y="45%">
   <div class="container">
     <div class="section-title center reveal">
       <span class="label">الخدمات البرمجية والتقنية</span>
@@ -209,7 +422,7 @@
 <div class="section-divider"></div>
 
 <!-- Why Us -->
-<section class="section section-alt why">
+<section class="section section-alt why" data-glow-color="rgba(37, 211, 102, 0.15)" data-glow-x="15%" data-glow-y="50%">
   <div class="container why-grid">
     <div class="why-panel reveal">
       <span class="label">لماذا تختارنا؟</span>
@@ -232,7 +445,7 @@
 <div class="section-divider"></div>
 
 <!-- Work Flow -->
-<section class="section process">
+<section class="section process" data-glow-color="rgba(255, 165, 0, 0.15)" data-glow-x="50%" data-glow-y="45%">
   <div class="container">
     <div class="section-title center reveal">
       <span class="label">مسار تنفيذ المشاريع</span>
@@ -248,7 +461,7 @@
 </section>
 
 <!-- CTA -->
-<section class="cta">
+<section class="cta" data-glow-color="rgba(255, 20, 147, 0.14)" data-glow-x="50%" data-glow-y="50%">
   <div class="container cta-box reveal">
     <div>
       <span class="label">استشارة برمجية</span>
