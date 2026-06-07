@@ -37,30 +37,34 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 reveals.forEach(el => observer.observe(el));
 
-// Contact form sends prepared WhatsApp message or copies and redirects to Telegram Bot.
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+// Contact forms handler - sends prepared WhatsApp message or copies and redirects to Telegram Bot.
+document.querySelectorAll('.contact-form').forEach(form => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const data = new FormData(contactForm);
-    const text = `
-طلب خدمة جديد من موقع الجحفلي للحلول الرقمية:
-------------------------------------------
-الاسم: ${data.get('name') || ''}
-الهاتف: ${data.get('phone') || ''}
-البريد الإلكتروني: ${data.get('email') || ''}
-نوع الخدمة: ${data.get('service') || ''}
-الميزانية التقريبية: ${data.get('budget') || ''}
-وصف المشروع:
-${data.get('message') || ''}
-------------------------------------------
-تم الإرسال من موقع: aljahfalidigital.com
-    `.trim();
+    const data = new FormData(form);
+    let text = `طلب خدمة جديد من موقع الجحفلي للحلول الرقمية:\n`;
+    text += `------------------------------------------\n`;
+    text += `الاسم: ${data.get('name') || ''}\n`;
+    text += `الهاتف: ${data.get('phone') || ''}\n`;
+    
+    if (data.get('email')) {
+      text += `البريد الإلكتروني: ${data.get('email')}\n`;
+    }
+    if (data.get('service')) {
+      text += `نوع الخدمة: ${data.get('service')}\n`;
+    }
+    if (data.get('budget')) {
+      text += `الميزانية: ${data.get('budget')}\n`;
+    }
+    
+    text += `وصف المشروع:\n${data.get('message') || ''}\n`;
+    text += `------------------------------------------\n`;
+    text += `تم الإرسال من موقع: aljahfalidigital.com`;
 
     const submitter = e.submitter;
     const action = submitter ? submitter.getAttribute('data-action') : 'whatsapp';
-    const note = document.getElementById('formNote');
+    const note = form.querySelector('.form-note') || document.getElementById('formNote');
 
     if (action === 'telegram') {
       // Copy to clipboard and open Telegram bot
@@ -86,7 +90,7 @@ ${data.get('message') || ''}
       window.open(url, '_blank');
     }
   });
-}
+});
 
 // Dynamic Section Glow Background Observer (Design Inspiration from e-jaib.com)
 const glowSections = document.querySelectorAll('section[data-glow-color], header[data-glow-color], footer[data-glow-color]');
@@ -102,7 +106,7 @@ if (glowContainer && glowLayers[0] && glowLayers[1]) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const section = entry.target;
-        const color = section.getAttribute('data-glow-color') || 'rgba(0, 217, 255, 0.15)';
+        const color = section.getAttribute('data-glow-color') || 'rgba(0, 174, 239, 0.08)';
         const posX = section.getAttribute('data-glow-x') || '50%';
         const posY = section.getAttribute('data-glow-y') || '50%';
         
@@ -131,4 +135,67 @@ if (glowContainer && glowLayers[0] && glowLayers[1]) {
 
   glowSections.forEach(sec => glowObserver.observe(sec));
 }
+
+// Auto Image Slideshow Slider for Hero Section
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroDots = document.querySelectorAll('.hero-slider-dots .dot');
+if (heroSlides.length > 0 && heroDots.length > 0) {
+  let currentSlide = 0;
+  const slideInterval = 4000; // 4 seconds
+
+  function nextSlide() {
+    heroSlides[currentSlide].classList.remove('active');
+    heroDots[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % heroSlides.length;
+    heroSlides[currentSlide].classList.add('active');
+    heroDots[currentSlide].classList.add('active');
+  }
+
+  let slideTimer = setInterval(nextSlide, slideInterval);
+
+  heroDots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      clearInterval(slideTimer);
+      heroSlides[currentSlide].classList.remove('active');
+      heroDots[currentSlide].classList.remove('active');
+      currentSlide = idx;
+      heroSlides[currentSlide].classList.add('active');
+      heroDots[currentSlide].classList.add('active');
+      slideTimer = setInterval(nextSlide, slideInterval);
+    });
+  });
+}
+
+// Auto Image/GIF Slideshow for Service Cards
+const cardSliders = document.querySelectorAll('.card-slider');
+cardSliders.forEach(slider => {
+  const slides = slider.querySelectorAll('.card-slide');
+  const dots = slider.parentElement.querySelectorAll('.card-slider-dots .card-dot');
+  if (slides.length > 0 && dots.length > 0) {
+    let current = 0;
+    const interval = 3500; // 3.5 seconds
+    
+    function nextCardSlide() {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+    
+    let timer = setInterval(nextCardSlide, interval);
+    
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        clearInterval(timer);
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = idx;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+        timer = setInterval(nextCardSlide, interval);
+      });
+    });
+  }
+});
 
