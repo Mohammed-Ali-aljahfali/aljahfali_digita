@@ -199,3 +199,28 @@ cardSliders.forEach(slider => {
   }
 });
 
+// FAQ Accordion Interaction
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+  const question = item.querySelector('.faq-question');
+  question.addEventListener('click', () => {
+    // Close other active items
+    faqItems.forEach(otherItem => {
+      if (otherItem !== item && otherItem.classList.contains('active')) {
+        otherItem.classList.remove('active');
+        otherItem.querySelector('.faq-icon').textContent = '+';
+      }
+    });
+    
+    // Toggle current item
+    const isActive = item.classList.contains('active');
+    if (isActive) {
+      item.classList.remove('active');
+      item.querySelector('.faq-icon').textContent = '+';
+    } else {
+      item.classList.add('active');
+      item.querySelector('.faq-icon').textContent = '-';
+    }
+  });
+});
+
