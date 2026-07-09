@@ -199,28 +199,56 @@ cardSliders.forEach(slider => {
   }
 });
 
-// FAQ Accordion Interaction
+// FAQ Accordion + Typewriter Effect
 const faqItems = document.querySelectorAll('.faq-item');
+
+function typeAnswer(typedEl, text, speed = 18) {
+  typedEl.textContent = '';
+  typedEl.classList.add('typing');
+  let i = 0;
+  const interval = setInterval(() => {
+    typedEl.textContent += text[i];
+    i++;
+    if (i >= text.length) {
+      clearInterval(interval);
+      typedEl.classList.remove('typing');
+    }
+  }, speed);
+  return interval;
+}
+
+let activeTypingInterval = null;
+
 faqItems.forEach(item => {
   const question = item.querySelector('.faq-question');
+  const typedEl = item.querySelector('.faq-typed');
+  const answerText = item.dataset.answer || '';
+
   question.addEventListener('click', () => {
-    // Close other active items
-    faqItems.forEach(otherItem => {
-      if (otherItem !== item && otherItem.classList.contains('active')) {
-        otherItem.classList.remove('active');
-        otherItem.querySelector('.faq-icon').textContent = '+';
+    const isOpen = item.classList.contains('faq-open');
+
+    // Close all items (use faq-open NOT active, to avoid breaking reveal system)
+    faqItems.forEach(other => {
+      other.classList.remove('faq-open');
+      const otherTyped = other.querySelector('.faq-typed');
+      if (otherTyped) {
+        otherTyped.textContent = '';
+        otherTyped.classList.remove('typing');
       }
     });
-    
-    // Toggle current item
-    const isActive = item.classList.contains('active');
-    if (isActive) {
-      item.classList.remove('active');
-      item.querySelector('.faq-icon').textContent = '+';
-    } else {
-      item.classList.add('active');
-      item.querySelector('.faq-icon').textContent = '-';
+    if (activeTypingInterval) {
+      clearInterval(activeTypingInterval);
+      activeTypingInterval = null;
+    }
+
+    // Open clicked item if it was closed
+    if (!isOpen) {
+      item.classList.add('faq-open');
+      if (typedEl && answerText) {
+        activeTypingInterval = typeAnswer(typedEl, answerText, 18);
+      }
     }
   });
 });
+
 

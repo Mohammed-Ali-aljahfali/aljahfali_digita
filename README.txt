@@ -6,8 +6,6 @@
 الصفحات:
 - index.html: الرئيسية.
 - about.html: من نحن.
-- services.html: الخدمات التفصيلية.
-- portfolio.html: الأعمال.
 - pricing.html: الباقات.
 - contact.html: التواصل.
 
