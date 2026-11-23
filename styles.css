@@ -3606,3 +3606,26 @@ h3 {
   }
 }
 
+
+
+/* STRICT CLAMP FOR SOCIAL FOOTER SVGS TO PREVENT OVERSIZED DISPLAY */
+.site-footer svg,
+.social-icons-grid svg,
+.social-btn svg {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
+.social-btn {
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  overflow: hidden !important;
+}
