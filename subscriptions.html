@@ -5,19 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>متجر الاشتراكات الرقمية | الجحفلي للحلول الرقمية</title>
-  <meta name="description" content="اشتراكات رقمية ومفاتيح تفعيل أصلية لأشهر البرامج والتطبيقات العالمية: شات جي بي تي، مايكروسوفت، أدوبي، بلايستيشن، بي إن، في بي إن والمزيد بأسعار تنافسية وتسليم فوري.">
-  <meta name="keywords" content="اشتراكات رقمية اليمن, ChatGPT Plus اليمن, Microsoft 365, Adobe Creative Cloud, PlayStation Plus, اشتراكات برامج, مفاتيح ويندوز, الجحفلي للحلول الرقمية">
+  <meta name="description" content="متجر الاشتراكات الرقمية الرسمي - اشتراكات ومفاتيح أصلية 100%: ذكاء اصطناعي، مايكروسوفت، أدوبي، في بي إن، منصات تعليمية وألعاب بأفضل الأسعار وتسليم فوري.">
+  <meta name="keywords" content="اشتراكات رقمية اليمن, ChatGPT Plus, Microsoft 365, Adobe Creative Cloud, PlayStation Plus, اشتراكات برامج, مفاتيح ويندوز, الجحفلي للحلول الرقمية">
   <meta name="theme-color" content="#061426">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="styles.css?v=1.4">
+  <link rel="stylesheet" href="styles.css?v=1.5">
 
   <style>
     /* ══════════════════════════════════════════════════
-       STOREFRONT LUXURY STYLES - AL-JAHFALI DIGITAL
+       STOREFRONT LUXURY 3D STYLES - AL-JAHFALI DIGITAL
     ══════════════════════════════════════════════════ */
     :root {
       --store-bg: #F8FAFC;
@@ -43,7 +43,7 @@
 
     /* ── STORE HERO ── */
     .store-hero {
-      padding: 150px 0 60px;
+      padding: 140px 0 40px;
       position: relative;
       background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
       border-bottom: 1px solid var(--border-color);
@@ -72,15 +72,15 @@
       border-radius: 999px;
       font-size: 0.85rem;
       font-weight: 800;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .store-hero h1 {
-      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-size: clamp(2rem, 5vw, 3.2rem);
       font-weight: 900;
       color: var(--navy);
       line-height: 1.25;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       letter-spacing: -0.5px;
     }
 
@@ -93,36 +93,128 @@
 
     .store-hero p {
       color: var(--text-muted);
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       max-width: 650px;
-      margin: 0 auto 36px;
+      margin: 0 auto 28px;
       line-height: 1.8;
     }
 
-    .store-trust-banner {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-
-    .trust-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #FFFFFF;
-      padding: 8px 18px;
-      border-radius: 999px;
+    /* ── PROMO BANNER ── */
+    .promo-banner-wrap {
+      max-width: 1100px;
+      margin: 0 auto 28px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
       border: 1px solid var(--border-color);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--navy);
+    }
+    .promo-banner-wrap img {
+      width: 100%;
+      max-height: 260px;
+      object-fit: cover;
+      display: block;
     }
 
-    .trust-item svg {
+    /* ── 3D CATEGORIES SHOWCASE GRID ── */
+    .cat-showcase-section {
+      padding: 30px 0 20px;
+    }
+
+    .section-headline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .section-headline h2 {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .section-headline .sub-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .cat-grid-3d {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 16px;
+    }
+
+    .cat-card-3d {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: 20px;
+      padding: 14px 10px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      outline: none;
+    }
+
+    .cat-card-3d:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--blue);
+      box-shadow: 0 16px 30px rgba(0, 112, 240, 0.12);
+    }
+
+    .cat-card-3d.active {
+      border-color: var(--blue);
+      background: linear-gradient(180deg, #F0F7FF 0%, #FFFFFF 100%);
+      box-shadow: 0 0 0 2px var(--blue);
+    }
+
+    .cat-img-box {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .cat-card-3d:hover .cat-img-box {
+      transform: scale(1.08) rotate(2deg);
+    }
+
+    .cat-3d-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cat-card-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0;
+      line-height: 1.35;
+    }
+
+    .cat-card-count {
+      font-size: 0.7rem;
       color: var(--blue);
+      font-weight: 700;
+      background: rgba(0, 112, 240, 0.08);
+      padding: 2px 8px;
+      border-radius: 999px;
     }
 
     /* ── STICKY CONTROL BAR ── */
@@ -132,15 +224,16 @@
       z-index: 100;
       background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border-color);
       border-bottom: 1px solid var(--border-color);
-      padding: 16px 0;
+      padding: 14px 0;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     }
 
     .controls-inner {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
 
     .search-filter-row {
@@ -155,7 +248,7 @@
       position: relative;
       flex: 1;
       min-width: 280px;
-      max-width: 500px;
+      max-width: 520px;
     }
 
     .search-input-wrap input {
@@ -202,7 +295,7 @@
       cursor: pointer;
     }
 
-    /* Category Tabs */
+    /* Category Pills with REAL Image Thumbnails */
     .category-pills-bar {
       display: flex;
       align-items: center;
@@ -216,8 +309,8 @@
     .cat-pill {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 8px 18px;
+      gap: 8px;
+      padding: 6px 16px;
       border-radius: 999px;
       border: 1.5px solid var(--border-color);
       background: #FFFFFF;
@@ -244,6 +337,23 @@
       box-shadow: 0 4px 14px rgba(6, 20, 38, 0.25);
     }
 
+    .pill-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      object-fit: cover;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .pill-all-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--cyan);
+      display: inline-block;
+    }
+
     .cat-pill .pill-count {
       font-size: 0.72rem;
       padding: 2px 7px;
@@ -258,7 +368,7 @@
 
     /* ── STORE PRODUCTS GRID ── */
     .store-main-section {
-      padding: 40px 0 90px;
+      padding: 30px 0 90px;
     }
 
     .store-grid {
@@ -455,10 +565,14 @@
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 1100px) {
+    @media (max-width: 1200px) {
+      .cat-grid-3d { grid-template-columns: repeat(4, 1fr); }
       .store-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
     }
     @media (max-width: 768px) {
+      .cat-grid-3d { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .cat-img-box { width: 56px; height: 56px; border-radius: 14px; }
+      .cat-card-title { font-size: 0.75rem; }
       .store-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
       .card-body { padding: 14px; }
       .card-title { font-size: 0.88rem; min-height: 2.7em; }
@@ -466,7 +580,8 @@
       .btn-order-wa span { display: none; }
       .btn-order-wa { padding: 10px; border-radius: 10px; }
     }
-    @media (max-width: 420px) {
+    @media (max-width: 450px) {
+      .cat-grid-3d { grid-template-columns: repeat(2, 1fr); }
       .store-grid { grid-template-columns: 1fr; }
       .btn-order-wa span { display: inline; }
     }
@@ -511,25 +626,104 @@
         <h1>اشتراكات رقمية ومفاتيح أصلية<br><span>بأسعار منافسة وتسليم فوري</span></h1>
         <p>نوفر لك كافة الاشتراكات العالمية في مكان واحد: ذكاء اصطناعي، برامج مايكروسوفت، أدوات التصميم، منصات التعليم، خدمات VPN والترفيه بأعلى درجات الموثوقية.</p>
 
-        <div class="store-trust-banner">
-          <div class="trust-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            <span>تسليم فوري ومباشر</span>
+        <!-- BANNERS -->
+        <div class="promo-banner-wrap">
+          <img src="assets/categories/banner_hero.webp" onerror="this.src='assets/categories/banner_promo.jpeg'" alt="مرحبا بكم في متجر الاشتراكات الرقمية">
+        </div>
+
+        <!-- 3D CATEGORIES SHOWCASE -->
+        <div class="cat-showcase-section">
+          <div class="section-headline">
+            <h2>
+              <span>تصفّح حسب الأقسام الرئيسية</span>
+            </h2>
+            <span class="sub-text">اختر قسماً للانتقال المباشر لمنتجاته</span>
           </div>
-          <div class="trust-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span>حسابات وتراخيص أصلية 100%</span>
-          </div>
-          <div class="trust-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            <span>دعم فني وضمان كامل</span>
+          <div class="cat-grid-3d" id="showcase3d">
+            
+      <div class="cat-card-3d" data-filter="ai" role="button" tabindex="0" aria-label="عرض قسم الذكاء الاصطناعي">
+        <div class="cat-img-box">
+          <img src="assets/categories/cat_ai.png" alt="الذكاء الاصطناعي" loading="lazy" class="cat-3d-img">
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">الذكاء الاصطناعي</h3>
+          <span class="cat-card-count">21 منتج</span>
+        </div>
+      </div>
+    
+
+      <div class="cat-card-3d" data-filter="microsoft" role="button" tabindex="0" aria-label="عرض قسم مايكروسوفت">
+        <div class="cat-img-box">
+          <img src="assets/categories/cat_microsoft.png" alt="مايكروسوفت" loading="lazy" class="cat-3d-img">
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">مايكروسوفت</h3>
+          <span class="cat-card-count">13 منتج</span>
+        </div>
+      </div>
+    
+
+      <div class="cat-card-3d" data-filter="design" role="button" tabindex="0" aria-label="عرض قسم التصميم والمونتاج">
+        <div class="cat-img-box">
+          <img src="assets/categories/cat_design.png" alt="التصميم والمونتاج" loading="lazy" class="cat-3d-img">
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">التصميم والمونتاج</h3>
+          <span class="cat-card-count">4 منتج</span>
+        </div>
+      </div>
+    
+
+      <div class="cat-card-3d" data-filter="vpn" role="button" tabindex="0" aria-label="عرض قسم الأمان الرقمي و VPN">
+        <div class="cat-img-box">
+          <img src="assets/categories/cat_vpn.png" alt="الأمان الرقمي و VPN" loading="lazy" class="cat-3d-img">
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">الأمان الرقمي و VPN</h3>
+          <span class="cat-card-count">6 منتج</span>
+        </div>
+      </div>
+    
+
+      <div class="cat-card-3d" data-filter="learning" role="button" tabindex="0" aria-label="عرض قسم التعليم والتطوير">
+        <div class="cat-img-box">
+          <img src="assets/categories/cat_learning.png" alt="التعليم والتطوير" loading="lazy" class="cat-3d-img">
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">التعليم والتطوير</h3>
+          <span class="cat-card-count">9 منتج</span>
+        </div>
+      </div>
+    
+
+      <div class="cat-card-3d" data-filter="gaming" role="button" tabindex="0" aria-label="عرض قسم الألعاب والترفيه">
+        <div class="cat-img-box">
+          <img src="assets/categories/cat_gaming.png" alt="الألعاب والترفيه" loading="lazy" class="cat-3d-img">
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">الألعاب والترفيه</h3>
+          <span class="cat-card-count">7 منتج</span>
+        </div>
+      </div>
+    
+
+      <div class="cat-card-3d" data-filter="productivity" role="button" tabindex="0" aria-label="عرض قسم الإنتاجية والأعمال">
+        <div class="cat-img-box">
+          <img src="assets/categories/cat_fitness.png" alt="الإنتاجية والأعمال" loading="lazy" class="cat-3d-img">
+        </div>
+        <div class="cat-card-info">
+          <h3 class="cat-card-title">الإنتاجية والأعمال</h3>
+          <span class="cat-card-count">0 منتج</span>
+        </div>
+      </div>
+    
           </div>
         </div>
       </div>
     </section>
 
     <!-- STICKY CONTROL BAR -->
-    <section class="store-controls-section">
+    <section class="store-controls-section" id="productsSection">
       <div class="container">
         <div class="controls-inner">
           <div class="search-filter-row">
@@ -547,15 +741,58 @@
             </div>
           </div>
 
+          <!-- CATEGORY PILLS WITH REAL 3D THUMBNAILS (NO EMOJIS) -->
           <div class="category-pills-bar" id="categoryTabs">
-            <button class="cat-pill active" data-filter="all"><span class="pill-icon">🔥</span><span class="pill-name">الكل</span><span class="pill-count">133</span></button>
-<button class="cat-pill " data-filter="ai"><span class="pill-icon">🤖</span><span class="pill-name">الذكاء الاصطناعي</span><span class="pill-count">25</span></button>
-<button class="cat-pill " data-filter="microsoft"><span class="pill-icon">🪟</span><span class="pill-name">مايكروسوفت</span><span class="pill-count">15</span></button>
-<button class="cat-pill " data-filter="design"><span class="pill-icon">🎨</span><span class="pill-name">التصميم والمونتاج</span><span class="pill-count">20</span></button>
-<button class="cat-pill " data-filter="learning"><span class="pill-icon">📚</span><span class="pill-name">التعليم والتطوير</span><span class="pill-count">16</span></button>
-<button class="cat-pill " data-filter="vpn"><span class="pill-icon">🛡️</span><span class="pill-name">الأمان الرقمي و VPN</span><span class="pill-count">11</span></button>
-<button class="cat-pill " data-filter="gaming"><span class="pill-icon">🎮</span><span class="pill-name">الألعاب والترفيه</span><span class="pill-count">22</span></button>
-<button class="cat-pill " data-filter="productivity"><span class="pill-icon">⚡</span><span class="pill-name">الإنتاجية والأعمال</span><span class="pill-count">24</span></button>
+            <button class="cat-pill active" data-filter="all"><span class="pill-all-dot"></span><span class="pill-name">جميع الاشتراكات</span><span class="pill-count">133</span></button>
+
+      <button class="cat-pill" data-filter="ai">
+        <img src="assets/categories/cat_ai.png" alt="الذكاء الاصطناعي" class="pill-thumb">
+        <span class="pill-name">الذكاء الاصطناعي</span>
+        <span class="pill-count">21</span>
+      </button>
+    
+
+      <button class="cat-pill" data-filter="microsoft">
+        <img src="assets/categories/cat_microsoft.png" alt="مايكروسوفت" class="pill-thumb">
+        <span class="pill-name">مايكروسوفت</span>
+        <span class="pill-count">13</span>
+      </button>
+    
+
+      <button class="cat-pill" data-filter="design">
+        <img src="assets/categories/cat_design.png" alt="التصميم والمونتاج" class="pill-thumb">
+        <span class="pill-name">التصميم والمونتاج</span>
+        <span class="pill-count">4</span>
+      </button>
+    
+
+      <button class="cat-pill" data-filter="vpn">
+        <img src="assets/categories/cat_vpn.png" alt="الأمان الرقمي و VPN" class="pill-thumb">
+        <span class="pill-name">الأمان الرقمي و VPN</span>
+        <span class="pill-count">6</span>
+      </button>
+    
+
+      <button class="cat-pill" data-filter="learning">
+        <img src="assets/categories/cat_learning.png" alt="التعليم والتطوير" class="pill-thumb">
+        <span class="pill-name">التعليم والتطوير</span>
+        <span class="pill-count">9</span>
+      </button>
+    
+
+      <button class="cat-pill" data-filter="gaming">
+        <img src="assets/categories/cat_gaming.png" alt="الألعاب والترفيه" class="pill-thumb">
+        <span class="pill-name">الألعاب والترفيه</span>
+        <span class="pill-count">7</span>
+      </button>
+    
+
+      <button class="cat-pill" data-filter="productivity">
+        <img src="assets/categories/cat_fitness.png" alt="الإنتاجية والأعمال" class="pill-thumb">
+        <span class="pill-name">الإنتاجية والأعمال</span>
+        <span class="pill-count">0</span>
+      </button>
+    
           </div>
         </div>
       </div>
@@ -666,7 +903,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="iLovePDF — الخطة المميزة (Premium) | اشتراك سنة" data-price="24">
+      <article class="store-card" data-cat="dev" data-title="iLovePDF — الخطة المميزة (Premium) | اشتراك سنة" data-price="24">
         <div class="card-media">
           <img src="assets/products/ilovepdf-premium-plan-1-year-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-39-AM--1778451860170.jpeg';" alt="iLovePDF — الخطة المميزة (Premium) | اشتراك سنة" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -675,7 +912,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="iLovePDF — الخطة المميزة (Premium) | اشتراك سنة">iLovePDF — الخطة المميزة (Premium) | اشتراك سنة</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -791,7 +1028,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="GitHub Student Developer Pack – الترقية على حسابك الشخصي" data-price="92">
+      <article class="store-card" data-cat="dev" data-title="GitHub Student Developer Pack – الترقية على حسابك الشخصي" data-price="92">
         <div class="card-media">
           <img src="assets/products/github-student-developer-pack-upgrade-on-your-personal-account.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-44-AM--1784226433865.jpeg';" alt="GitHub Student Developer Pack – الترقية على حسابك الشخصي" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -800,7 +1037,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="GitHub Student Developer Pack – الترقية على حسابك الشخصي">GitHub Student Developer Pack – الترقية على حسابك الشخصي</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -866,7 +1103,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="اشتراك سنة Bolt New Pro" data-price="79">
+      <article class="store-card" data-cat="other" data-title="اشتراك سنة Bolt New Pro" data-price="79">
         <div class="card-media">
           <img src="assets/products/1-year-subscription-to-bolt-new-pro.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-47-AM-1784226498646.jpeg';" alt="اشتراك سنة Bolt New Pro" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -875,7 +1112,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك سنة Bolt New Pro">اشتراك سنة Bolt New Pro</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -941,7 +1178,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="learning" data-title="اشتراك Codecademy Pro" data-price="89">
+      <article class="store-card" data-cat="other" data-title="اشتراك Codecademy Pro" data-price="89">
         <div class="card-media">
           <img src="assets/products/codecademy-pro.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-46-AM-1778449004699.jpeg';" alt="اشتراك Codecademy Pro" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -950,7 +1187,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التعليم والتطوير</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Codecademy Pro">اشتراك Codecademy Pro</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1016,7 +1253,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="أشتراك SOLIDWORKS Premium" data-price="350">
+      <article class="store-card" data-cat="other" data-title="أشتراك SOLIDWORKS Premium" data-price="350">
         <div class="card-media">
           <img src="assets/products/solidworks-premium.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-50-AM-1778451316142.jpeg';" alt="أشتراك SOLIDWORKS Premium" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1025,7 +1262,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="أشتراك SOLIDWORKS Premium">أشتراك SOLIDWORKS Premium</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1041,7 +1278,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="learning" data-title="اشتراك ماستر كلاس | Masterclass Premium" data-price="49">
+      <article class="store-card" data-cat="other" data-title="اشتراك ماستر كلاس | Masterclass Premium" data-price="49">
         <div class="card-media">
           <img src="assets/products/masterclass-premium.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-46-AM--1778451227341.jpeg';" alt="اشتراك ماستر كلاس | Masterclass Premium" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1050,7 +1287,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التعليم والتطوير</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك ماستر كلاس | Masterclass Premium">اشتراك ماستر كلاس | Masterclass Premium</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1116,7 +1353,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="learning" data-title="اشتراك Blinkist Premium" data-price="22">
+      <article class="store-card" data-cat="other" data-title="اشتراك Blinkist Premium" data-price="22">
         <div class="card-media">
           <img src="assets/products/blinkist-premium-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-48-AM--1783376801927.jpeg';" alt="اشتراك Blinkist Premium" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1125,7 +1362,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التعليم والتطوير</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Blinkist Premium">اشتراك Blinkist Premium</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1141,7 +1378,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="learning" data-title="اشتراك كويزليت | Quizlet Premium Account" data-price="8">
+      <article class="store-card" data-cat="other" data-title="اشتراك كويزليت | Quizlet Premium Account" data-price="8">
         <div class="card-media">
           <img src="assets/products/quizlet-subscription-quizlet-plus-account.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-48-AM--1778450273670.jpeg';" alt="اشتراك كويزليت | Quizlet Premium Account" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1150,7 +1387,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التعليم والتطوير</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك كويزليت | Quizlet Premium Account">اشتراك كويزليت | Quizlet Premium Account</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1216,7 +1453,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="learning" data-title="اشتراك SCRIBD Premium خاص" data-price="8">
+      <article class="store-card" data-cat="other" data-title="اشتراك SCRIBD Premium خاص" data-price="8">
         <div class="card-media">
           <img src="assets/products/scribd-premium-special-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-54-AM-1784226687793.jpeg';" alt="اشتراك SCRIBD Premium خاص" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1225,7 +1462,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التعليم والتطوير</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك SCRIBD Premium خاص">اشتراك SCRIBD Premium خاص</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1241,7 +1478,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="أشتراك SOLIDWORKS Premium" data-price="92">
+      <article class="store-card" data-cat="other" data-title="أشتراك SOLIDWORKS Premium" data-price="92">
         <div class="card-media">
           <img src="assets/products/solidworks-premium-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-50-AM--1784226740623.jpeg';" alt="أشتراك SOLIDWORKS Premium" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1250,7 +1487,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="أشتراك SOLIDWORKS Premium">أشتراك SOLIDWORKS Premium</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1316,7 +1553,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="vpn" data-title="Bitdefender Total Security" data-price="8.99">
+      <article class="store-card" data-cat="other" data-title="Bitdefender Total Security" data-price="8.99">
         <div class="card-media">
           <img src="assets/products/bitdefender-total-security.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-15-at-4-00-05-AM--1784078075004.jpeg';" alt="Bitdefender Total Security" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1325,7 +1562,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الأمان الرقمي و VPN</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="Bitdefender Total Security">Bitdefender Total Security</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1416,7 +1653,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="vpn" data-title="اشتراك Cloudflare WARP سنة" data-price="10">
+      <article class="store-card" data-cat="other" data-title="اشتراك Cloudflare WARP سنة" data-price="10">
         <div class="card-media">
           <img src="assets/products/cloudflare-warp-subscription-for-one-year.jpg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/IMG-20260716-WA0022-1784228187663.jpg';" alt="اشتراك Cloudflare WARP سنة" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1425,7 +1662,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الأمان الرقمي و VPN</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Cloudflare WARP سنة">اشتراك Cloudflare WARP سنة</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1466,7 +1703,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="vpn" data-title="اشتراك avast ultimate" data-price="13">
+      <article class="store-card" data-cat="other" data-title="اشتراك avast ultimate" data-price="13">
         <div class="card-media">
           <img src="assets/products/avast-ultimate-subscription.jpg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/IMG-20260716-WA0024-1784228247897.jpg';" alt="اشتراك avast ultimate" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1475,7 +1712,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الأمان الرقمي و VPN</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك avast ultimate">اشتراك avast ultimate</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1491,7 +1728,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="vpn" data-title="اشتراك bitdefender total security" data-price="16">
+      <article class="store-card" data-cat="other" data-title="اشتراك bitdefender total security" data-price="16">
         <div class="card-media">
           <img src="assets/products/bitdefender-total-security-subscription.jpg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/IMG-20260716-WA0025-1784228296326.jpg';" alt="اشتراك bitdefender total security" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1500,7 +1737,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الأمان الرقمي و VPN</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك bitdefender total security">اشتراك bitdefender total security</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1516,7 +1753,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="vpn" data-title="اشتراك Norton 360 Premium" data-price="18">
+      <article class="store-card" data-cat="other" data-title="اشتراك Norton 360 Premium" data-price="18">
         <div class="card-media">
           <img src="assets/products/norton-360-premium-subscription.jpg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/IMG-20260716-WA0026-1784228521053.jpg';" alt="اشتراك Norton 360 Premium" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1525,7 +1762,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الأمان الرقمي و VPN</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Norton 360 Premium">اشتراك Norton 360 Premium</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1591,7 +1828,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="Happier Meditation" data-price="24.99">
+      <article class="store-card" data-cat="other" data-title="Happier Meditation" data-price="24.99">
         <div class="card-media">
           <img src="assets/products/happier-meditation.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-15-at-4-00-06-AM-1784079016081.jpeg';" alt="Happier Meditation" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1600,7 +1837,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="Happier Meditation">Happier Meditation</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1616,7 +1853,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="learning" data-title="Amboss Premium (USMLE and NBME)" data-price="29.99">
+      <article class="store-card" data-cat="other" data-title="Amboss Premium (USMLE and NBME)" data-price="29.99">
         <div class="card-media">
           <img src="assets/products/amboss-premium-usmle-and-nbme.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-15-at-4-00-06-AM--1784078957594.jpeg';" alt="Amboss Premium (USMLE and NBME)" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1625,7 +1862,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التعليم والتطوير</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="Amboss Premium (USMLE and NBME)">Amboss Premium (USMLE and NBME)</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1641,7 +1878,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="Alo Moves - Yoga & Fitness" data-price="19.99">
+      <article class="store-card" data-cat="other" data-title="Alo Moves - Yoga & Fitness" data-price="19.99">
         <div class="card-media">
           <img src="assets/products/alo-moves-yoga-fitness-.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-15-at-4-00-06-AM--1784078921125.jpeg';" alt="Alo Moves - Yoga & Fitness" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1650,7 +1887,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="Alo Moves - Yoga & Fitness">Alo Moves - Yoga & Fitness</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1666,7 +1903,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="Calm Premium" data-price="19.99">
+      <article class="store-card" data-cat="other" data-title="Calm Premium" data-price="19.99">
         <div class="card-media">
           <img src="assets/products/calm-premium.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-15-at-4-00-05-AM-1784078833501.jpeg';" alt="Calm Premium" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1675,7 +1912,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="Calm Premium">Calm Premium</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1691,7 +1928,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="Breethe App (Meditation)" data-price="14.99">
+      <article class="store-card" data-cat="other" data-title="Breethe App (Meditation)" data-price="14.99">
         <div class="card-media">
           <img src="assets/products/breethe-app-meditation.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-15-at-4-00-05-AM--1784078792685.jpeg';" alt="Breethe App (Meditation)" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1700,7 +1937,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="Breethe App (Meditation)">Breethe App (Meditation)</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1716,7 +1953,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="BODi (by BeachBody)" data-price="24.99">
+      <article class="store-card" data-cat="other" data-title="BODi (by BeachBody)" data-price="24.99">
         <div class="card-media">
           <img src="assets/products/bodi-by-beachbody.png" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/file_00000000578471f4a2430a95dcfdcfbd-1784073380960.png';" alt="BODi (by BeachBody)" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1725,7 +1962,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="BODi (by BeachBody)">BODi (by BeachBody)</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1741,7 +1978,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="اشتراك كاب كت برو |حساب خاص CapCut pro" data-price="4">
+      <article class="store-card" data-cat="other" data-title="اشتراك كاب كت برو |حساب خاص CapCut pro" data-price="4">
         <div class="card-media">
           <img src="assets/products/capcut-pro-subscription-private-capcut-pro-account.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-39-AM-1778451969902.jpeg';" alt="اشتراك كاب كت برو |حساب خاص CapCut pro" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1750,7 +1987,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك كاب كت برو |حساب خاص CapCut pro">اشتراك كاب كت برو |حساب خاص CapCut pro</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1791,7 +2028,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="اشتراك انڤاتو | Envato" data-price="11">
+      <article class="store-card" data-cat="other" data-title="اشتراك انڤاتو | Envato" data-price="11">
         <div class="card-media">
           <img src="assets/products/envato-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-49-AM-1778451806581.jpeg';" alt="اشتراك انڤاتو | Envato" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1800,7 +2037,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك انڤاتو | Envato">اشتراك انڤاتو | Envato</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1816,7 +2053,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="مفتاح CorelDRAW Graphics – ترخيص دائم" data-price="27">
+      <article class="store-card" data-cat="other" data-title="مفتاح CorelDRAW Graphics – ترخيص دائم" data-price="27">
         <div class="card-media">
           <img src="assets/products/coreldraw-graphics-suite-lifetime-license-key.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-15-at-4-00-08-AM-1784079513629.jpeg';" alt="مفتاح CorelDRAW Graphics – ترخيص دائم" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1825,7 +2062,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="مفتاح CorelDRAW Graphics – ترخيص دائم">مفتاح CorelDRAW Graphics – ترخيص دائم</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1916,7 +2153,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="ترقية Kittl خاص على ايميلك" data-price="13">
+      <article class="store-card" data-cat="other" data-title="ترقية Kittl خاص على ايميلك" data-price="13">
         <div class="card-media">
           <img src="assets/products/kittl-kittl-upgrade-on-your-personal-email-account.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-15-at-4-00-08-AM--1784079424298.jpeg';" alt="ترقية Kittl خاص على ايميلك" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -1925,7 +2162,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="ترقية Kittl خاص على ايميلك">ترقية Kittl خاص على ايميلك</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -1991,7 +2228,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="اشتراك Storyblocks" data-price="174">
+      <article class="store-card" data-cat="other" data-title="اشتراك Storyblocks" data-price="174">
         <div class="card-media">
           <img src="assets/products/storyblocks-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-15-at-4-00-06-AM--1784079235721.jpeg';" alt="اشتراك Storyblocks" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2000,7 +2237,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Storyblocks">اشتراك Storyblocks</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2016,7 +2253,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="اشتراك Motion Array Premium" data-price="19">
+      <article class="store-card" data-cat="other" data-title="اشتراك Motion Array Premium" data-price="19">
         <div class="card-media">
           <img src="assets/products/motion-array-motion-array-premium-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-43-AM-1784072733556.jpeg';" alt="اشتراك Motion Array Premium" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2025,7 +2262,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Motion Array Premium">اشتراك Motion Array Premium</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2041,7 +2278,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="اشتراك Pikbest Premium – حساب مشترك لمدة 6 أشهر أو سنة | تحميل غير محدود | جهاز واحد فقط" data-price="27">
+      <article class="store-card" data-cat="other" data-title="اشتراك Pikbest Premium – حساب مشترك لمدة 6 أشهر أو سنة | تحميل غير محدود | جهاز واحد فقط" data-price="27">
         <div class="card-media">
           <img src="assets/products/pikbest-pikbest-premium-subscription-shared-account-for-6-months-or-1-year-unlimited-downloads-one-device-only.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-15-at-4-00-06-AM--1784079193250.jpeg';" alt="اشتراك Pikbest Premium – حساب مشترك لمدة 6 أشهر أو سنة | تحميل غير محدود | جهاز واحد فقط" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2050,7 +2287,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Pikbest Premium – حساب مشترك لمدة 6 أشهر أو سنة | تحميل غير محدود | جهاز واحد فقط">اشتراك Pikbest Premium – حساب مشترك لمدة 6 أشهر أو سنة | تحميل غير محدود | جهاز واحد فقط</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2066,7 +2303,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="InVideo Studio – اشتراك غير محدود | خاص على ايميلك" data-price="27">
+      <article class="store-card" data-cat="other" data-title="InVideo Studio – اشتراك غير محدود | خاص على ايميلك" data-price="27">
         <div class="card-media">
           <img src="assets/products/invideo-invideo-studio-unlimited-subscription-private-account-on-your-personal-email.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-38-AM-1778451891188.jpeg';" alt="InVideo Studio – اشتراك غير محدود | خاص على ايميلك" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2075,7 +2312,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="InVideo Studio – اشتراك غير محدود | خاص على ايميلك">InVideo Studio – اشتراك غير محدود | خاص على ايميلك</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2091,7 +2328,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="PhotoRoom – اشتراك لمدة سنة | تفعيل رسمي على بريدك" data-price="29">
+      <article class="store-card" data-cat="other" data-title="PhotoRoom – اشتراك لمدة سنة | تفعيل رسمي على بريدك" data-price="29">
         <div class="card-media">
           <img src="assets/products/photoroom-photoroom-1-year-subscription-official-activation-on-your-personal-email.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-07-at-1-14-21-AM--1783380415893.jpeg';" alt="PhotoRoom – اشتراك لمدة سنة | تفعيل رسمي على بريدك" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2100,7 +2337,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="PhotoRoom – اشتراك لمدة سنة | تفعيل رسمي على بريدك">PhotoRoom – اشتراك لمدة سنة | تفعيل رسمي على بريدك</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2116,7 +2353,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="اشتراك باكدورا Pacdora – اشتراك أصلي لمدة شهر أو سنة | يُفعل على بريدك" data-price="22">
+      <article class="store-card" data-cat="other" data-title="اشتراك باكدورا Pacdora – اشتراك أصلي لمدة شهر أو سنة | يُفعل على بريدك" data-price="22">
         <div class="card-media">
           <img src="assets/products/pacdora-pacdora-subscription-official-account-for-1-month-or-1-year-activated-on-your-personal-email.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-07-at-1-14-23-AM-1783380543554.jpeg';" alt="اشتراك باكدورا Pacdora – اشتراك أصلي لمدة شهر أو سنة | يُفعل على بريدك" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2125,7 +2362,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك باكدورا Pacdora – اشتراك أصلي لمدة شهر أو سنة | يُفعل على بريدك">اشتراك باكدورا Pacdora – اشتراك أصلي لمدة شهر أو سنة | يُفعل على بريدك</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2141,7 +2378,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="اشتراك فري بيك | Freepike Premiun & Premium +" data-price="14">
+      <article class="store-card" data-cat="other" data-title="اشتراك فري بيك | Freepike Premiun & Premium +" data-price="14">
         <div class="card-media">
           <img src="assets/products/freepik-freepik-premium-premium-premium-subscription.png" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/file_000000006f1071f49d46a5c257cb0933-1784073828595.png';" alt="اشتراك فري بيك | Freepike Premiun & Premium +" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2150,7 +2387,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك فري بيك | Freepike Premiun & Premium +">اشتراك فري بيك | Freepike Premiun & Premium +</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2291,7 +2528,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="اشتراك جرامرلي Grammarly Premium" data-price="44">
+      <article class="store-card" data-cat="other" data-title="اشتراك جرامرلي Grammarly Premium" data-price="44">
         <div class="card-media">
           <img src="assets/products/grammarly-premium-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-55-AM--1784166054710.jpeg';" alt="اشتراك جرامرلي Grammarly Premium" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2300,7 +2537,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك جرامرلي Grammarly Premium">اشتراك جرامرلي Grammarly Premium</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2341,7 +2578,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="ai" data-title="اشتراك Super Grok | حسابك الخاص" data-price="20">
+      <article class="store-card" data-cat="other" data-title="اشتراك Super Grok | حسابك الخاص" data-price="20">
         <div class="card-media">
           <img src="assets/products/super-grok-subscription-your-account.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-37-AM--1784166185097.jpeg';" alt="اشتراك Super Grok | حسابك الخاص" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2350,7 +2587,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الذكاء الاصطناعي</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Super Grok | حسابك الخاص">اشتراك Super Grok | حسابك الخاص</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2441,7 +2678,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="اشتراك – REPLIT CORE" data-price="78">
+      <article class="store-card" data-cat="other" data-title="اشتراك – REPLIT CORE" data-price="78">
         <div class="card-media">
           <img src="assets/products/subscribe-replit-core.png" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/file_00000000d6bc71f4a5b5b9cfbfc39ea7-1784166802633.png';" alt="اشتراك – REPLIT CORE" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2450,7 +2687,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك – REPLIT CORE">اشتراك – REPLIT CORE</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2491,7 +2728,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="ai" data-title="اشتراك Gamma | خاص على ايميلك | سنة" data-price="88">
+      <article class="store-card" data-cat="other" data-title="اشتراك Gamma | خاص على ايميلك | سنة" data-price="88">
         <div class="card-media">
           <img src="assets/products/gamma-subscription-private-account-your-email-1-year.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-55-AM--1778451766572.jpeg';" alt="اشتراك Gamma | خاص على ايميلك | سنة" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2500,7 +2737,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الذكاء الاصطناعي</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Gamma | خاص على ايميلك | سنة">اشتراك Gamma | خاص على ايميلك | سنة</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2516,7 +2753,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="Framer Pro Plan | سنة كاملة" data-price="67.38">
+      <article class="store-card" data-cat="other" data-title="Framer Pro Plan | سنة كاملة" data-price="67.38">
         <div class="card-media">
           <img src="assets/products/framer-pro-plan.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-07-at-1-14-21-AM-1783377542496.jpeg';" alt="Framer Pro Plan | سنة كاملة" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2525,7 +2762,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="Framer Pro Plan | سنة كاملة">Framer Pro Plan | سنة كاملة</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2566,7 +2803,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="Apify – Credit plan" data-price="27.23">
+      <article class="store-card" data-cat="other" data-title="Apify – Credit plan" data-price="27.23">
         <div class="card-media">
           <img src="assets/products/apify-credit-plan.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-07-at-1-14-22-AM-1783379462725.jpeg';" alt="Apify – Credit plan" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2575,7 +2812,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="Apify – Credit plan">Apify – Credit plan</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2591,7 +2828,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="اشتراك Quillbot Premium" data-price="7">
+      <article class="store-card" data-cat="other" data-title="اشتراك Quillbot Premium" data-price="7">
         <div class="card-media">
           <img src="assets/products/quillbot-premium-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-09-at-8-21-52-AM-1784226659264.jpeg';" alt="اشتراك Quillbot Premium" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2600,7 +2837,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Quillbot Premium">اشتراك Quillbot Premium</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2641,7 +2878,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="learning" data-title="اشتراك تورنتن طالب | Turnitin Student" data-price="22.6">
+      <article class="store-card" data-cat="other" data-title="اشتراك تورنتن طالب | Turnitin Student" data-price="22.6">
         <div class="card-media">
           <img src="assets/products/turnitin-student-subscription.jpg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/IMG-20260716-WA0031-1784228728895.jpg';" alt="اشتراك تورنتن طالب | Turnitin Student" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2650,7 +2887,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التعليم والتطوير</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك تورنتن طالب | Turnitin Student">اشتراك تورنتن طالب | Turnitin Student</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2716,7 +2953,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="ai" data-title="اشتراك Granola Business – باقة سنوية لفريقك (10 مستخدمين) | تفعيل فوري على بريدك" data-price="56.97">
+      <article class="store-card" data-cat="other" data-title="اشتراك Granola Business – باقة سنوية لفريقك (10 مستخدمين) | تفعيل فوري على بريدك" data-price="56.97">
         <div class="card-media">
           <img src="assets/products/granola-business-subscription-annual-package-for-your-team-(10-users)-instant-activation-via-email.jpg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/IMG-20260716-WA0036-1784229161459.jpg';" alt="اشتراك Granola Business – باقة سنوية لفريقك (10 مستخدمين) | تفعيل فوري على بريدك" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2725,7 +2962,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الذكاء الاصطناعي</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Granola Business – باقة سنوية لفريقك (10 مستخدمين) | تفعيل فوري على بريدك">اشتراك Granola Business – باقة سنوية لفريقك (10 مستخدمين) | تفعيل فوري على بريدك</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2741,7 +2978,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="ai" data-title="اشتراك Descript Creator | سنة كاملة" data-price="130">
+      <article class="store-card" data-cat="other" data-title="اشتراك Descript Creator | سنة كاملة" data-price="130">
         <div class="card-media">
           <img src="assets/products/descript-creator-subscription-full-year.jpg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/IMG-20260716-WA0037-1784229199991.jpg';" alt="اشتراك Descript Creator | سنة كاملة" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2750,7 +2987,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الذكاء الاصطناعي</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Descript Creator | سنة كاملة">اشتراك Descript Creator | سنة كاملة</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2766,7 +3003,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="microsoft" data-title="– أوفيس 2019 بروفيشنال بلس (لـ 5 أجهزة)" data-price="24.99">
+      <article class="store-card" data-cat="other" data-title="– أوفيس 2019 بروفيشنال بلس (لـ 5 أجهزة)" data-price="24.99">
         <div class="card-media">
           <img src="assets/products/microsoft-products-pro-140-swnfi.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-22-at-9-45-43-PM-1779475712330.jpeg';" alt="– أوفيس 2019 بروفيشنال بلس (لـ 5 أجهزة)" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2775,7 +3012,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">مايكروسوفت</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="– أوفيس 2019 بروفيشنال بلس (لـ 5 أجهزة)">– أوفيس 2019 بروفيشنال بلس (لـ 5 أجهزة)</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -2816,7 +3053,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="microsoft" data-title="PowerBi - سنة" data-price="17">
+      <article class="store-card" data-cat="other" data-title="PowerBi - سنة" data-price="17">
         <div class="card-media">
           <img src="assets/products/powerbi-1-year.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-05-22-at-9-12-55-PM--1779473790079.jpeg';" alt="PowerBi - سنة" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -2825,7 +3062,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">مايكروسوفت</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="PowerBi - سنة">PowerBi - سنة</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3066,7 +3303,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="Google One Premium Account" data-price="24.99">
+      <article class="store-card" data-cat="other" data-title="Google One Premium Account" data-price="24.99">
         <div class="card-media">
           <img src="assets/products/google-one-premium-account.png" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/file_000000001e887246a96661895059673a-1784073472368.png';" alt="Google One Premium Account" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3075,7 +3312,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="Google One Premium Account">Google One Premium Account</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3091,7 +3328,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="Dropbox (Upgrade Your Account)" data-price="49.99">
+      <article class="store-card" data-cat="other" data-title="Dropbox (Upgrade Your Account)" data-price="49.99">
         <div class="card-media">
           <img src="assets/products/dropbox-upgrade-your-account.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-15-at-4-00-07-AM--1784079088493.jpeg';" alt="Dropbox (Upgrade Your Account)" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3100,7 +3337,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="Dropbox (Upgrade Your Account)">Dropbox (Upgrade Your Account)</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3116,7 +3353,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="Autodesk Robot Structural Analysis" data-price="13">
+      <article class="store-card" data-cat="other" data-title="Autodesk Robot Structural Analysis" data-price="13">
         <div class="card-media">
           <img src="assets/products/autodesk-robot-structural-analysis.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-48-PM-1784761296511.jpeg';" alt="Autodesk Robot Structural Analysis" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3125,7 +3362,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="Autodesk Robot Structural Analysis">Autodesk Robot Structural Analysis</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3141,7 +3378,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="كرانشي رول بريميوم شهر" data-price="25">
+      <article class="store-card" data-cat="other" data-title="كرانشي رول بريميوم شهر" data-price="25">
         <div class="card-media">
           <img src="assets/products/crunchyroll-premium-1-month.jpg" onerror="this.onerror=null; this.src='https://sqlyem.com/';" alt="كرانشي رول بريميوم شهر" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3150,7 +3387,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="كرانشي رول بريميوم شهر">كرانشي رول بريميوم شهر</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3216,7 +3453,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="ديسكورد نايترو ٦ أشهر" data-price="192.5">
+      <article class="store-card" data-cat="other" data-title="ديسكورد نايترو ٦ أشهر" data-price="192.5">
         <div class="card-media">
           <img src="assets/products/discord-nitro-6-months.jpg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/IMG-20260716-WA0028-1784228605479.jpg';" alt="ديسكورد نايترو ٦ أشهر" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3225,7 +3462,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="ديسكورد نايترو ٦ أشهر">ديسكورد نايترو ٦ أشهر</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3241,7 +3478,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="اشتراك Make.com" data-price="130">
+      <article class="store-card" data-cat="other" data-title="اشتراك Make.com" data-price="130">
         <div class="card-media">
           <img src="assets/products/make.com-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-49-PM-1784761810026.jpeg';" alt="اشتراك Make.com" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3250,7 +3487,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Make.com">اشتراك Make.com</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3266,7 +3503,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="ديسكورد نايترو بيسك سنة واحدة" data-price="150">
+      <article class="store-card" data-cat="other" data-title="ديسكورد نايترو بيسك سنة واحدة" data-price="150">
         <div class="card-media">
           <img src="assets/products/discord-nitro-basic-1-year.jpg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/IMG-20260716-WA0033-1784228868830.jpg';" alt="ديسكورد نايترو بيسك سنة واحدة" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3275,7 +3512,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="ديسكورد نايترو بيسك سنة واحدة">ديسكورد نايترو بيسك سنة واحدة</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3291,7 +3528,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="اي اي بلاي ٣ أشهر" data-price="56">
+      <article class="store-card" data-cat="other" data-title="اي اي بلاي ٣ أشهر" data-price="56">
         <div class="card-media">
           <img src="assets/products/ea-play-3-months.jpg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/IMG-20260716-WA0034-1784228936283.jpg';" alt="اي اي بلاي ٣ أشهر" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3300,7 +3537,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اي اي بلاي ٣ أشهر">اي اي بلاي ٣ أشهر</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3316,7 +3553,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="اشتراك Zoom Pro | اجتماعات أون لاين بدون قيود وتفعيل سريع" data-price="7">
+      <article class="store-card" data-cat="other" data-title="اشتراك Zoom Pro | اجتماعات أون لاين بدون قيود وتفعيل سريع" data-price="7">
         <div class="card-media">
           <img src="assets/products/zoom-pro-subscription-|-unrestricted-online-meetings-and-fast-activation.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-49-PM-1784764740447.jpeg';" alt="اشتراك Zoom Pro | اجتماعات أون لاين بدون قيود وتفعيل سريع" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3325,7 +3562,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Zoom Pro | اجتماعات أون لاين بدون قيود وتفعيل سريع">اشتراك Zoom Pro | اجتماعات أون لاين بدون قيود وتفعيل سريع</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3341,7 +3578,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="كرانشي رول بريميوم ٦ أشهر" data-price="137.5">
+      <article class="store-card" data-cat="other" data-title="كرانشي رول بريميوم ٦ أشهر" data-price="137.5">
         <div class="card-media">
           <img src="assets/products/crunchyroll-premium-6-months.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-35-PM-1784754250079.jpeg';" alt="كرانشي رول بريميوم ٦ أشهر" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3350,7 +3587,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="كرانشي رول بريميوم ٦ أشهر">كرانشي رول بريميوم ٦ أشهر</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3366,7 +3603,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="كرانشي رول بريميوم سنة واحدة" data-price="250">
+      <article class="store-card" data-cat="other" data-title="كرانشي رول بريميوم سنة واحدة" data-price="250">
         <div class="card-media">
           <img src="assets/products/crunchyroll-premium-1-year.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-37-PM-1784754282118.jpeg';" alt="كرانشي رول بريميوم سنة واحدة" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3375,7 +3612,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="كرانشي رول بريميوم سنة واحدة">كرانشي رول بريميوم سنة واحدة</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3391,7 +3628,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="أمازون برايم فيديو شهر واحد" data-price="20">
+      <article class="store-card" data-cat="other" data-title="أمازون برايم فيديو شهر واحد" data-price="20">
         <div class="card-media">
           <img src="assets/products/amazon-prime-video-1-month.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-40-PM-1784754311970.jpeg';" alt="أمازون برايم فيديو شهر واحد" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3400,7 +3637,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="أمازون برايم فيديو شهر واحد">أمازون برايم فيديو شهر واحد</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3416,7 +3653,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="أمازون برايم فيديو ٣ أشهر" data-price="56">
+      <article class="store-card" data-cat="other" data-title="أمازون برايم فيديو ٣ أشهر" data-price="56">
         <div class="card-media">
           <img src="assets/products/amazon-prime-video-3-months.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-42-PM-1784754341635.jpeg';" alt="أمازون برايم فيديو ٣ أشهر" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3425,7 +3662,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="أمازون برايم فيديو ٣ أشهر">أمازون برايم فيديو ٣ أشهر</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3441,7 +3678,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="أمازون برايم فيديو ٦ أشهر" data-price="110">
+      <article class="store-card" data-cat="other" data-title="أمازون برايم فيديو ٦ أشهر" data-price="110">
         <div class="card-media">
           <img src="assets/products/amazon-prime-video-6-months.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-43-PM-1784754379758.jpeg';" alt="أمازون برايم فيديو ٦ أشهر" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3450,7 +3687,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="أمازون برايم فيديو ٦ أشهر">أمازون برايم فيديو ٦ أشهر</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3466,7 +3703,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="أمازون برايم فيديو سنة واحدة" data-price="200">
+      <article class="store-card" data-cat="other" data-title="أمازون برايم فيديو سنة واحدة" data-price="200">
         <div class="card-media">
           <img src="assets/products/amazon-prime-video-1-year.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-43-PM-1784754431252.jpeg';" alt="أمازون برايم فيديو سنة واحدة" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3475,7 +3712,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="أمازون برايم فيديو سنة واحدة">أمازون برايم فيديو سنة واحدة</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3491,7 +3728,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="ابل ميوزك شهر واحد" data-price="25">
+      <article class="store-card" data-cat="other" data-title="ابل ميوزك شهر واحد" data-price="25">
         <div class="card-media">
           <img src="assets/products/apple-music-1-month.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-43-PM-1784755005067.jpeg';" alt="ابل ميوزك شهر واحد" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3500,7 +3737,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="ابل ميوزك شهر واحد">ابل ميوزك شهر واحد</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3516,7 +3753,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="ابل ميوزك ٣ أشهر" data-price="70">
+      <article class="store-card" data-cat="other" data-title="ابل ميوزك ٣ أشهر" data-price="70">
         <div class="card-media">
           <img src="assets/products/apple-music-3-months.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-44-PM-1784755033422.jpeg';" alt="ابل ميوزك ٣ أشهر" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3525,7 +3762,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="ابل ميوزك ٣ أشهر">ابل ميوزك ٣ أشهر</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3541,7 +3778,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="ابل ميوزك ٦ أشهر" data-price="137.5">
+      <article class="store-card" data-cat="other" data-title="ابل ميوزك ٦ أشهر" data-price="137.5">
         <div class="card-media">
           <img src="assets/products/apple-music-6-months.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-44-PM-1784755304410.jpeg';" alt="ابل ميوزك ٦ أشهر" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3550,7 +3787,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="ابل ميوزك ٦ أشهر">ابل ميوزك ٦ أشهر</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3566,7 +3803,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="حساب مشترك FlightRadar24 – ضمان 6 أشهر" data-price="16">
+      <article class="store-card" data-cat="other" data-title="حساب مشترك FlightRadar24 – ضمان 6 أشهر" data-price="16">
         <div class="card-media">
           <img src="assets/products/flightradar24-shared-account-–-6-month-warranty.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-49-PM-1784764868867.jpeg';" alt="حساب مشترك FlightRadar24 – ضمان 6 أشهر" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3575,7 +3812,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="حساب مشترك FlightRadar24 – ضمان 6 أشهر">حساب مشترك FlightRadar24 – ضمان 6 أشهر</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3591,7 +3828,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="اشتراك لوميون برو لمدة سنة – Lumion Pro Student" data-price="65">
+      <article class="store-card" data-cat="other" data-title="اشتراك لوميون برو لمدة سنة – Lumion Pro Student" data-price="65">
         <div class="card-media">
           <img src="assets/products/lumion-pro-student-subscription-for-one-year.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-45-PM-1784755391806.jpeg';" alt="اشتراك لوميون برو لمدة سنة – Lumion Pro Student" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3600,7 +3837,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك لوميون برو لمدة سنة – Lumion Pro Student">اشتراك لوميون برو لمدة سنة – Lumion Pro Student</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3616,7 +3853,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="اشتراك بيكس آرت – Picsart" data-price="4">
+      <article class="store-card" data-cat="other" data-title="اشتراك بيكس آرت – Picsart" data-price="4">
         <div class="card-media">
           <img src="assets/products/picsart-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-45-PM-1784755422252.jpeg';" alt="اشتراك بيكس آرت – Picsart" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3625,7 +3862,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك بيكس آرت – Picsart">اشتراك بيكس آرت – Picsart</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3641,7 +3878,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="اشتراك V-Ray الأصلي | برنامج الرندر الاحترافي ثلاثي الأبعاد" data-price="105">
+      <article class="store-card" data-cat="other" data-title="اشتراك V-Ray الأصلي | برنامج الرندر الاحترافي ثلاثي الأبعاد" data-price="105">
         <div class="card-media">
           <img src="assets/products/original-v-ray-subscription-professional-3d-rendering-software.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-45-PM-1784755459302.jpeg';" alt="اشتراك V-Ray الأصلي | برنامج الرندر الاحترافي ثلاثي الأبعاد" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3650,7 +3887,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك V-Ray الأصلي | برنامج الرندر الاحترافي ثلاثي الأبعاد">اشتراك V-Ray الأصلي | برنامج الرندر الاحترافي ثلاثي الأبعاد</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3691,7 +3928,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="اشتراك فري بيك | Freepik – Magnific Premiun & Premium +" data-price="10">
+      <article class="store-card" data-cat="other" data-title="اشتراك فري بيك | Freepik – Magnific Premiun & Premium +" data-price="10">
         <div class="card-media">
           <img src="assets/products/freepik-subscription-freepik-magnific-premium-&-premium-+.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-46-PM-1784755534243.jpeg';" alt="اشتراك فري بيك | Freepik – Magnific Premiun & Premium +" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3700,7 +3937,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك فري بيك | Freepik – Magnific Premiun & Premium +">اشتراك فري بيك | Freepik – Magnific Premiun & Premium +</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3716,7 +3953,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="design" data-title="مفتاح CorelDRAW Graphics – ترخيص دائم" data-price="26">
+      <article class="store-card" data-cat="other" data-title="مفتاح CorelDRAW Graphics – ترخيص دائم" data-price="26">
         <div class="card-media">
           <img src="assets/products/coreldraw-graphics-key-perpetual-license.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-46-PM-1784755566170.jpeg';" alt="مفتاح CorelDRAW Graphics – ترخيص دائم" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3725,7 +3962,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">التصميم والمونتاج</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="مفتاح CorelDRAW Graphics – ترخيص دائم">مفتاح CorelDRAW Graphics – ترخيص دائم</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3766,7 +4003,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="Apple TV+ – اشتراك لمدة سنة | تفعيل رسمي على بريدك" data-price="45">
+      <article class="store-card" data-cat="other" data-title="Apple TV+ – اشتراك لمدة سنة | تفعيل رسمي على بريدك" data-price="45">
         <div class="card-media">
           <img src="assets/products/apple-tv+-1-year-subscription-official-activation-via-email.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-47-PM-1784759349881.jpeg';" alt="Apple TV+ – اشتراك لمدة سنة | تفعيل رسمي على بريدك" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3775,7 +4012,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="Apple TV+ – اشتراك لمدة سنة | تفعيل رسمي على بريدك">Apple TV+ – اشتراك لمدة سنة | تفعيل رسمي على بريدك</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3791,7 +4028,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="gaming" data-title="اشتراك Apple One | Apple Music وiCloud وخدمات Apple في باقة واحدة" data-price="47">
+      <article class="store-card" data-cat="other" data-title="اشتراك Apple One | Apple Music وiCloud وخدمات Apple في باقة واحدة" data-price="47">
         <div class="card-media">
           <img src="assets/products/apple-one-subscription-apple-music,-icloud,-and-apple-services-in-one-package.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-47-PM-1784761192226.jpeg';" alt="اشتراك Apple One | Apple Music وiCloud وخدمات Apple في باقة واحدة" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3800,7 +4037,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الألعاب والترفيه</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Apple One | Apple Music وiCloud وخدمات Apple في باقة واحدة">اشتراك Apple One | Apple Music وiCloud وخدمات Apple في باقة واحدة</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3816,7 +4053,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="X.com (Twitter) – سنة ترقية حسابك" data-price="30">
+      <article class="store-card" data-cat="other" data-title="X.com (Twitter) – سنة ترقية حسابك" data-price="30">
         <div class="card-media">
           <img src="assets/products/x.com-(twitter)-your-account-upgrade-year.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-47-PM-1784761257129.jpeg';" alt="X.com (Twitter) – سنة ترقية حسابك" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3825,7 +4062,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="X.com (Twitter) – سنة ترقية حسابك">X.com (Twitter) – سنة ترقية حسابك</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3841,7 +4078,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="اشتراك TradingView Premium" data-price="26">
+      <article class="store-card" data-cat="other" data-title="اشتراك TradingView Premium" data-price="26">
         <div class="card-media">
           <img src="assets/products/tradingview-premium-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-50-PM-1784764922123.jpeg';" alt="اشتراك TradingView Premium" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3850,7 +4087,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك TradingView Premium">اشتراك TradingView Premium</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3866,7 +4103,7 @@
       </article>
     
 
-      <article class="store-card" data-cat="productivity" data-title="اشتراك Autodesk All Apps جميع التطبيقات" data-price="12.99">
+      <article class="store-card" data-cat="other" data-title="اشتراك Autodesk All Apps جميع التطبيقات" data-price="12.99">
         <div class="card-media">
           <img src="assets/products/autodesk-all-apps-subscription.jpeg" onerror="this.onerror=null; this.src='https://sqlyem.com/images/products/WhatsApp-Image-2026-07-22-at-11-31-50-PM-1784765062294.jpeg';" alt="اشتراك Autodesk All Apps جميع التطبيقات" loading="lazy" class="prod-img">
           <div class="media-badges">
@@ -3875,7 +4112,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card-cat-tag">الإنتاجية والأعمال</div>
+          <div class="card-cat-tag">خدمات رقمية</div>
           <h3 class="card-title" title="اشتراك Autodesk All Apps جميع التطبيقات">اشتراك Autodesk All Apps جميع التطبيقات</h3>
           <div class="card-price-row">
             <div class="price-box">
@@ -3981,6 +4218,7 @@
     const searchInput = document.getElementById('storeSearch');
     const sortSelect = document.getElementById('sortSelect');
     const catButtons = document.querySelectorAll('.cat-pill');
+    const showcaseCards = document.querySelectorAll('.cat-card-3d');
     const grid = document.getElementById('storeGrid');
     const cards = Array.from(document.querySelectorAll('.store-card'));
     const emptyState = document.getElementById('emptyState');
@@ -4029,12 +4267,31 @@
       }
     }
 
+    function selectCategory(catId) {
+      currentCat = catId;
+      catButtons.forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === catId);
+      });
+      showcaseCards.forEach(c => {
+        c.classList.toggle('active', c.dataset.filter === catId);
+      });
+      filterAndSortCards();
+    }
+
     catButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        catButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentCat = btn.dataset.filter;
-        filterAndSortCards();
+        selectCategory(btn.dataset.filter);
+      });
+    });
+
+    showcaseCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const targetCat = card.dataset.filter;
+        selectCategory(targetCat);
+        const targetSection = document.getElementById('productsSection');
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
     });
 
