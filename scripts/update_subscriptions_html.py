@@ -15,7 +15,7 @@ html_content = '''<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="styles.css?v=2.6">
+  <link rel="stylesheet" href="styles.css?v=2.7">
 
   <style>
     /* ═════════════════════════════════════════════════════════
@@ -396,84 +396,84 @@ html_content = '''<!DOCTYPE html>
       border-color: var(--border-hover);
     }
 
-    /* Card Media with Official Icon */
+    /* ── VIBRANT & PROMINENT CARD MEDIA ── */
     .card-media {
       position: relative;
       width: 100%;
-      height: 185px;
-      background: linear-gradient(135deg, #071220 0%, #0d1e33 100%);
+      height: 195px;
       overflow: hidden;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
     }
 
-    .card-media-bg {
+    .card-media-overlay {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 50%, var(--brand-glow, #0070F0) 0%, transparent 68%);
-      opacity: 0.22;
-      transition: opacity 0.4s ease, transform 0.4s ease;
+      background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.24) 0%, rgba(0, 0, 0, 0.38) 100%);
+      pointer-events: none;
     }
 
-    .store-card:hover .card-media-bg {
-      opacity: 0.38;
-      transform: scale(1.18);
-    }
-
-    .card-brand-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      z-index: 3;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(6, 20, 38, 0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      padding: 3px 10px;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: #E2E8F0;
-    }
-
-    .card-brand-badge img {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-    }
-
-    .card-icon-container {
+    .card-brand-showcase {
       position: relative;
       z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .store-card:hover .card-brand-showcase {
+      transform: translateY(-4px) scale(1.06);
+    }
+
+    .official-icon-frame {
       width: 82px;
       height: 82px;
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(10px);
-      border: 1.5px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(14px);
+      border: 2px solid rgba(255, 255, 255, 0.45);
       border-radius: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.5);
       transition: all 0.35s ease;
     }
 
-    .store-card:hover .card-icon-container {
-      transform: translateY(-4px) scale(1.08);
-      border-color: rgba(255, 255, 255, 0.4);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45), 0 0 25px var(--brand-glow, rgba(0, 112, 240, 0.35));
+    .store-card:hover .official-icon-frame {
+      border-color: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 255, 255, 0.35);
     }
 
     .official-brand-svg {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+      filter: brightness(0) invert(1) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+    }
+
+    .official-brand-png {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+    }
+
+    .brand-showcase-title {
+      font-size: 0.96rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      text-align: center;
     }
 
     /* Media Overlay Badges */
@@ -481,39 +481,39 @@ html_content = '''<!DOCTYPE html>
       position: absolute;
       top: 12px;
       right: 12px;
-      z-index: 2;
-      padding: 4px 12px;
+      z-index: 3;
+      padding: 5px 14px;
       border-radius: 10px;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 850;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(8px);
     }
 
     .badge-guar-status.guaranteed {
       background: linear-gradient(135deg, #10B981, #059669);
       color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.35);
     }
 
     .badge-guar-status.nowar {
-      background: rgba(30, 41, 59, 0.9);
+      background: rgba(30, 41, 59, 0.92);
       color: #FBBF24;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(245, 158, 11, 0.4);
+      border: 1px solid rgba(245, 158, 11, 0.45);
     }
 
     .badge-stock-pill {
       position: absolute;
       bottom: 12px;
       right: 12px;
-      z-index: 2;
-      padding: 4px 10px;
+      z-index: 3;
+      padding: 4px 12px;
       border-radius: 8px;
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 800;
       backdrop-filter: blur(8px);
-      background: rgba(6, 20, 38, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(6, 20, 38, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #FFFFFF;
     }
 
@@ -529,14 +529,14 @@ html_content = '''<!DOCTYPE html>
       position: absolute;
       bottom: 12px;
       left: 12px;
-      z-index: 2;
-      padding: 4px 10px;
+      z-index: 3;
+      padding: 4px 12px;
       border-radius: 8px;
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 800;
       backdrop-filter: blur(8px);
-      background: rgba(6, 20, 38, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(6, 20, 38, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #38BDF8;
     }
 
@@ -727,7 +727,7 @@ html_content = '''<!DOCTYPE html>
       background: linear-gradient(135deg, #1ebd5a, #0e7266);
     }
 
-    /* ── INTERACTIVE MODAL (SUBSCRIPTION DETAILS) ── */
+    /* ── INTERACTIVE MODAL ── */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -794,7 +794,6 @@ html_content = '''<!DOCTYPE html>
     .modal-header-hero {
       position: relative;
       padding: 34px 28px 24px;
-      background: linear-gradient(135deg, #071220 0%, #0d1e33 100%);
       color: #FFFFFF;
       display: flex;
       gap: 20px;
@@ -806,8 +805,7 @@ html_content = '''<!DOCTYPE html>
     .modal-header-glow {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 10% 50%, var(--modal-glow, #0070F0) 0%, transparent 60%);
-      opacity: 0.35;
+      background: radial-gradient(circle at 10% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -816,8 +814,9 @@ html_content = '''<!DOCTYPE html>
       z-index: 2;
       width: 86px;
       height: 86px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      border: 2px solid rgba(255, 255, 255, 0.45);
       border-radius: 22px;
       padding: 16px;
       display: flex;
@@ -835,10 +834,11 @@ html_content = '''<!DOCTYPE html>
 
     .modal-service-pill {
       display: inline-block;
-      font-size: 0.8rem;
+      font-size: 0.84rem;
       font-weight: 800;
-      color: #38BDF8;
+      color: #E2E8F0;
       margin-bottom: 6px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
     }
 
     .modal-title {
@@ -847,6 +847,7 @@ html_content = '''<!DOCTYPE html>
       margin: 0 0 8px;
       line-height: 1.35;
       color: #FFFFFF;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
     }
 
     .modal-meta-row {
@@ -856,8 +857,9 @@ html_content = '''<!DOCTYPE html>
     }
 
     .modal-meta-chip {
-      background: rgba(255, 255, 255, 0.12);
-      padding: 3px 10px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(6px);
+      padding: 4px 12px;
       border-radius: 8px;
       font-size: 0.78rem;
       font-weight: 750;
@@ -945,7 +947,7 @@ html_content = '''<!DOCTYPE html>
       margin-top: 2px;
     }
 
-    /* Modal Details Grid (Account type & delivery) */
+    /* Modal Details Grid */
     .modal-info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1139,6 +1141,8 @@ html_content = '''<!DOCTYPE html>
   </style>
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  
   <!-- Standard Site Header -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-shell">
@@ -1170,7 +1174,7 @@ html_content = '''<!DOCTYPE html>
       <div class="store-hero-glow"></div>
       <div class="container">
         <div class="store-badge">
-          <span>⚡ متجر الاشتراكات الرقمية الشامل | Al-Jahfali Digital</span>
+          <span>متجر الاشتراكات الرقمية الشامل | Al-Jahfali Digital</span>
         </div>
         <h1>متجر كافة الاشتراكات والحسابات الرقمية<br><span>أكثر من 600 منتج رسمي بضمان حقيقي</span></h1>
         <p>المنصة الرقمية الأولى الشاملة لكافة الاشتراكات العالمية: ذكاء اصطناعي، برامج التصميم، مايكروسوفت، خدمات VPN، الترفيه، وحسابات السوشيال ميديا مع تفصيل كامل للضمان والأسعار بالريال اليمني والسعودي والدولار.</p>
@@ -1219,7 +1223,7 @@ html_content = '''<!DOCTYPE html>
 
         <!-- Quick Filter Toggles -->
         <div class="quick-filters-row">
-          <span style="font-size:0.85rem; font-weight:800; color:var(--navy);">⚡ تصفية سريعة:</span>
+          <span style="font-size:0.85rem; font-weight:800; color:var(--navy);">تصفية سريعة:</span>
           <button class="quick-filter-btn active" data-guar="all">جميع الحالات (610)</button>
           <button class="quick-filter-btn guar-btn" data-guar="guaranteed">🛡️ المضمونة فقط (469)</button>
           <button class="quick-filter-btn" data-guar="nowar">⚠️ بدون ضمان (141)</button>
@@ -1250,7 +1254,7 @@ html_content = '''<!DOCTYPE html>
               <span class="badge-count">25</span>
             </button>
             <button class="srv-pill" data-service="grok">
-              <span>⚡ Grok & X</span>
+              <span>Grok & X</span>
               <span class="badge-count">23</span>
             </button>
             <button class="srv-pill" data-service="canva">
@@ -1477,7 +1481,7 @@ html_content = '''<!DOCTYPE html>
         const yerAden = p.prices.yer_aden.toLocaleString();
 
         const guarBadgeClass = p.is_guaranteed ? 'guaranteed' : 'nowar';
-        const guarBadgeText = p.is_guaranteed ? '🛡️ مضمون 100%' : '⚡ استهلاك فوري';
+        const guarBadgeText = p.is_guaranteed ? '🛡️ مضمون 100%' : 'استهلاك وتفعيل فوري';
         
         const stockClass = p.in_stock ? 'in-stock' : 'out-of-stock';
         const stockText = p.in_stock ? `🟢 متوفر (${p.stock})` : '🔴 نفذت الكمية';
@@ -1491,25 +1495,29 @@ html_content = '''<!DOCTYPE html>
 يرجى تزويدي ببيانات الدفع والتسليم الفوري.`;
         const waUrl = `https://wa.me/967782611415?text=${encodeURIComponent(waMsg)}`;
 
+        const isPng = (p.icon || '').endsWith('.png');
+        const imgClass = isPng ? 'official-brand-png' : 'official-brand-svg';
+
         const article = document.createElement('article');
         article.className = 'store-card';
         article.innerHTML = `
-          <div class="card-media" style="--brand-glow: ${p.brand_color};">
-            <div class="card-media-bg"></div>
-            <div class="card-brand-badge">
-              <img src="assets/logo.png" alt="الجحفلي" loading="lazy">
-              <span>الجحفلي | أصلي</span>
+          <div class="card-media" style="background: ${p.brand_gradient || '#0F172A'};">
+            <div class="card-media-overlay"></div>
+            
+            <div class="card-brand-showcase">
+              <div class="official-icon-frame">
+                <img src="${p.icon}" alt="${p.service_name}" class="${imgClass}" loading="lazy">
+              </div>
+              <span class="brand-showcase-title">${p.brand_label || p.service_name}</span>
             </div>
-            <div class="card-icon-container">
-              <img src="${p.icon}" alt="${p.service_name}" class="official-brand-svg" loading="lazy">
-            </div>
+
             <span class="badge-guar-status ${guarBadgeClass}">${guarBadgeText}</span>
             <span class="badge-duration-pill">⏱️ ${p.duration}</span>
             <span class="badge-stock-pill ${stockClass}">${stockText}</span>
           </div>
 
           <div class="card-body">
-            <div class="card-service-tag">⚡ ${p.service_name}</div>
+            <div class="card-service-tag">${p.service_name}</div>
             <h3 class="card-title" title="${p.title}">${p.title}</h3>
             
             <div class="card-desc-box">
@@ -1671,7 +1679,7 @@ html_content = '''<!DOCTYPE html>
       const yerAden = p.prices.yer_aden.toLocaleString();
 
       const guarClass = p.is_guaranteed ? 'guaranteed' : 'nowar';
-      const guarTitle = p.is_guaranteed ? '🛡️ اشتراك مضمون 100% مع ضمان استبدال رسمي' : '⚠️ منتج استهلاك فوري وتفعيل مباشر';
+      const guarTitle = p.is_guaranteed ? '🛡️ اشتراك مضمون 100% مع ضمان استبدال رسمي' : 'منتج استهلاك وتفعيل فوري';
 
       const waMsg = `مرحباً الجحفلي للحلول الرقمية، أود طلب الاشتراك التالي:
 الاشتراك: ${p.title}
@@ -1682,6 +1690,9 @@ html_content = '''<!DOCTYPE html>
 يرجى تزويدي ببيانات الدفع والتسليم الفوري.`;
       const waUrl = `https://wa.me/967782611415?text=${encodeURIComponent(waMsg)}`;
 
+      const isPng = (p.icon || '').endsWith('.png');
+      const imgClass = isPng ? 'official-brand-png' : 'official-brand-svg';
+
       const featuresHtml = (p.modal_data.features || []).map(f => `
         <li>
           <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -1690,13 +1701,13 @@ html_content = '''<!DOCTYPE html>
       `).join('');
 
       container.innerHTML = `
-        <div class="modal-header-hero" style="--modal-glow: ${p.brand_color};">
+        <div class="modal-header-hero" style="background: ${p.brand_gradient || '#0F172A'};">
           <div class="modal-header-glow"></div>
           <div class="modal-icon-container">
-            <img src="${p.icon}" alt="${p.service_name}" class="official-brand-svg">
+            <img src="${p.icon}" alt="${p.service_name}" class="${imgClass}">
           </div>
           <div class="modal-header-info">
-            <span class="modal-service-pill">⚡ ${p.service_name}</span>
+            <span class="modal-service-pill">${p.service_name}</span>
             <h3 class="modal-title">${p.title}</h3>
             <div class="modal-meta-row">
               <span class="modal-meta-chip">⏱️ المدة: ${p.duration}</span>
@@ -1798,6 +1809,7 @@ html_content = '''<!DOCTYPE html>
       }
     });
   </script>
+  <script src="script.js"></script>
 </body>
 </html>
 '''
@@ -1805,4 +1817,4 @@ html_content = '''<!DOCTYPE html>
 with open('subscriptions.html', 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print("Updated subscriptions.html successfully!")
+print("Updated subscriptions.html without lightning symbol and without brand watermark!")
