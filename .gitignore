@@ -1,3 +1,6 @@
 scratch/
 *.pyc
 __pycache__/
+
+assets/clean_3d_products/
+

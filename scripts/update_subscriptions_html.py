@@ -1,0 +1,1808 @@
+# -*- coding: utf-8 -*-
+
+html_content = '''<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر الاشتراكات الرقمية الرسمي | الجحفلي للحلول الرقمية</title>
+  <meta name="description" content="متجر الاشتراكات الرقمية الرسمي والشامل - الجحفلي للحلول الرقمية. تصفح أكثر من 600 اشتراك رقمي وحساب أصلي ومفتاح ترخيص رسمي بأفضل الأسعار وضمان حقيقي وتسليم فوري.">
+  <meta name="keywords" content="متجر اشتراكات رقمية, ChatGPT Plus, Claude AI, Canva Pro, CapCut Pro, Netflix 4K, YouTube Premium, Windows 11, الجحفلي للحلول الرقمية">
+  <meta name="theme-color" content="#061426">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css?v=2.6">
+
+  <style>
+    /* ═════════════════════════════════════════════════════════
+       ULTRA-LUXURY 2026 DIGITAL STORE - AL-JAHFALI DIGITAL
+    ═════════════════════════════════════════════════════════════ */
+    :root {
+      --store-bg: #F4F7FB;
+      --card-bg: #FFFFFF;
+      --navy: #061426;
+      --navy-light: #0d223f;
+      --blue: #0070F0;
+      --cyan: #00AEEF;
+      --green: #10B981;
+      --green-dark: #059669;
+      --amber: #F59E0B;
+      --rose: #EF4444;
+      --text-main: #0B1C33;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --border-hover: rgba(0, 112, 240, 0.45);
+      --shadow-sm: 0 4px 15px rgba(6, 20, 38, 0.05);
+      --shadow-hover: 0 20px 40px -8px rgba(6, 20, 38, 0.14), 0 10px 20px -6px rgba(0, 112, 240, 0.1);
+    }
+
+    body {
+      background-color: var(--store-bg);
+      color: var(--text-main);
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── LUXURY STORE HERO ── */
+    .store-hero {
+      padding: 145px 0 50px;
+      position: relative;
+      background: linear-gradient(180deg, #FFFFFF 0%, #EDF3F9 100%);
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .store-hero-glow {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 50% 10%, rgba(0, 174, 239, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 12% 70%, rgba(0, 112, 240, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 88% 65%, rgba(16, 185, 129, 0.09) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 112, 240, 0.08);
+      border: 1px solid rgba(0, 112, 240, 0.25);
+      color: var(--blue);
+      padding: 8px 24px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .store-hero h1 {
+      font-size: clamp(2.1rem, 5.2vw, 3.4rem);
+      font-weight: 900;
+      color: var(--navy) !important;
+      line-height: 1.28;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .store-hero h1 span {
+      background: linear-gradient(135deg, #0070F0, #00AEEF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .store-hero p {
+      color: var(--text-muted) !important;
+      font-size: 1.15rem;
+      max-width: 760px;
+      margin: 0 auto 30px;
+      line-height: 1.85;
+    }
+
+    /* ── STATS ROW ── */
+    .store-stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .stat-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      padding: 10px 22px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-chip .val {
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--blue);
+    }
+
+    .stat-chip .lbl {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    /* ── CONTROLS & FILTER SECTION ── */
+    .store-controls-section {
+      padding: 24px 0 20px;
+      position: sticky;
+      top: 74px;
+      z-index: 40;
+      background: rgba(244, 247, 251, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 4px 20px rgba(6, 20, 38, 0.04);
+    }
+
+    .controls-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Search & Currency Bar */
+    .search-and-currency-bar {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .search-input-box {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+    }
+
+    .search-input-box input {
+      width: 100%;
+      padding: 14px 46px 14px 20px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      font-size: 1.02rem;
+      font-family: inherit;
+      color: var(--navy);
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(6, 20, 38, 0.03);
+      box-sizing: border-box;
+    }
+
+    .search-input-box input:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(0, 112, 240, 0.14);
+    }
+
+    .search-input-box .search-icon {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* Currency Select Buttons */
+    .currency-selector-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      background: #FFFFFF;
+      padding: 6px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+    }
+
+    .curr-lbl {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-left: 6px;
+    }
+
+    .curr-btn {
+      padding: 6px 14px;
+      border-radius: 10px;
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .curr-btn:hover,
+    .curr-btn.active {
+      background: var(--blue);
+      color: #FFFFFF;
+      border-color: var(--blue);
+      box-shadow: 0 4px 12px rgba(0, 112, 240, 0.25);
+    }
+
+    /* ── QUICK FILTER TABS ── */
+    .quick-filters-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .quick-filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .quick-filter-btn:hover,
+    .quick-filter-btn.active {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+    }
+
+    .quick-filter-btn.guar-btn.active {
+      background: linear-gradient(135deg, #10B981, #059669);
+      border-color: #10B981;
+      color: #FFFFFF;
+    }
+
+    /* ── SERVICE / BRAND HORIZONTAL CAROUSEL ── */
+    .services-carousel-wrap {
+      margin-top: 4px;
+    }
+
+    .services-pills-bar {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: thin;
+    }
+
+    .services-pills-bar::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .services-pills-bar::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 999px;
+    }
+
+    .srv-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      color: var(--text-main);
+      font-size: 0.92rem;
+      font-weight: 750;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(6, 20, 38, 0.03);
+    }
+
+    .srv-pill:hover,
+    .srv-pill.active {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(6, 20, 38, 0.15);
+    }
+
+    .srv-pill.active {
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      border-color: var(--blue);
+    }
+
+    .srv-pill .badge-count {
+      font-size: 0.78rem;
+      background: rgba(0, 112, 240, 0.12);
+      color: var(--blue);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+
+    .srv-pill.active .badge-count {
+      background: rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+    }
+
+    /* ── RESULTS BAR ── */
+    .results-status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .results-status-bar h2 {
+      font-size: 1.45rem;
+      font-weight: 850;
+      color: var(--navy);
+      margin: 0;
+    }
+
+    .results-status-bar .results-meta {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    /* ── STORE PRODUCTS GRID ── */
+    .store-main-section {
+      padding: 30px 0 80px;
+    }
+
+    .store-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    /* Product Card */
+    .store-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border-color);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .store-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--border-hover);
+    }
+
+    /* Card Media with Official Icon */
+    .card-media {
+      position: relative;
+      width: 100%;
+      height: 185px;
+      background: linear-gradient(135deg, #071220 0%, #0d1e33 100%);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .card-media-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, var(--brand-glow, #0070F0) 0%, transparent 68%);
+      opacity: 0.22;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .store-card:hover .card-media-bg {
+      opacity: 0.38;
+      transform: scale(1.18);
+    }
+
+    .card-brand-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(6, 20, 38, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #E2E8F0;
+    }
+
+    .card-brand-badge img {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+    }
+
+    .card-icon-container {
+      position: relative;
+      z-index: 2;
+      width: 82px;
+      height: 82px;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255, 255, 255, 0.14);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      transition: all 0.35s ease;
+    }
+
+    .store-card:hover .card-icon-container {
+      transform: translateY(-4px) scale(1.08);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45), 0 0 25px var(--brand-glow, rgba(0, 112, 240, 0.35));
+    }
+
+    .official-brand-svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+    }
+
+    /* Media Overlay Badges */
+    .badge-guar-status {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+      padding: 4px 12px;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      font-weight: 850;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .badge-guar-status.guaranteed {
+      background: linear-gradient(135deg, #10B981, #059669);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .badge-guar-status.nowar {
+      background: rgba(30, 41, 59, 0.9);
+      color: #FBBF24;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+
+    .badge-stock-pill {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      z-index: 2;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+      background: rgba(6, 20, 38, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+    }
+
+    .badge-stock-pill.in-stock {
+      color: #34D399;
+    }
+
+    .badge-stock-pill.out-of-stock {
+      color: #F87171;
+    }
+
+    .badge-duration-pill {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      z-index: 2;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+      background: rgba(6, 20, 38, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #38BDF8;
+    }
+
+    /* Card Body */
+    .card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-service-tag {
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 850;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-title {
+      font-size: 1.12rem;
+      font-weight: 850;
+      color: var(--navy) !important;
+      margin: 0 0 10px;
+      line-height: 1.42;
+    }
+
+    .card-desc-box {
+      background: #F8FAFC;
+      border: 1px solid #EDF2F7;
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .card-desc-text {
+      color: #475569;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin: 0 0 8px;
+    }
+
+    .card-warranty-detail {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #0F766E;
+    }
+
+    .card-warranty-detail.nowar {
+      color: #D97706;
+    }
+
+    /* Multi-Currency Pricing */
+    .currency-pricing-box {
+      background: #F1F5F9;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 16px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+    }
+
+    .primary-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px dashed rgba(15, 23, 42, 0.12);
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+
+    .price-usd {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .price-sar {
+      font-size: 1.12rem;
+      font-weight: 850;
+      color: var(--blue);
+    }
+
+    .price-sar small {
+      font-size: 0.78rem;
+    }
+
+    .yemeni-rates-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .yer-rate-chip {
+      display: flex;
+      flex-direction: column;
+      background: #FFFFFF;
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .yer-rate-chip.sanaa {
+      border-right: 3px solid #10B981;
+    }
+
+    .yer-rate-chip.aden {
+      border-right: 3px solid #0070F0;
+    }
+
+    .yer-rate-chip .rate-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .yer-rate-chip .rate-val {
+      font-size: 0.92rem;
+      font-weight: 850;
+      color: var(--navy);
+    }
+
+    .yer-rate-chip .rate-val small {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Action Buttons Row */
+    .card-action-row {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .btn-details {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      color: var(--navy);
+      padding: 11px 12px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-details:hover {
+      background: #F1F5F9;
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    .btn-order-wa {
+      flex: 1.2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #FFFFFF !important;
+      text-decoration: none;
+      padding: 11px 12px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+      box-sizing: border-box;
+      white-space: nowrap;
+    }
+
+    .btn-order-wa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+      background: linear-gradient(135deg, #1ebd5a, #0e7266);
+    }
+
+    /* ── INTERACTIVE MODAL (SUBSCRIPTION DETAILS) ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 20, 38, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-dialog {
+      background: #FFFFFF;
+      border-radius: 28px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      position: relative;
+      animation: modalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes modalSlideUp {
+      from { transform: translateY(40px) scale(0.96); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      width: 38px;
+      height: 38px;
+      background: rgba(0, 0, 0, 0.06);
+      border: none;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(239, 68, 68, 0.15);
+      color: #EF4444;
+      transform: rotate(90deg);
+    }
+
+    /* Modal Content Styling */
+    .modal-header-hero {
+      position: relative;
+      padding: 34px 28px 24px;
+      background: linear-gradient(135deg, #071220 0%, #0d1e33 100%);
+      color: #FFFFFF;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      border-radius: 28px 28px 0 0;
+      overflow: hidden;
+    }
+
+    .modal-header-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 50%, var(--modal-glow, #0070F0) 0%, transparent 60%);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .modal-icon-container {
+      position: relative;
+      z-index: 2;
+      width: 86px;
+      height: 86px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 22px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .modal-header-info {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+    }
+
+    .modal-service-pill {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #38BDF8;
+      margin-bottom: 6px;
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 900;
+      margin: 0 0 8px;
+      line-height: 1.35;
+      color: #FFFFFF;
+    }
+
+    .modal-meta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .modal-meta-chip {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 750;
+    }
+
+    .modal-body-scroll {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    /* Modal Guarantee Box */
+    .modal-guarantee-box {
+      border-radius: 18px;
+      padding: 16px 20px;
+      border: 1.5px solid;
+    }
+
+    .modal-guarantee-box.guaranteed {
+      background: #ECFDF5;
+      border-color: #A7F3D0;
+      color: #065F46;
+    }
+
+    .modal-guarantee-box.nowar {
+      background: #FFFBEB;
+      border-color: #FDE68A;
+      color: #92400E;
+    }
+
+    .modal-guar-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-weight: 900;
+      font-size: 1.05rem;
+    }
+
+    .modal-guar-desc {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Modal Section Blocks */
+    .modal-section-title {
+      font-size: 1.05rem;
+      font-weight: 850;
+      color: var(--navy);
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal-features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: #334155;
+      background: #F8FAFC;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid #EDF2F7;
+    }
+
+    .modal-features-list li svg {
+      width: 18px;
+      height: 18px;
+      color: #10B981;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Modal Details Grid (Account type & delivery) */
+    .modal-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .modal-info-card {
+      background: #F1F5F9;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .modal-info-card .lbl {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .modal-info-card .val {
+      font-size: 0.94rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    /* Modal Pricing Grid */
+    .modal-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .modal-pricing-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .modal-info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .modal-price-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .modal-price-card.featured {
+      border-color: var(--blue);
+      background: rgba(0, 112, 240, 0.03);
+    }
+
+    .modal-price-card .p-curr {
+      font-size: 0.74rem;
+      font-weight: 750;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .modal-price-card .p-amt {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .modal-price-card.featured .p-amt {
+      color: var(--blue);
+    }
+
+    /* Modal Footer Actions */
+    .modal-footer {
+      padding: 18px 28px 24px;
+      border-top: 1px solid var(--border-color);
+      background: #FAFBFD;
+      display: flex;
+      gap: 12px;
+      border-radius: 0 0 28px 28px;
+    }
+
+    .modal-footer .btn-modal-order {
+      flex: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #FFFFFF !important;
+      text-decoration: none;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-size: 1.02rem;
+      font-weight: 850;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .modal-footer .btn-modal-order:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+      background: linear-gradient(135deg, #1ebd5a, #0e7266);
+    }
+
+    .modal-footer .btn-modal-cancel {
+      flex: 1;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      color: var(--navy);
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-weight: 750;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .modal-footer .btn-modal-cancel:hover {
+      background: #F1F5F9;
+    }
+
+    /* Pagination / Load More */
+    .pagination-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .btn-load-more {
+      background: var(--navy);
+      color: #FFFFFF;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 18px rgba(6, 20, 38, 0.15);
+    }
+
+    .btn-load-more:hover {
+      background: var(--blue);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 112, 240, 0.3);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 70px 20px;
+      display: none;
+      grid-column: 1 / -1;
+    }
+
+    .empty-state h3 {
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .empty-state p {
+      color: var(--text-muted);
+    }
+
+    /* FOOTER SVGS STRICT CLAMP */
+    .site-footer svg,
+    .social-icons-grid svg,
+    .social-btn svg {
+      width: 20px !important;
+      height: 20px !important;
+      max-width: 20px !important;
+      max-height: 20px !important;
+      min-width: 20px !important;
+      min-height: 20px !important;
+      display: block !important;
+      flex-shrink: 0 !important;
+    }
+
+    .social-btn {
+      width: 44px !important;
+      height: 44px !important;
+      max-width: 44px !important;
+      max-height: 44px !important;
+      overflow: hidden !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Standard Site Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a href="index.html" class="brand" aria-label="الجحفلي للحلول الرقمية">
+        <div class="logo-wrapper">
+          <svg class="logo-draw-circle" viewBox="0 0 58 58" width="58" height="58">
+            <circle cx="29" cy="29" r="27" fill="none"></circle>
+          </svg>
+          <img src="assets/logo.png" alt="شعار الجحفلي للحلول الرقمية" width="48" height="48">
+        </div>
+        <div><strong>الجحفلي</strong><span>للحلول الرقمية</span></div>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="القائمة الرئيسية">
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">من نحن</a>
+        <a href="index.html#services">خدماتنا</a>
+        <a href="pricing.html">باقات الأسعار</a>
+        <a class="active" href="subscriptions.html">الاشتراكات</a>
+        <a href="contact.html">تواصل معنا</a>
+      </nav>
+      <a class="btn btn-primary nav-cta" href="contact.html">اطلب الآن</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="store-hero">
+      <div class="store-hero-glow"></div>
+      <div class="container">
+        <div class="store-badge">
+          <span>⚡ متجر الاشتراكات الرقمية الشامل | Al-Jahfali Digital</span>
+        </div>
+        <h1>متجر كافة الاشتراكات والحسابات الرقمية<br><span>أكثر من 600 منتج رسمي بضمان حقيقي</span></h1>
+        <p>المنصة الرقمية الأولى الشاملة لكافة الاشتراكات العالمية: ذكاء اصطناعي، برامج التصميم، مايكروسوفت، خدمات VPN، الترفيه، وحسابات السوشيال ميديا مع تفصيل كامل للضمان والأسعار بالريال اليمني والسعودي والدولار.</p>
+
+        <!-- Stats Row -->
+        <div class="store-stats-row">
+          <div class="stat-chip">
+            <span class="val">610</span>
+            <span class="lbl">إجمالي المنتجات والخدمات</span>
+          </div>
+          <div class="stat-chip">
+            <span class="val">469+</span>
+            <span class="lbl">منتج مضمون ومعتمد</span>
+          </div>
+          <div class="stat-chip">
+            <span class="val">536 ر.ي</span>
+            <span class="lbl">سعر صرف الدولار (صنعاء)</span>
+          </div>
+          <div class="stat-chip">
+            <span class="val">140 ر.ي</span>
+            <span class="lbl">سعر صرف الريال السعودي</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORE CONTROLS -->
+    <section class="store-controls-section" id="productsSection">
+      <div class="container controls-wrapper">
+        <!-- Search & Currency -->
+        <div class="search-and-currency-bar">
+          <div class="search-input-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="storeSearch" placeholder="ابحث عن أي اشتراك، برنامج، ذكاء اصطناعي، حساب..." autocomplete="off">
+          </div>
+          
+          <div class="currency-selector-bar">
+            <span class="curr-lbl">💱 العملة المعروضة:</span>
+            <button class="curr-btn active" data-curr="all">الكل (شامل)</button>
+            <button class="curr-btn" data-curr="usd">الدولار ($)</button>
+            <button class="curr-btn" data-curr="yer-sanaa">ريال صنعاء (536)</button>
+            <button class="curr-btn" data-curr="sar">الريال السعودي (140)</button>
+            <button class="curr-btn" data-curr="yer-aden">ريال عدن (2000)</button>
+          </div>
+        </div>
+
+        <!-- Quick Filter Toggles -->
+        <div class="quick-filters-row">
+          <span style="font-size:0.85rem; font-weight:800; color:var(--navy);">⚡ تصفية سريعة:</span>
+          <button class="quick-filter-btn active" data-guar="all">جميع الحالات (610)</button>
+          <button class="quick-filter-btn guar-btn" data-guar="guaranteed">🛡️ المضمونة فقط (469)</button>
+          <button class="quick-filter-btn" data-guar="nowar">⚠️ بدون ضمان (141)</button>
+          <button class="quick-filter-btn" data-stock="instock">🟢 المتوفر بالمخزون فقط</button>
+        </div>
+
+        <!-- Services Carousel Bar -->
+        <div class="services-carousel-wrap">
+          <div class="services-pills-bar" id="servicesPills">
+            <button class="srv-pill active" data-service="all">
+              <span>🌟 الكل</span>
+              <span class="badge-count">610</span>
+            </button>
+            <button class="srv-pill" data-service="chatgpt">
+              <span>🤖 ChatGPT & API</span>
+              <span class="badge-count">91</span>
+            </button>
+            <button class="srv-pill" data-service="claude">
+              <span>🧠 Claude AI</span>
+              <span class="badge-count">42</span>
+            </button>
+            <button class="srv-pill" data-service="google">
+              <span>🚀 Google & Gemini</span>
+              <span class="badge-count">38</span>
+            </button>
+            <button class="srv-pill" data-service="capcut">
+              <span>✂️ CapCut Pro</span>
+              <span class="badge-count">25</span>
+            </button>
+            <button class="srv-pill" data-service="grok">
+              <span>⚡ Grok & X</span>
+              <span class="badge-count">23</span>
+            </button>
+            <button class="srv-pill" data-service="canva">
+              <span>🎨 Canva Pro</span>
+              <span class="badge-count">20</span>
+            </button>
+            <button class="srv-pill" data-service="kling">
+              <span>🎬 Kling Video AI</span>
+              <span class="badge-count">19</span>
+            </button>
+            <button class="srv-pill" data-service="tiktok">
+              <span>📱 TikTok Accounts</span>
+              <span class="badge-count">19</span>
+            </button>
+            <button class="srv-pill" data-service="gmail">
+              <span>✉️ Gmail & Mail</span>
+              <span class="badge-count">19</span>
+            </button>
+            <button class="srv-pill" data-service="adobe">
+              <span>🖌️ Adobe Cloud</span>
+              <span class="badge-count">16</span>
+            </button>
+            <button class="srv-pill" data-service="youtube">
+              <span>📺 YouTube Premium</span>
+              <span class="badge-count">11</span>
+            </button>
+            <button class="srv-pill" data-service="netflix">
+              <span>🍿 Netflix 4K</span>
+              <span class="badge-count">11</span>
+            </button>
+            <button class="srv-pill" data-service="microsoft">
+              <span>💼 Microsoft 365</span>
+              <span class="badge-count">12</span>
+            </button>
+            <button class="srv-pill" data-service="windows">
+              <span>🪟 Windows Pro</span>
+              <span class="badge-count">6</span>
+            </button>
+            <button class="srv-pill" data-service="spotify">
+              <span>🎧 Spotify</span>
+              <span class="badge-count">10</span>
+            </button>
+            <button class="srv-pill" data-service="nordvpn">
+              <span>🔒 VPN & الحماية</span>
+              <span class="badge-count">25</span>
+            </button>
+            <button class="srv-pill" data-service="autodesk">
+              <span>📐 Autodesk & CAD</span>
+              <span class="badge-count">7</span>
+            </button>
+            <button class="srv-pill" data-service="telegram">
+              <span>✈️ Telegram Premium</span>
+              <span class="badge-count">7</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORE PRODUCTS GRID -->
+    <section class="store-main-section">
+      <div class="container">
+        <!-- Results Header -->
+        <div class="results-status-bar">
+          <div>
+            <h2 id="currentCategoryTitle">جميع المنتجات والاشتراكات</h2>
+            <span class="results-meta" id="resultsCount">يتم عرض كافة المنتجات المتاحة</span>
+          </div>
+        </div>
+
+        <div class="store-grid" id="storeGrid">
+          <!-- Dynamically populated by high-performance JS engine -->
+          <div class="empty-state" id="emptyState">
+            <h3>لا توجد نتائج مطابقة لبحثك</h3>
+            <p>جرّب اختيار قسم آخر أو تعديل كلمات البحث.</p>
+          </div>
+        </div>
+
+        <!-- Pagination Load More -->
+        <div class="pagination-bar" id="paginationBar">
+          <button class="btn-load-more" id="btnLoadMore">عرض المزيد من المنتجات ⬇</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Details Modal -->
+  <div class="modal-overlay" id="productModalOverlay" onclick="closeProductModal(event)">
+    <div class="modal-dialog" id="productModalDialog" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeProductModal()" aria-label="إغلاق">&times;</button>
+      <div id="modalDynamicContent">
+        <!-- Rendered by openProductModal(id) -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand-col">
+        <a href="index.html" class="brand footer-brand" aria-label="الجحفلي للحلول الرقمية">
+          <div class="logo-wrapper">
+            <img src="assets/logo.png" alt="شعار الجحفلي للحلول الرقمية" width="48" height="48">
+          </div>
+          <div><strong>الجحفلي</strong><span>للحلول الرقمية</span></div>
+        </a>
+        <p class="footer-tagline">حلول رقمية متكاملة، برمجة وتصميم واشتراكات رقمية موثوقة بأسعار منافسة في اليمن وخارجها.</p>
+      </div>
+      <div class="footer-nav-col">
+        <h3>روابط سريعة</h3>
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="index.html#services">خدماتنا</a></li>
+          <li><a href="subscriptions.html">الاشتراكات</a></li>
+          <li><a href="pricing.html">باقات الأسعار</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact-col">
+        <h3>تواصل معنا</h3>
+        <div class="social-icons-grid">
+          <a href="tel:+967782611415" class="social-btn phone" aria-label="اتصل بنا" data-tooltip="هاتف">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
+          </a>
+          <a href="https://wa.me/967782611415" target="_blank" rel="noopener" class="social-btn whatsapp" aria-label="واتساب" data-tooltip="واتساب">
+            <svg viewBox="0 0 448 512" width="20" height="20" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+          </a>
+          <a href="https://t.me/Mohammed_Ali_Aljahfali" target="_blank" rel="noopener" class="social-btn telegram" aria-label="تليجرام" data-tooltip="تليجرام">
+            <svg viewBox="0 0 496 512" width="20" height="20" fill="currentColor"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.3z"/></svg>
+          </a>
+          <a href="mailto:info@aljahfali.com" class="social-btn email" aria-label="البريد الإلكتروني" data-tooltip="إيميل">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100080686452781&mibextid=ZbWKwL" target="_blank" rel="noopener" class="social-btn facebook" aria-label="فيسبوك" data-tooltip="فيسبوك">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/aljahfali_digital" target="_blank" rel="noopener" class="social-btn instagram" aria-label="إنستغرام" data-tooltip="إنستغرام">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-flex">
+        <p>© 2026 الجحفلي للحلول الرقمية. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load Embedded Products Dataset -->
+  <script src="assets/data/products.js"></script>
+
+  <!-- Store Logic & Modal Controller -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const allProducts = window.STORE_PRODUCTS || [];
+      const grid = document.getElementById('storeGrid');
+      const emptyState = document.getElementById('emptyState');
+      const btnLoadMore = document.getElementById('btnLoadMore');
+      const paginationBar = document.getElementById('paginationBar');
+      const searchInput = document.getElementById('storeSearch');
+      const currentCategoryTitle = document.getElementById('currentCategoryTitle');
+      const resultsCount = document.getElementById('resultsCount');
+
+      const servicePills = document.querySelectorAll('.srv-pill');
+      const quickFilterBtns = document.querySelectorAll('.quick-filter-btn');
+      const currencyBtns = document.querySelectorAll('.curr-btn');
+
+      let currentService = 'all';
+      let currentGuar = 'all';
+      let currentStock = 'all';
+      let currentCurrency = 'all';
+      let searchQuery = '';
+      let filteredList = [];
+      let displayedCount = 0;
+      const PAGE_SIZE = 24;
+
+      function applyFilters() {
+        filteredList = allProducts.filter(p => {
+          // Service filter
+          if (currentService !== 'all' && p.service_key !== currentService) {
+            return false;
+          }
+          // Guarantee filter
+          if (currentGuar === 'guaranteed' && !p.is_guaranteed) {
+            return false;
+          }
+          if (currentGuar === 'nowar' && p.is_guaranteed) {
+            return false;
+          }
+          // Stock filter
+          if (currentStock === 'instock' && !p.in_stock) {
+            return false;
+          }
+          // Search query
+          if (searchQuery) {
+            const haystack = (p.title + ' ' + p.raw_name + ' ' + p.service_name + ' ' + p.warranty_text + ' ' + p.card_desc).toLowerCase();
+            if (!haystack.includes(searchQuery)) {
+              return false;
+            }
+          }
+          return true;
+        });
+
+        // Update Results Bar Title & Count
+        if (currentService === 'all') {
+          currentCategoryTitle.textContent = 'جميع المنتجات والاشتراكات';
+        } else {
+          const activePill = document.querySelector(`.srv-pill[data-service="${currentService}"]`);
+          currentCategoryTitle.textContent = activePill ? activePill.querySelector('span:first-child').textContent.trim() : 'منتجات القسم';
+        }
+        resultsCount.textContent = `تم العثور على ${filteredList.length} منتج واشتراك متاح`;
+
+        displayedCount = 0;
+        grid.innerHTML = '';
+        renderNextBatch();
+      }
+
+      function renderCard(p) {
+        const usd = p.prices.usd;
+        const sar = p.prices.sar;
+        const yerSanaa = p.prices.yer_sanaa.toLocaleString();
+        const yerAden = p.prices.yer_aden.toLocaleString();
+
+        const guarBadgeClass = p.is_guaranteed ? 'guaranteed' : 'nowar';
+        const guarBadgeText = p.is_guaranteed ? '🛡️ مضمون 100%' : '⚡ استهلاك فوري';
+        
+        const stockClass = p.in_stock ? 'in-stock' : 'out-of-stock';
+        const stockText = p.in_stock ? `🟢 متوفر (${p.stock})` : '🔴 نفذت الكمية';
+
+        const waMsg = `مرحباً الجحفلي للحلول الرقمية، أود طلب الاشتراك التالي:
+الاشتراك: ${p.title}
+القسم: ${p.service_name}
+الضمان: ${p.warranty_text} (${p.duration})
+السعر: $${usd} | ${sar} ر.س | ${yerSanaa} ر.ي (صنعاء) | ${yerAden} ر.ي (عدن)
+كود المنتج: ${p.id}
+يرجى تزويدي ببيانات الدفع والتسليم الفوري.`;
+        const waUrl = `https://wa.me/967782611415?text=${encodeURIComponent(waMsg)}`;
+
+        const article = document.createElement('article');
+        article.className = 'store-card';
+        article.innerHTML = `
+          <div class="card-media" style="--brand-glow: ${p.brand_color};">
+            <div class="card-media-bg"></div>
+            <div class="card-brand-badge">
+              <img src="assets/logo.png" alt="الجحفلي" loading="lazy">
+              <span>الجحفلي | أصلي</span>
+            </div>
+            <div class="card-icon-container">
+              <img src="${p.icon}" alt="${p.service_name}" class="official-brand-svg" loading="lazy">
+            </div>
+            <span class="badge-guar-status ${guarBadgeClass}">${guarBadgeText}</span>
+            <span class="badge-duration-pill">⏱️ ${p.duration}</span>
+            <span class="badge-stock-pill ${stockClass}">${stockText}</span>
+          </div>
+
+          <div class="card-body">
+            <div class="card-service-tag">⚡ ${p.service_name}</div>
+            <h3 class="card-title" title="${p.title}">${p.title}</h3>
+            
+            <div class="card-desc-box">
+              <p class="card-desc-text">${p.card_desc}</p>
+              <div class="card-warranty-detail ${p.is_guaranteed ? '' : 'nowar'}">
+                <span>${p.is_guaranteed ? '🛡️' : '⚠️'} ${p.warranty_text}</span>
+              </div>
+            </div>
+
+            <!-- Currency Pricing Box -->
+            <div class="currency-pricing-box">
+              <div class="primary-price-row">
+                <span class="price-usd">$${usd}</span>
+                <span class="price-sar">${sar} <small>ر.س</small></span>
+              </div>
+              <div class="yemeni-rates-row">
+                <div class="yer-rate-chip sanaa" title="سعر الصرف في صنعاء والمحافظات الشمالية (536)">
+                  <span class="rate-label">صنعاء (536):</span>
+                  <span class="rate-val">${yerSanaa} <small>ر.ي</small></span>
+                </div>
+                <div class="yer-rate-chip aden" title="سعر الصرف في عدن والمحافظات الجنوبية (2000)">
+                  <span class="rate-label">عدن (جديد):</span>
+                  <span class="rate-val">${yerAden} <small>ر.ي</small></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-action-row">
+              <button type="button" class="btn-details" onclick="openProductModal('${p.id}')">
+                <span>تفاصيل الاشتراك 🔍</span>
+              </button>
+              <a href="${waUrl}" target="_blank" rel="noopener" class="btn-order-wa" aria-label="طلب ${p.title} عبر واتساب">
+                <svg viewBox="0 0 448 512" width="16" height="16" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                <span>طلب عبر واتساب</span>
+              </a>
+            </div>
+          </div>
+        `;
+        return article;
+      }
+
+      function renderNextBatch() {
+        const nextBatch = filteredList.slice(displayedCount, displayedCount + PAGE_SIZE);
+        if (nextBatch.length === 0 && displayedCount === 0) {
+          emptyState.style.display = 'block';
+          paginationBar.style.display = 'none';
+          return;
+        } else {
+          emptyState.style.display = 'none';
+        }
+
+        nextBatch.forEach(p => {
+          grid.appendChild(renderCard(p));
+        });
+
+        displayedCount += nextBatch.length;
+        if (displayedCount >= filteredList.length) {
+          paginationBar.style.display = 'none';
+        } else {
+          paginationBar.style.display = 'flex';
+          btnLoadMore.textContent = `عرض المزيد (${filteredList.length - displayedCount} متبقي) ⬇`;
+        }
+
+        updateCurrencyVisibility();
+      }
+
+      function updateCurrencyVisibility() {
+        const cards = grid.querySelectorAll('.store-card');
+        cards.forEach(card => {
+          const primaryRow = card.querySelector('.primary-price-row');
+          const ratesRow = card.querySelector('.yemeni-rates-row');
+          if (!primaryRow || !ratesRow) return;
+
+          if (currentCurrency === 'all') {
+            primaryRow.style.display = 'flex';
+            ratesRow.style.display = 'grid';
+            ratesRow.querySelector('.sanaa').style.display = 'flex';
+            ratesRow.querySelector('.aden').style.display = 'flex';
+          } else if (currentCurrency === 'usd') {
+            primaryRow.style.display = 'flex';
+            ratesRow.style.display = 'none';
+          } else if (currentCurrency === 'sar') {
+            primaryRow.style.display = 'flex';
+            ratesRow.style.display = 'none';
+          } else if (currentCurrency === 'yer-sanaa') {
+            primaryRow.style.display = 'none';
+            ratesRow.style.display = 'grid';
+            ratesRow.querySelector('.sanaa').style.display = 'flex';
+            ratesRow.querySelector('.aden').style.display = 'none';
+          } else if (currentCurrency === 'yer-aden') {
+            primaryRow.style.display = 'none';
+            ratesRow.style.display = 'grid';
+            ratesRow.querySelector('.sanaa').style.display = 'none';
+            ratesRow.querySelector('.aden').style.display = 'flex';
+          }
+        });
+      }
+
+      // Event Listeners
+      btnLoadMore.addEventListener('click', renderNextBatch);
+
+      servicePills.forEach(pill => {
+        pill.addEventListener('click', function() {
+          servicePills.forEach(p => p.classList.remove('active'));
+          this.classList.add('active');
+          currentService = this.getAttribute('data-service');
+          applyFilters();
+          
+          const sec = document.getElementById('productsSection');
+          if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      quickFilterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          if (this.hasAttribute('data-guar')) {
+            document.querySelectorAll('[data-guar]').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentGuar = this.getAttribute('data-guar');
+          } else if (this.hasAttribute('data-stock')) {
+            this.classList.toggle('active');
+            currentStock = this.classList.contains('active') ? 'instock' : 'all';
+          }
+          applyFilters();
+        });
+      });
+
+      currencyBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          currencyBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          currentCurrency = this.getAttribute('data-curr');
+          updateCurrencyVisibility();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+          searchQuery = e.target.value.trim().toLowerCase();
+          applyFilters();
+        });
+      }
+
+      // Initial filter & load
+      applyFilters();
+    });
+
+    // ── GLOBAL MODAL LOGIC ──
+    window.openProductModal = function(productId) {
+      const p = (window.STORE_PRODUCTS || []).find(item => item.id === productId);
+      if (!p) return;
+
+      const overlay = document.getElementById('productModalOverlay');
+      const container = document.getElementById('modalDynamicContent');
+
+      const usd = p.prices.usd;
+      const sar = p.prices.sar;
+      const yerSanaa = p.prices.yer_sanaa.toLocaleString();
+      const yerAden = p.prices.yer_aden.toLocaleString();
+
+      const guarClass = p.is_guaranteed ? 'guaranteed' : 'nowar';
+      const guarTitle = p.is_guaranteed ? '🛡️ اشتراك مضمون 100% مع ضمان استبدال رسمي' : '⚠️ منتج استهلاك فوري وتفعيل مباشر';
+
+      const waMsg = `مرحباً الجحفلي للحلول الرقمية، أود طلب الاشتراك التالي:
+الاشتراك: ${p.title}
+القسم: ${p.service_name}
+الضمان: ${p.warranty_text} (${p.duration})
+السعر: $${usd} | ${sar} ر.س | ${yerSanaa} ر.ي (صنعاء) | ${yerAden} ر.ي (عدن)
+كود المنتج: ${p.id}
+يرجى تزويدي ببيانات الدفع والتسليم الفوري.`;
+      const waUrl = `https://wa.me/967782611415?text=${encodeURIComponent(waMsg)}`;
+
+      const featuresHtml = (p.modal_data.features || []).map(f => `
+        <li>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>${f}</span>
+        </li>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="modal-header-hero" style="--modal-glow: ${p.brand_color};">
+          <div class="modal-header-glow"></div>
+          <div class="modal-icon-container">
+            <img src="${p.icon}" alt="${p.service_name}" class="official-brand-svg">
+          </div>
+          <div class="modal-header-info">
+            <span class="modal-service-pill">⚡ ${p.service_name}</span>
+            <h3 class="modal-title">${p.title}</h3>
+            <div class="modal-meta-row">
+              <span class="modal-meta-chip">⏱️ المدة: ${p.duration}</span>
+              <span class="modal-meta-chip">${p.in_stock ? `🟢 متوفر (${p.stock} حساب)` : '🔴 نفذت الكمية'}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body-scroll">
+          <!-- Guarantee & Policy Box -->
+          <div class="modal-guarantee-box ${guarClass}">
+            <div class="modal-guar-head">
+              <span>${guarTitle}</span>
+              <span>${p.warranty_text}</span>
+            </div>
+            <p class="modal-guar-desc">${p.warranty_policy}</p>
+          </div>
+
+          <!-- Subscription Features -->
+          <div>
+            <h4 class="modal-section-title">
+              <span>✨ أبرز مميزات وصلاحيات الاشتراك:</span>
+            </h4>
+            <ul class="modal-features-list">
+              ${featuresHtml}
+            </ul>
+          </div>
+
+          <!-- Account Type & Delivery Info -->
+          <div>
+            <h4 class="modal-section-title">
+              <span>📦 نوع الحساب وآلية التسليم:</span>
+            </h4>
+            <div class="modal-info-grid">
+              <div class="modal-info-card">
+                <div class="lbl">نوع الحساب والترخيص:</div>
+                <div class="val">${p.modal_data.account_type}</div>
+              </div>
+              <div class="modal-info-card">
+                <div class="lbl">طريقة التسليم الفوري:</div>
+                <div class="val">عبر واتساب فور إتمام التحويل</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pricing Table -->
+          <div>
+            <h4 class="modal-section-title">
+              <span>💱 الأسعار المعتمدة بكافة العملات:</span>
+            </h4>
+            <div class="modal-pricing-grid">
+              <div class="modal-price-card featured">
+                <div class="p-curr">الدولار الأمريكي</div>
+                <div class="p-amt">$${usd}</div>
+              </div>
+              <div class="modal-price-card featured">
+                <div class="p-curr">الريال السعودي (140)</div>
+                <div class="p-amt">${sar} <small>ر.س</small></div>
+              </div>
+              <div class="modal-price-card">
+                <div class="p-curr">ريال صنعاء (536)</div>
+                <div class="p-amt">${yerSanaa} <small>ر.ي</small></div>
+              </div>
+              <div class="modal-price-card">
+                <div class="p-curr">ريال عدن (2000)</div>
+                <div class="p-amt">${yerAden} <small>ر.ي</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <a href="${waUrl}" target="_blank" rel="noopener" class="btn-modal-order">
+            <svg viewBox="0 0 448 512" width="20" height="20" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+            <span>طلب هذا الاشتراك الآن عبر واتساب</span>
+          </a>
+          <button type="button" class="btn-modal-cancel" onclick="closeProductModal()">إغلاق</button>
+        </div>
+      `;
+
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeProductModal = function(e) {
+      if (e && e.target && e.target.id !== 'productModalOverlay' && !e.target.classList.contains('modal-close-btn') && !e.target.classList.contains('btn-modal-cancel')) {
+        return;
+      }
+      const overlay = document.getElementById('productModalOverlay');
+      if (overlay) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    };
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        window.closeProductModal();
+      }
+    });
+  </script>
+</body>
+</html>
+'''
+
+with open('subscriptions.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("Updated subscriptions.html successfully!")
