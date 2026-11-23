@@ -15,7 +15,7 @@ html_content = '''<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="styles.css?v=2.7">
+  <link rel="stylesheet" href="styles.css?v=2.8">
 
   <style>
     /* ═════════════════════════════════════════════════════════
@@ -46,6 +46,70 @@ html_content = '''<!DOCTYPE html>
       font-family: 'Cairo', sans-serif;
       margin: 0;
       padding: 0;
+    }
+
+    /* ── MODERN SVG ICON HELPERS ── */
+    .ui-svg {
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .pill-svg {
+      width: 17px;
+      height: 17px;
+      margin-left: 6px;
+    }
+
+    .btn-svg {
+      width: 16px;
+      height: 16px;
+      margin-left: 6px;
+    }
+
+    .badge-svg {
+      width: 14px;
+      height: 14px;
+      margin-left: 4px;
+    }
+
+    .modal-sec-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--blue);
+      margin-left: 8px;
+    }
+
+    /* Animated status dot */
+    .stock-pulse {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: stockPulse 2s infinite;
+      margin-left: 6px;
+    }
+
+    @keyframes stockPulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .stock-dot-red {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #EF4444;
+      margin-left: 6px;
     }
 
     /* ── LUXURY STORE HERO ── */
@@ -196,7 +260,8 @@ html_content = '''<!DOCTYPE html>
       right: 18px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 1.2rem;
+      width: 18px;
+      height: 18px;
       color: var(--text-muted);
       pointer-events: none;
     }
@@ -214,10 +279,19 @@ html_content = '''<!DOCTYPE html>
     }
 
     .curr-lbl {
+      display: flex;
+      align-items: center;
+      gap: 6px;
       font-size: 0.85rem;
       font-weight: 800;
       color: var(--navy);
       margin-left: 6px;
+    }
+
+    .curr-lbl svg {
+      width: 16px;
+      height: 16px;
+      color: var(--blue);
     }
 
     .curr-btn {
@@ -248,10 +322,19 @@ html_content = '''<!DOCTYPE html>
       flex-wrap: wrap;
     }
 
+    .filter-lbl-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
     .quick-filter-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       padding: 7px 16px;
       border-radius: 999px;
       background: #FFFFFF;
@@ -301,7 +384,7 @@ html_content = '''<!DOCTYPE html>
     .srv-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       padding: 9px 18px;
       background: #FFFFFF;
       border: 1px solid var(--border-color);
@@ -488,6 +571,9 @@ html_content = '''<!DOCTYPE html>
       font-weight: 850;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
       backdrop-filter: blur(8px);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
 
     .badge-guar-status.guaranteed {
@@ -515,6 +601,8 @@ html_content = '''<!DOCTYPE html>
       background: rgba(6, 20, 38, 0.88);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
     }
 
     .badge-stock-pill.in-stock {
@@ -538,6 +626,9 @@ html_content = '''<!DOCTYPE html>
       background: rgba(6, 20, 38, 0.88);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #38BDF8;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
 
     /* Card Body */
@@ -585,7 +676,7 @@ html_content = '''<!DOCTYPE html>
     .card-warranty-detail {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       font-size: 0.82rem;
       font-weight: 800;
       color: #0F766E;
@@ -863,6 +954,9 @@ html_content = '''<!DOCTYPE html>
       border-radius: 8px;
       font-size: 0.78rem;
       font-weight: 750;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
 
     .modal-body-scroll {
@@ -898,6 +992,12 @@ html_content = '''<!DOCTYPE html>
       margin-bottom: 6px;
       font-weight: 900;
       font-size: 1.05rem;
+    }
+
+    .modal-guar-head-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .modal-guar-desc {
@@ -939,10 +1039,15 @@ html_content = '''<!DOCTYPE html>
       border: 1px solid #EDF2F7;
     }
 
-    .modal-features-list li svg {
+    .feature-check-svg {
       width: 18px;
       height: 18px;
       color: #10B981;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
       flex-shrink: 0;
       margin-top: 2px;
     }
@@ -1092,6 +1197,9 @@ html_content = '''<!DOCTYPE html>
       font-family: inherit;
       transition: all 0.25s ease;
       box-shadow: 0 6px 18px rgba(6, 20, 38, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .btn-load-more:hover {
@@ -1207,12 +1315,15 @@ html_content = '''<!DOCTYPE html>
         <!-- Search & Currency -->
         <div class="search-and-currency-bar">
           <div class="search-input-box">
-            <span class="search-icon">🔍</span>
+            <svg class="search-icon ui-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             <input type="text" id="storeSearch" placeholder="ابحث عن أي اشتراك، برنامج، ذكاء اصطناعي، حساب..." autocomplete="off">
           </div>
           
           <div class="currency-selector-bar">
-            <span class="curr-lbl">💱 العملة المعروضة:</span>
+            <span class="curr-lbl">
+              <svg class="ui-svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span>العملة المعروضة:</span>
+            </span>
             <button class="curr-btn active" data-curr="all">الكل (شامل)</button>
             <button class="curr-btn" data-curr="usd">الدولار ($)</button>
             <button class="curr-btn" data-curr="yer-sanaa">ريال صنعاء (536)</button>
@@ -1223,90 +1334,121 @@ html_content = '''<!DOCTYPE html>
 
         <!-- Quick Filter Toggles -->
         <div class="quick-filters-row">
-          <span style="font-size:0.85rem; font-weight:800; color:var(--navy);">تصفية سريعة:</span>
+          <span class="filter-lbl-title">
+            <svg class="ui-svg" style="width:16px;height:16px;" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+            <span>تصفية سريعة:</span>
+          </span>
           <button class="quick-filter-btn active" data-guar="all">جميع الحالات (610)</button>
-          <button class="quick-filter-btn guar-btn" data-guar="guaranteed">🛡️ المضمونة فقط (469)</button>
-          <button class="quick-filter-btn" data-guar="nowar">⚠️ بدون ضمان (141)</button>
-          <button class="quick-filter-btn" data-stock="instock">🟢 المتوفر بالمخزون فقط</button>
+          <button class="quick-filter-btn guar-btn" data-guar="guaranteed">
+            <svg class="ui-svg" style="width:15px;height:15px;" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>المضمونة فقط (469)</span>
+          </button>
+          <button class="quick-filter-btn" data-guar="nowar">
+            <svg class="ui-svg" style="width:15px;height:15px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>بدون ضمان (141)</span>
+          </button>
+          <button class="quick-filter-btn" data-stock="instock">
+            <span class="stock-pulse" style="margin-left:0; margin-right:2px;"></span>
+            <span>المتوفر بالمخزون فقط</span>
+          </button>
         </div>
 
         <!-- Services Carousel Bar -->
         <div class="services-carousel-wrap">
           <div class="services-pills-bar" id="servicesPills">
             <button class="srv-pill active" data-service="all">
-              <span>🌟 الكل</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              <span>الكل</span>
               <span class="badge-count">610</span>
             </button>
             <button class="srv-pill" data-service="chatgpt">
-              <span>🤖 ChatGPT & API</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="8.5" cy="16" r="1.5"/><circle cx="15.5" cy="16" r="1.5"/><path d="M9 19h6"/></svg>
+              <span>ChatGPT & API</span>
               <span class="badge-count">91</span>
             </button>
             <button class="srv-pill" data-service="claude">
-              <span>🧠 Claude AI</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
+              <span>Claude AI</span>
               <span class="badge-count">42</span>
             </button>
             <button class="srv-pill" data-service="google">
-              <span>🚀 Google & Gemini</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>
+              <span>Google & Gemini</span>
               <span class="badge-count">38</span>
             </button>
             <button class="srv-pill" data-service="capcut">
-              <span>✂️ CapCut Pro</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+              <span>CapCut Pro</span>
               <span class="badge-count">25</span>
             </button>
             <button class="srv-pill" data-service="grok">
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
               <span>Grok & X</span>
               <span class="badge-count">23</span>
             </button>
             <button class="srv-pill" data-service="canva">
-              <span>🎨 Canva Pro</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+              <span>Canva Pro</span>
               <span class="badge-count">20</span>
             </button>
             <button class="srv-pill" data-service="kling">
-              <span>🎬 Kling Video AI</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+              <span>Kling Video AI</span>
               <span class="badge-count">19</span>
             </button>
             <button class="srv-pill" data-service="tiktok">
-              <span>📱 TikTok Accounts</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              <span>TikTok Accounts</span>
               <span class="badge-count">19</span>
             </button>
             <button class="srv-pill" data-service="gmail">
-              <span>✉️ Gmail & Mail</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Gmail & Mail</span>
               <span class="badge-count">19</span>
             </button>
             <button class="srv-pill" data-service="adobe">
-              <span>🖌️ Adobe Cloud</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/></svg>
+              <span>Adobe Cloud</span>
               <span class="badge-count">16</span>
             </button>
             <button class="srv-pill" data-service="youtube">
-              <span>📺 YouTube Premium</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+              <span>YouTube Premium</span>
               <span class="badge-count">11</span>
             </button>
             <button class="srv-pill" data-service="netflix">
-              <span>🍿 Netflix 4K</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+              <span>Netflix 4K</span>
               <span class="badge-count">11</span>
             </button>
             <button class="srv-pill" data-service="microsoft">
-              <span>💼 Microsoft 365</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              <span>Microsoft 365</span>
               <span class="badge-count">12</span>
             </button>
             <button class="srv-pill" data-service="windows">
-              <span>🪟 Windows Pro</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></svg>
+              <span>Windows Pro</span>
               <span class="badge-count">6</span>
             </button>
             <button class="srv-pill" data-service="spotify">
-              <span>🎧 Spotify</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+              <span>Spotify</span>
               <span class="badge-count">10</span>
             </button>
             <button class="srv-pill" data-service="nordvpn">
-              <span>🔒 VPN & الحماية</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>VPN & الحماية</span>
               <span class="badge-count">25</span>
             </button>
             <button class="srv-pill" data-service="autodesk">
-              <span>📐 Autodesk & CAD</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><polygon points="12 2 2 22 22 22 12 2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              <span>Autodesk & CAD</span>
               <span class="badge-count">7</span>
             </button>
             <button class="srv-pill" data-service="telegram">
-              <span>✈️ Telegram Premium</span>
+              <svg class="ui-svg pill-svg" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              <span>Telegram Premium</span>
               <span class="badge-count">7</span>
             </button>
           </div>
@@ -1335,7 +1477,10 @@ html_content = '''<!DOCTYPE html>
 
         <!-- Pagination Load More -->
         <div class="pagination-bar" id="paginationBar">
-          <button class="btn-load-more" id="btnLoadMore">عرض المزيد من المنتجات ⬇</button>
+          <button class="btn-load-more" id="btnLoadMore">
+            <span id="loadMoreText">عرض المزيد من المنتجات</span>
+            <svg class="ui-svg btn-svg" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -1415,6 +1560,7 @@ html_content = '''<!DOCTYPE html>
       const grid = document.getElementById('storeGrid');
       const emptyState = document.getElementById('emptyState');
       const btnLoadMore = document.getElementById('btnLoadMore');
+      const loadMoreText = document.getElementById('loadMoreText');
       const paginationBar = document.getElementById('paginationBar');
       const searchInput = document.getElementById('storeSearch');
       const currentCategoryTitle = document.getElementById('currentCategoryTitle');
@@ -1465,7 +1611,7 @@ html_content = '''<!DOCTYPE html>
           currentCategoryTitle.textContent = 'جميع المنتجات والاشتراكات';
         } else {
           const activePill = document.querySelector(`.srv-pill[data-service="${currentService}"]`);
-          currentCategoryTitle.textContent = activePill ? activePill.querySelector('span:first-child').textContent.trim() : 'منتجات القسم';
+          currentCategoryTitle.textContent = activePill ? activePill.querySelector('span:nth-child(2)').textContent.trim() : 'منتجات القسم';
         }
         resultsCount.textContent = `تم العثور على ${filteredList.length} منتج واشتراك متاح`;
 
@@ -1481,10 +1627,14 @@ html_content = '''<!DOCTYPE html>
         const yerAden = p.prices.yer_aden.toLocaleString();
 
         const guarBadgeClass = p.is_guaranteed ? 'guaranteed' : 'nowar';
-        const guarBadgeText = p.is_guaranteed ? '🛡️ مضمون 100%' : 'استهلاك وتفعيل فوري';
+        const guarBadgeIcon = p.is_guaranteed 
+          ? '<svg class="badge-svg ui-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'
+          : '<svg class="badge-svg ui-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+        const guarBadgeText = p.is_guaranteed ? 'مضمون 100%' : 'استهلاك وتفعيل فوري';
         
         const stockClass = p.in_stock ? 'in-stock' : 'out-of-stock';
-        const stockText = p.in_stock ? `🟢 متوفر (${p.stock})` : '🔴 نفذت الكمية';
+        const stockIcon = p.in_stock ? '<span class="stock-pulse"></span>' : '<span class="stock-dot-red"></span>';
+        const stockText = p.in_stock ? `متوفر (${p.stock})` : 'نفذت الكمية';
 
         const waMsg = `مرحباً الجحفلي للحلول الرقمية، أود طلب الاشتراك التالي:
 الاشتراك: ${p.title}
@@ -1511,9 +1661,12 @@ html_content = '''<!DOCTYPE html>
               <span class="brand-showcase-title">${p.brand_label || p.service_name}</span>
             </div>
 
-            <span class="badge-guar-status ${guarBadgeClass}">${guarBadgeText}</span>
-            <span class="badge-duration-pill">⏱️ ${p.duration}</span>
-            <span class="badge-stock-pill ${stockClass}">${stockText}</span>
+            <span class="badge-guar-status ${guarBadgeClass}">${guarBadgeIcon}<span>${guarBadgeText}</span></span>
+            <span class="badge-duration-pill">
+              <svg class="badge-svg ui-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>${p.duration}</span>
+            </span>
+            <span class="badge-stock-pill ${stockClass}">${stockIcon}<span>${stockText}</span></span>
           </div>
 
           <div class="card-body">
@@ -1523,7 +1676,8 @@ html_content = '''<!DOCTYPE html>
             <div class="card-desc-box">
               <p class="card-desc-text">${p.card_desc}</p>
               <div class="card-warranty-detail ${p.is_guaranteed ? '' : 'nowar'}">
-                <span>${p.is_guaranteed ? '🛡️' : '⚠️'} ${p.warranty_text}</span>
+                <svg class="ui-svg" style="width:14px;height:14px;" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>${p.warranty_text}</span>
               </div>
             </div>
 
@@ -1547,7 +1701,8 @@ html_content = '''<!DOCTYPE html>
 
             <div class="card-action-row">
               <button type="button" class="btn-details" onclick="openProductModal('${p.id}')">
-                <span>تفاصيل الاشتراك 🔍</span>
+                <svg class="btn-svg ui-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span>تفاصيل الاشتراك</span>
               </button>
               <a href="${waUrl}" target="_blank" rel="noopener" class="btn-order-wa" aria-label="طلب ${p.title} عبر واتساب">
                 <svg viewBox="0 0 448 512" width="16" height="16" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
@@ -1578,7 +1733,7 @@ html_content = '''<!DOCTYPE html>
           paginationBar.style.display = 'none';
         } else {
           paginationBar.style.display = 'flex';
-          btnLoadMore.textContent = `عرض المزيد (${filteredList.length - displayedCount} متبقي) ⬇`;
+          loadMoreText.textContent = `عرض المزيد من المنتجات (${filteredList.length - displayedCount} متبقي)`;
         }
 
         updateCurrencyVisibility();
@@ -1679,7 +1834,10 @@ html_content = '''<!DOCTYPE html>
       const yerAden = p.prices.yer_aden.toLocaleString();
 
       const guarClass = p.is_guaranteed ? 'guaranteed' : 'nowar';
-      const guarTitle = p.is_guaranteed ? '🛡️ اشتراك مضمون 100% مع ضمان استبدال رسمي' : 'منتج استهلاك وتفعيل فوري';
+      const guarIcon = p.is_guaranteed
+        ? '<svg class="modal-sec-icon ui-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'
+        : '<svg class="modal-sec-icon ui-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+      const guarTitle = p.is_guaranteed ? 'اشتراك مضمون 100% مع ضمان استبدال رسمي' : 'منتج استهلاك وتفعيل فوري';
 
       const waMsg = `مرحباً الجحفلي للحلول الرقمية، أود طلب الاشتراك التالي:
 الاشتراك: ${p.title}
@@ -1695,7 +1853,7 @@ html_content = '''<!DOCTYPE html>
 
       const featuresHtml = (p.modal_data.features || []).map(f => `
         <li>
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <svg class="feature-check-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           <span>${f}</span>
         </li>
       `).join('');
@@ -1710,8 +1868,13 @@ html_content = '''<!DOCTYPE html>
             <span class="modal-service-pill">${p.service_name}</span>
             <h3 class="modal-title">${p.title}</h3>
             <div class="modal-meta-row">
-              <span class="modal-meta-chip">⏱️ المدة: ${p.duration}</span>
-              <span class="modal-meta-chip">${p.in_stock ? `🟢 متوفر (${p.stock} حساب)` : '🔴 نفذت الكمية'}</span>
+              <span class="modal-meta-chip">
+                <svg class="badge-svg ui-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>المدة: ${p.duration}</span>
+              </span>
+              <span class="modal-meta-chip">
+                ${p.in_stock ? `<span class="stock-pulse" style="margin-left:0;margin-right:2px;"></span> متوفر (${p.stock} حساب)` : '<span class="stock-dot-red" style="margin-left:0;margin-right:2px;"></span> نفذت الكمية'}
+              </span>
             </div>
           </div>
         </div>
@@ -1720,7 +1883,7 @@ html_content = '''<!DOCTYPE html>
           <!-- Guarantee & Policy Box -->
           <div class="modal-guarantee-box ${guarClass}">
             <div class="modal-guar-head">
-              <span>${guarTitle}</span>
+              <span class="modal-guar-head-title">${guarIcon}<span>${guarTitle}</span></span>
               <span>${p.warranty_text}</span>
             </div>
             <p class="modal-guar-desc">${p.warranty_policy}</p>
@@ -1729,7 +1892,8 @@ html_content = '''<!DOCTYPE html>
           <!-- Subscription Features -->
           <div>
             <h4 class="modal-section-title">
-              <span>✨ أبرز مميزات وصلاحيات الاشتراك:</span>
+              <svg class="modal-sec-icon ui-svg" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>
+              <span>أبرز مميزات وصلاحيات الاشتراك:</span>
             </h4>
             <ul class="modal-features-list">
               ${featuresHtml}
@@ -1739,7 +1903,8 @@ html_content = '''<!DOCTYPE html>
           <!-- Account Type & Delivery Info -->
           <div>
             <h4 class="modal-section-title">
-              <span>📦 نوع الحساب وآلية التسليم:</span>
+              <svg class="modal-sec-icon ui-svg" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              <span>نوع الحساب وآلية التسليم:</span>
             </h4>
             <div class="modal-info-grid">
               <div class="modal-info-card">
@@ -1756,7 +1921,8 @@ html_content = '''<!DOCTYPE html>
           <!-- Pricing Table -->
           <div>
             <h4 class="modal-section-title">
-              <span>💱 الأسعار المعتمدة بكافة العملات:</span>
+              <svg class="modal-sec-icon ui-svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span>الأسعار المعتمدة بكافة العملات:</span>
             </h4>
             <div class="modal-pricing-grid">
               <div class="modal-price-card featured">
@@ -1817,4 +1983,4 @@ html_content = '''<!DOCTYPE html>
 with open('subscriptions.html', 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print("Updated subscriptions.html without lightning symbol and without brand watermark!")
+print("Updated subscriptions.html with pure Lucide-style SVG vector icons!")

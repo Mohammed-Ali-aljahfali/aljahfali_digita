@@ -3,11 +3,13 @@ import json
 import re
 import os
 
+EMOJI_PATTERN = re.compile(r'[\U00010000-\U0010ffff\u2600-\u27bf\u2300-\u23ff\u2b50\u2b55\u200d\ufe0f]', flags=re.UNICODE)
+
 def clean_text(t):
     if not t:
         return ""
+    t = EMOJI_PATTERN.sub('', t)
     t = re.sub(r'[\r\n]+', ' ', t)
-    t = re.sub(r'⚡️|⚡', '', t) # Remove any lightning symbols completely
     t = re.sub(r'\s+', ' ', t).strip()
     return t
 
