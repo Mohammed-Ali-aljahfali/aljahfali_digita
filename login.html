@@ -453,12 +453,16 @@
       try {
         hideAlert();
         if (!window.AlJahfaliCloud.config.isConfigured()) {
-          showAlert('يرجى تفعيل وربط مفاتيح Supabase في لوحة التحكم أولاً للتسجيل السحابي');
+          showAlert('لتفعيل التسجيل السحابي بحساب Google: يرجى وضع مفتاح Supabase في لوحة التحكم (admin.html). في هذه الأثناء، يمكنك التسجيل فوراً بالبريد الإلكتروني بالأسفل!');
           return;
         }
         await window.AlJahfaliCloud.signInWithGoogle();
       } catch (err) {
-        showAlert(err.message || 'حدث خطأ أثناء الاتصال بحساب Google');
+        let msg = err.message || 'حدث خطأ أثناء الاتصال بحساب Google';
+        if (msg.includes('not enabled') || msg.includes('unsupported')) {
+          msg = 'تسجيل الدخول عبر Google يحتاج للتفعيل في لوحة تحكم Supabase (Authentication -> Providers -> تفعيل خيار Google). يمكنك الآن استخدام التسجيل الفوري بالبريد الإلكتروني بالأسفل!';
+        }
+        showAlert(msg);
       }
     }
 

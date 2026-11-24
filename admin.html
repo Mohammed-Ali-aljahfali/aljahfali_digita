@@ -471,9 +471,86 @@
     .toast-box.active {
       display: block;
     }
+
+    /* Admin Auth Guard Screen */
+    .admin-auth-guard {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 20%, #1e293b 0%, #0f172a 60%, #020617 100%);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .admin-auth-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 24px;
+      max-width: 440px;
+      width: 100%;
+      padding: 36px 30px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .admin-shield-icon {
+      width: 64px;
+      height: 64px;
+      background: #F0F9FF;
+      color: #0284C7;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      border: 1px solid rgba(2, 132, 199, 0.2);
+    }
   </style>
 </head>
 <body>
+
+  <!-- ── ADMIN SECURITY AUTH GUARD (LOCK SCREEN) ── -->
+  <div class="admin-auth-guard" id="adminAuthGuard">
+    <div class="admin-auth-card">
+      <div class="admin-shield-icon">
+        <svg style="width: 32px; height: 32px;" class="ui-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h2 style="font-size: 20px; font-weight: 900; color: #0F172A; margin: 0 0 8px;">منطقة المشرفين المحمية</h2>
+      <p style="font-size: 13px; color: #64748B; margin: 0 0 22px; line-height: 1.6;">لوحة التحكم بالمتجر مخصصة للأستاذ <strong>محمد الجحفلي</strong> فقط. يرجى إدخال رمز التحقق الأمني للمشرف للمتابعة.</p>
+
+      <div id="adminPinError" style="display: none; background: #FEF2F2; color: #DC2626; border: 1px solid #FCA5A5; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 700; margin-bottom: 16px;"></div>
+
+      <form id="adminPinForm" onsubmit="handleAdminLogin(event)">
+        <div class="field-group" style="text-align: right; margin-bottom: 18px;">
+          <label style="font-size: 13px; font-weight: 700;">رمز المرور الأمني للمشرف (Admin PIN)</label>
+          <div style="position: relative; display: flex; align-items: center;">
+            <input type="password" id="adminPinInput" style="width: 100%; padding: 12px 14px; padding-left: 40px; border: 1.5px solid #CBD5E1; border-radius: 10px; font-family: 'Cairo'; font-size: 15px; text-align: center; letter-spacing: 2px;" placeholder="أدخل رمز المشرف" required autofocus>
+            <button type="button" onclick="togglePinVisibility()" style="position: absolute; left: 12px; background: none; border: none; color: #64748B; cursor: pointer; padding: 0;">
+              <svg class="ui-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-action btn-primary" style="width: 100%; justify-content: center; padding: 12px; font-size: 15px; border-radius: 10px;">
+          <svg class="ui-svg" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          <span>تسجيل دخول المشرف</span>
+        </button>
+      </form>
+
+      <div style="margin-top: 20px; font-size: 12px; color: #94A3B8;">
+        <span>الجحفلي للحلول الرقمية | هاتف: 782611415</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MAIN PROTECTED APP ── -->
+  <div id="adminMainApp" style="display: none;">
 
   <!-- ADMIN HEADER -->
   <header class="admin-header">
@@ -498,6 +575,10 @@
       <button class="btn-action btn-primary" onclick="exportUpdatedJson()">
         <svg class="ui-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span>تصدير products.json</span>
+      </button>
+      <button class="btn-action btn-danger" onclick="adminLogout()" title="تسجيل الخروج وقفل اللوحة">
+        <svg class="ui-svg" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span>قفل اللوحة</span>
       </button>
     </div>
   </header>
@@ -727,6 +808,29 @@
           </button>
         </div>
       </div>
+
+      <!-- ADMIN SECURITY PIN SETTINGS -->
+      <div class="config-box">
+        <h3>
+          <svg class="ui-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>إعدادات أمان لوحة التحكم (تغيير كلمة سر المشرف)</span>
+        </h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 16px;">لوحة التحكم محمية بكلمة سر المشرف. الرمز الافتراضي الحالي هو <strong>782611415</strong>. يمكنك تحديثه هنا في أي وقت لحماية متجرك:</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <div class="field-group">
+            <label>كلمة السر الحالية</label>
+            <input type="password" id="inputCurrentAdminPin" placeholder="أدخل الرمز الحالي">
+          </div>
+          <div class="field-group">
+            <label>كلمة السر الجديدة</label>
+            <input type="password" id="inputNewAdminPin" placeholder="أدخل الرمز الجديد">
+          </div>
+        </div>
+        <button class="btn-action btn-accent" onclick="changeAdminPin()">
+          <svg class="ui-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>تحديث وحفظ كلمة سر المشرف</span>
+        </button>
+      </div>
     </div>
 
   </div>
@@ -888,6 +992,8 @@
     </div>
   </div>
 
+  </div> <!-- End adminMainApp -->
+
   <div class="toast-box" id="adminToast">تم الحفظ بنجاح!</div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -906,7 +1012,88 @@
     let activeEditPid = null;
     let activeFulfillOrderId = null;
 
+    // ── ADMIN SECURITY AUTH GUARD LOGIC ──
+    function checkAdminAuth() {
+      const isAuth = sessionStorage.getItem('aljahfali_admin_session') === 'active';
+      const guard = document.getElementById('adminAuthGuard');
+      const app = document.getElementById('adminMainApp');
+
+      if (isAuth) {
+        guard.style.display = 'none';
+        app.style.display = 'block';
+      } else {
+        guard.style.display = 'flex';
+        app.style.display = 'none';
+        setTimeout(() => {
+          const pinInp = document.getElementById('adminPinInput');
+          if (pinInp) pinInp.focus();
+        }, 100);
+      }
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const entered = (document.getElementById('adminPinInput').value || '').trim();
+      const currentPin = localStorage.getItem('aljahfali_admin_pin') || '782611415';
+      const errBox = document.getElementById('adminPinError');
+
+      if (entered === currentPin) {
+        sessionStorage.setItem('aljahfali_admin_session', 'active');
+        document.getElementById('adminAuthGuard').style.display = 'none';
+        document.getElementById('adminMainApp').style.display = 'block';
+        errBox.style.display = 'none';
+        showToast('مرحباً بك أستاذ محمد الجحفلي، تم تسجيل دخول المشرف بنجاح!');
+        renderTable();
+      } else {
+        errBox.textContent = 'رمز المرور الأمني غير صحيح! يرجى التأكد والمحاولة مرة أخرى.';
+        errBox.style.display = 'block';
+        document.getElementById('adminPinInput').select();
+      }
+    }
+
+    function togglePinVisibility() {
+      const pin = document.getElementById('adminPinInput');
+      if (pin) {
+        pin.type = pin.type === 'password' ? 'text' : 'password';
+      }
+    }
+
+    function adminLogout() {
+      if (confirm('هل أنت متأكد من رغبتك في قفل لوحة التحكم وتسجيل الخروج؟')) {
+        sessionStorage.removeItem('aljahfali_admin_session');
+        document.getElementById('adminMainApp').style.display = 'none';
+        document.getElementById('adminAuthGuard').style.display = 'flex';
+        document.getElementById('adminPinInput').value = '';
+        document.getElementById('adminPinError').style.display = 'none';
+        showToast('تم قفل لوحة التحكم بنجاح');
+      }
+    }
+
+    function changeAdminPin() {
+      const cur = (document.getElementById('inputCurrentAdminPin').value || '').trim();
+      const nxt = (document.getElementById('inputNewAdminPin').value || '').trim();
+      const savedPin = localStorage.getItem('aljahfali_admin_pin') || '782611415';
+
+      if (cur !== savedPin) {
+        alert('رمز المرور الحالي غير صحيح!');
+        document.getElementById('inputCurrentAdminPin').focus();
+        return;
+      }
+
+      if (!nxt || nxt.length < 4) {
+        alert('يرجى كتابة رمز مرور جديد لا يقل عن 4 رموز');
+        document.getElementById('inputNewAdminPin').focus();
+        return;
+      }
+
+      localStorage.setItem('aljahfali_admin_pin', nxt);
+      document.getElementById('inputCurrentAdminPin').value = '';
+      document.getElementById('inputNewAdminPin').value = '';
+      showToast('تم تحديث وحفظ رمز مرور المشرف الجديد بنجاح!');
+    }
+
     document.addEventListener('DOMContentLoaded', async () => {
+      checkAdminAuth();
       initCloudStatus();
 
       // Load products

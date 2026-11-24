@@ -7,6 +7,9 @@
 (function(window) {
   'use strict';
 
+  // Pre-configured official Supabase Project URL for Al-Jahfali Digital
+  window.DEFAULT_SUPABASE_URL = window.DEFAULT_SUPABASE_URL || 'https://rwvlgsqxmpeiucouxerz.supabase.co';
+
   // Configuration Manager
   const Config = {
     getUrl: () => localStorage.getItem('aljahfali_supabase_url') || window.DEFAULT_SUPABASE_URL || '',
@@ -257,7 +260,12 @@
         }
       });
 
-      if (error) throw error;
+      if (error) {
+        if (error.message && (error.message.toLowerCase().includes('not enabled') || error.message.toLowerCase().includes('unsupported'))) {
+          throw new Error('تسجيل الدخول عبر Google يحتاج للتفعيل أولاً من لوحة تحكم Supabase (Authentication -> Providers -> تفعيل Google). يمكنك الآن استخدام التسجيل المباشر الفوري بالبريد الإلكتروني بالأسفل!');
+        }
+        throw error;
+      }
       return data;
     },
 
