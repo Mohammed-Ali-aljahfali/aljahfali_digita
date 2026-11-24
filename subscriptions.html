@@ -1278,6 +1278,14 @@
       </nav>
 
       <div class="header-store-actions">
+        <!-- Dynamic User Auth Slot -->
+        <div id="authNavSlot" style="display: inline-flex;">
+          <a href="login.html" class="cart-nav-btn" title="تسجيل الدخول">
+            <svg class="ui-svg" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            <span>دخول</span>
+          </a>
+        </div>
+
         <button class="cart-nav-btn" onclick="toggleCartDrawer()">
           <svg class="ui-svg" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           <span>السلة</span>
@@ -1305,8 +1313,8 @@
       <p>نوفر لك كافة اشتراكات الذكاء الاصطناعي العالمية، برامج التصميم، مايكروسوفت، الأمان والترفيه بتسليم فوري ودعم يمني ودولي لكافة المحافظ والبنوك.</p>
       
       <div class="store-stats-row">
-        <div class="stat-pill"><span class="num" id="statTotal">610</span><span class="lbl">إجمالي الاشتراكات</span></div>
-        <div class="stat-pill"><span class="num">103</span><span class="lbl">خدمة ChatGPT & OpenAI</span></div>
+        <div class="stat-pill"><span class="num" id="statTotal">34</span><span class="lbl">إجمالي الاشتراكات المختارة</span></div>
+        <div class="stat-pill"><span class="num">10</span><span class="lbl">خدمات الذكاء الاصطناعي</span></div>
         <div class="stat-pill"><span class="num">536 ر.ي</span><span class="lbl">سعر صرف الدولار (صنعاء)</span></div>
         <div class="stat-pill"><span class="num">140 ر.ي</span><span class="lbl">سعر صرف الريال السعودي</span></div>
       </div>
@@ -1339,39 +1347,35 @@
       <div class="categories-carousel" id="categoriesCarousel">
         <button class="cat-pill active" data-cat="all">
           <span>الكل</span>
-          <span class="count" id="catCountAll">610</span>
+          <span class="count" id="catCountAll">34</span>
         </button>
         <button class="cat-pill" data-cat="chatgpt">
           <span>شات جي بي تي (ChatGPT)</span>
-          <span class="count">103</span>
+          <span class="count">4</span>
         </button>
-        <button class="cat-pill" data-cat="claude">
-          <span>Claude AI</span>
-          <span class="count">42</span>
-        </button>
-        <button class="cat-pill" data-cat="google">
-          <span>Google & Gemini</span>
-          <span class="count">38</span>
-        </button>
-        <button class="cat-pill" data-cat="capcut">
-          <span>CapCut Pro</span>
-          <span class="count">25</span>
+        <button class="cat-pill" data-cat="ai">
+          <span>الذكاء الاصطناعي (AI Models)</span>
+          <span class="count">6</span>
         </button>
         <button class="cat-pill" data-cat="design">
-          <span>Canva & التصميم</span>
-          <span class="count">18</span>
+          <span>التصميم والمونتاج</span>
+          <span class="count">9</span>
         </button>
         <button class="cat-pill" data-cat="entertainment">
-          <span>Netflix والترفيه</span>
-          <span class="count">35</span>
+          <span>الترفيه والبث</span>
+          <span class="count">4</span>
+        </button>
+        <button class="cat-pill" data-cat="productivity">
+          <span>الإنتاجية والتعليم</span>
+          <span class="count">4</span>
         </button>
         <button class="cat-pill" data-cat="microsoft">
-          <span>Microsoft & Windows</span>
-          <span class="count">22</span>
+          <span>مايكروسوفت وويندوز</span>
+          <span class="count">3</span>
         </button>
         <button class="cat-pill" data-cat="security">
-          <span>VPN والأمان</span>
-          <span class="count">15</span>
+          <span>الحماية والشبكات (VPN)</span>
+          <span class="count">4</span>
         </button>
       </div>
     </div>
@@ -1730,7 +1734,42 @@
           console.log('Loaded from local catalog');
         }
       }
+
+      // Check Nav Auth State
+      await updateNavAuthState();
     });
+
+    async function updateNavAuthState() {
+      const slot = document.getElementById('authNavSlot');
+      if (!slot) return;
+      let user = null;
+      if (window.AlJahfaliCloud) {
+        user = await window.AlJahfaliCloud.getCurrentUser();
+      }
+      if (!user) {
+        const local = localStorage.getItem('aljahfali_current_user');
+        if (local) {
+          try { user = JSON.parse(local); } catch(e) {}
+        }
+      }
+      if (user) {
+        const meta = user.user_metadata || {};
+        const name = meta.full_name || meta.name || user.email.split('@')[0];
+        slot.innerHTML = `
+          <a href="account.html" class="cart-nav-btn" style="color: #0284C7; font-weight: 800; border-color: rgba(2,132,199,0.3);" title="حسابي">
+            <svg class="ui-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>حسابي (${name})</span>
+          </a>
+        `;
+      } else {
+        slot.innerHTML = `
+          <a href="login.html" class="cart-nav-btn" title="تسجيل الدخول">
+            <svg class="ui-svg" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            <span>دخول</span>
+          </a>
+        `;
+      }
+    }
 
     function initEventListeners() {
       // Mobile menu toggle
@@ -2052,9 +2091,29 @@
     }
 
     // ── CHECKOUT FLOW ──
-    function openCheckoutModal() {
+    async function openCheckoutModal() {
       if (cart.length === 0) return;
       toggleCartDrawer();
+
+      // Pre-fill user profile info if logged in
+      let user = null;
+      if (window.AlJahfaliCloud) user = await window.AlJahfaliCloud.getCurrentUser();
+      if (!user) {
+        const local = localStorage.getItem('aljahfali_current_user');
+        if (local) { try { user = JSON.parse(local); } catch(e) {} }
+      }
+      if (user) {
+        const meta = user.user_metadata || {};
+        const nameField = document.getElementById('custName');
+        const phoneField = document.getElementById('custPhone');
+        if (nameField && !nameField.value && meta.full_name) {
+          nameField.value = meta.full_name;
+        }
+        if (phoneField && !phoneField.value && meta.phone) {
+          phoneField.value = meta.phone;
+        }
+      }
+
       checkoutModal.classList.add('active');
     }
 
@@ -2067,7 +2126,7 @@
       showToast(`تم نسخ: ${val}`);
     }
 
-    function submitOrderToWhatsapp() {
+    async function submitOrderToWhatsapp() {
       const name = document.getElementById('custName').value.trim();
       const phone = document.getElementById('custPhone').value.trim();
       const methodRadio = document.querySelector('input[name="payMethod"]:checked');
@@ -2112,25 +2171,44 @@ ${itemsLines}
 
 أرجو تأكيد استلام الحوالة وتسليم بيانات الحسابات وتفعيلها فوراً. شكراً لك!`;
 
-      // Record order into Cloud Database if configured
-      if (window.AlJahfaliCloud && window.AlJahfaliCloud.config.isConfigured()) {
-        window.AlJahfaliCloud.saveOrder({
-          id: 'ORD-' + Date.now(),
-          customer_name: name,
-          customer_phone: phone || '',
-          items: cart,
-          total_usd: totalUsd,
-          total_sar: totalSar,
-          total_yer_sanaa: totalYerSanaa,
-          total_yer_aden: totalYerAden,
-          payment_method: method,
-          status: 'pending'
-        });
+      // Record order into Cloud Database & Local Storage
+      let loggedUser = null;
+      if (window.AlJahfaliCloud) {
+        loggedUser = await window.AlJahfaliCloud.getCurrentUser();
       }
+      if (!loggedUser) {
+        const local = localStorage.getItem('aljahfali_current_user');
+        if (local) { try { loggedUser = JSON.parse(local); } catch(e) {} }
+      }
+
+      const orderPayload = {
+        id: 'ORD-' + Date.now().toString(36).toUpperCase(),
+        user_id: loggedUser ? loggedUser.id : null,
+        customer_name: name,
+        customer_phone: phone || '',
+        customer_email: loggedUser ? loggedUser.email : '',
+        items: cart,
+        total_usd: totalUsd,
+        total_sar: totalSar,
+        total_yer_sanaa: totalYerSanaa,
+        total_yer_aden: totalYerAden,
+        payment_method: method,
+        status: 'pending'
+      };
+
+      if (window.AlJahfaliCloud) {
+        await window.AlJahfaliCloud.saveOrder(orderPayload);
+      }
+
+      // Clear cart
+      cart = [];
+      saveCart();
+      updateCartBadge();
+      closeCheckoutModal();
 
       const waUrl = `https://wa.me/967782611415?text=${encodeURIComponent(invoiceMsg)}`;
       window.open(waUrl, '_blank');
-      closeCheckoutModal();
+      showToast('تم حفظ طلبك بنجاح وتحويلك إلى واتساب للتسليم الفوري!');
     }
 
     // ── DETAILS MODAL ──
