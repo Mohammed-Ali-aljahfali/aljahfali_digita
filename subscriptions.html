@@ -1659,8 +1659,10 @@
     </div>
   </footer>
 
-  <!-- LOAD PRODUCTS CATALOG DATA -->
+  <!-- SUPABASE & DATA SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/data/products.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
 
   <!-- STORE & CART LOGIC -->
   <script>
@@ -1692,7 +1694,7 @@
     const cartToast = document.getElementById('cartToast');
 
     // ── INIT ──
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
       const storedCatalog = localStorage.getItem('aljahfali_catalog_custom');
       if (storedCatalog) {
         try {
@@ -1709,6 +1711,25 @@
       updateCartBadge();
       initEventListeners();
       applyFilters();
+
+      // Background Real-Time Cloud Sync (Supabase)
+      if (window.AlJahfaliCloud && window.AlJahfaliCloud.config.isConfigured()) {
+        try {
+          const cloudProducts = await window.AlJahfaliCloud.fetchProducts();
+          if (cloudProducts && cloudProducts.length > 0) {
+            allProducts = cloudProducts;
+            applyFilters();
+          }
+          const cloudRates = await window.AlJahfaliCloud.fetchRates();
+          if (cloudRates) {
+            const statNums = document.querySelectorAll('.store-stats-row .stat-pill .num');
+            if (cloudRates.sanaa && statNums[2]) statNums[2].textContent = `${cloudRates.sanaa} ر.ي`;
+            if (cloudRates.sar && statNums[3]) statNums[3].textContent = `${cloudRates.sar} ر.ي`;
+          }
+        } catch (e) {
+          console.log('Loaded from local catalog');
+        }
+      }
     });
 
     function initEventListeners() {
@@ -2090,6 +2111,22 @@ ${itemsLines}
 حساب المستلم المعتمد: محمد الجحفلي (782611415)
 
 أرجو تأكيد استلام الحوالة وتسليم بيانات الحسابات وتفعيلها فوراً. شكراً لك!`;
+
+      // Record order into Cloud Database if configured
+      if (window.AlJahfaliCloud && window.AlJahfaliCloud.config.isConfigured()) {
+        window.AlJahfaliCloud.saveOrder({
+          id: 'ORD-' + Date.now(),
+          customer_name: name,
+          customer_phone: phone || '',
+          items: cart,
+          total_usd: totalUsd,
+          total_sar: totalSar,
+          total_yer_sanaa: totalYerSanaa,
+          total_yer_aden: totalYerAden,
+          payment_method: method,
+          status: 'pending'
+        });
+      }
 
       const waUrl = `https://wa.me/967782611415?text=${encodeURIComponent(invoiceMsg)}`;
       window.open(waUrl, '_blank');
