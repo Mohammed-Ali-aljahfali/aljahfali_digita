@@ -1,0 +1,2176 @@
+import os
+import json
+
+HTML_CONTENT = r'''<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر الاشتراكات الرقمية الرسمي | الجحفلي للحلول الرقمية</title>
+  <meta name="description" content="متجر الجحفلي للحلول الرقمية - اشتراكات رسمية معتمدة، ذكاء اصطناعي، برامج، ترفيه، مع سلة تسوق وطرق دفع يمنية فورية (كريمي، جوالي، ون كاش، كاش، بيس، فلوسك).">
+  
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* ── BASE & VARIABLES ── */
+    :root {
+      --primary: #0284C7;
+      --primary-hover: #0369A1;
+      --primary-tint: #F0F9FF;
+      --secondary: #0F172A;
+      --accent: #10B981;
+      --accent-hover: #059669;
+      --accent-tint: #ECFDF5;
+      --bg-store: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text-dark: #0F172A;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --border-light: #F1F5F9;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --shadow-subtle: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+      --shadow-card: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --shadow-hover: 0 12px 24px -4px rgba(2, 132, 199, 0.12), 0 4px 8px -2px rgba(0,0,0,0.04);
+      --shadow-modal: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+    }
+
+    body {
+      background-color: var(--bg-store);
+      color: var(--text-dark);
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── MODERN SVG ICONS ── */
+    .ui-svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    /* ── NAVBAR CART BUTTON ── */
+    .nav-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cart-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-dark);
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .cart-nav-btn:hover {
+      background: var(--primary-tint);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .cart-nav-badge {
+      background: var(--primary);
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 800;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .cart-nav-badge.bump {
+      transform: scale(1.3);
+    }
+
+    /* ── HERO BANNER ── */
+    .store-hero {
+      padding: 40px 0 24px;
+      background: radial-gradient(circle at 50% 0%, rgba(2, 132, 199, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+      text-align: center;
+    }
+
+    .store-hero .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: #FFFFFF;
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      border-radius: 999px;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .store-hero h1 {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin: 0 0 10px;
+      line-height: 1.3;
+    }
+
+    .store-hero h1 span {
+      color: var(--primary);
+    }
+
+    .store-hero p {
+      max-width: 680px;
+      margin: 0 auto 20px;
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .store-stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-subtle);
+      font-size: 13px;
+    }
+
+    .stat-pill .num {
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .stat-pill .lbl {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* ── CONTROLS & FILTER SECTION ── */
+    .store-controls-section {
+      padding: 20px 0;
+      background: transparent;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .controls-top-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .search-box-wrapper {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+
+    .search-box-wrapper .ui-svg {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 42px 12px 16px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.2s ease;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    .currency-selector-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFFFFF;
+      padding: 4px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .currency-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cur-btn {
+      padding: 6px 12px;
+      border: none;
+      background: transparent;
+      border-radius: var(--radius-sm);
+      font-family: 'Cairo', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .cur-btn:hover {
+      color: var(--primary);
+      background: var(--primary-tint);
+    }
+
+    .cur-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    /* Category pills */
+    .categories-carousel {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+    }
+
+    .cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .cat-pill:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-tint);
+    }
+
+    .cat-pill.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .cat-pill .count {
+      font-size: 11px;
+      background: rgba(0,0,0,0.06);
+      padding: 2px 6px;
+      border-radius: 999px;
+    }
+
+    .cat-pill.active .count {
+      background: rgba(255,255,255,0.25);
+      color: #FFFFFF;
+    }
+
+    /* ── PRODUCT CARDS GRID (NEW CLEAN HIGH-DENSITY DESIGN) ── */
+    .products-grid-section {
+      padding: 10px 0 60px;
+    }
+
+    .grid-header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .grid-header-meta h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .grid-header-meta .results-count {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .store-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── SINGLE CLEAN STORE CARD ── */
+    .clean-store-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 20px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .clean-store-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(2, 132, 199, 0.3);
+    }
+
+    /* Icon Area (NO FLOATING TAGS) */
+    .card-icon-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .card-icon-frame {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      box-sizing: border-box;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .clean-store-card:hover .card-icon-frame {
+      transform: scale(1.05);
+    }
+
+    .card-icon-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    }
+
+    /* Card Details */
+    .card-service-meta {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .card-item-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin: 0 0 10px;
+      line-height: 1.4;
+      text-align: center;
+      min-height: 42px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Warranty line */
+    .card-warranty-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 14px;
+    }
+
+    .card-warranty-row.guaranteed {
+      background: var(--accent-tint);
+      color: var(--accent-hover);
+    }
+
+    .card-warranty-row.nowar {
+      background: #FFFBEB;
+      color: #B45309;
+    }
+
+    /* Pricing clean display */
+    .card-pricing-clean {
+      text-align: center;
+      background: var(--bg-store);
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      margin-bottom: 16px;
+      border: 1px solid var(--border-light);
+    }
+
+    .primary-price-val {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+
+    .secondary-price-preview {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* Action Buttons (Details + Cart) */
+    .card-actions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .btn-card-details, .btn-card-addcart {
+      padding: 9px 10px;
+      border-radius: var(--radius-md);
+      font-family: 'Cairo', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      box-sizing: border-box;
+      border: none;
+    }
+
+    .btn-card-details {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+    }
+
+    .btn-card-details:hover {
+      background: var(--primary-tint);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-card-addcart {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .btn-card-addcart:hover {
+      background: var(--primary-hover);
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+    }
+
+    .btn-card-addcart.added {
+      background: var(--accent);
+    }
+
+    /* Load more button */
+    .load-more-container {
+      text-align: center;
+      margin-top: 36px;
+    }
+
+    .btn-load-more {
+      padding: 12px 32px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .btn-load-more:hover {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    /* ── CART DRAWER (سلة المشتريات) ── */
+    .cart-drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .cart-drawer-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 400px;
+      max-width: 90vw;
+      height: 100%;
+      background: #FFFFFF;
+      box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cart-drawer-overlay.active .cart-drawer {
+      transform: translateX(0);
+    }
+
+    .cart-drawer-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-drawer-header h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+    }
+
+    .cart-close-btn:hover {
+      background: var(--bg-store);
+      color: var(--text-dark);
+    }
+
+    .cart-items-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cart-empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+
+    .cart-empty-state .ui-svg {
+      width: 48px;
+      height: 48px;
+      stroke-width: 1.5;
+      margin-bottom: 12px;
+      color: var(--border-color);
+    }
+
+    .cart-item-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: var(--bg-store);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+
+    .cart-item-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cart-item-icon img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+
+    .cart-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cart-item-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0 0 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cart-item-price {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .cart-qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 2px 4px;
+    }
+
+    .qty-btn {
+      background: transparent;
+      border: none;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .qty-val {
+      font-size: 12px;
+      font-weight: 800;
+      min-width: 16px;
+      text-align: center;
+    }
+
+    .cart-item-remove {
+      background: transparent;
+      border: none;
+      color: #EF4444;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .cart-drawer-footer {
+      padding: 18px 20px;
+      border-top: 1px solid var(--border-color);
+      background: #FFFFFF;
+    }
+
+    .cart-total-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .cart-total-val {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--primary);
+    }
+
+    .btn-cart-checkout {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius-md);
+      color: #FFFFFF;
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .btn-cart-checkout:hover {
+      background: var(--accent-hover);
+    }
+
+    /* ── CHECKOUT MODAL (طرق الدفع اليمنية) ── */
+    .checkout-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(6px);
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .checkout-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .checkout-modal-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-xl);
+      max-width: 580px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-modal);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .checkout-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--primary-tint);
+    }
+
+    .checkout-header h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .checkout-body {
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .checkout-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .checkout-field-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .checkout-input {
+      padding: 10px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      color: var(--text-dark);
+      outline: none;
+    }
+
+    .checkout-input:focus {
+      border-color: var(--primary);
+    }
+
+    /* Payment Wallets Box */
+    .wallets-select-box {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      background: var(--bg-store);
+    }
+
+    .wallets-select-box h4 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .wallet-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .wallet-radio-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      transition: all 0.15s ease;
+    }
+
+    .wallet-radio-label:hover {
+      border-color: var(--primary);
+    }
+
+    .wallet-radio-label input:checked + span {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .wallet-details-card {
+      background: #FFFFFF;
+      border: 1px dashed var(--primary);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+    }
+
+    .wallet-detail-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .wallet-detail-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .wallet-copy-btn {
+      padding: 4px 8px;
+      background: var(--primary-tint);
+      border: 1px solid rgba(2, 132, 199, 0.3);
+      border-radius: var(--radius-sm);
+      color: var(--primary);
+      font-family: 'Cairo', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .checkout-footer {
+      padding: 18px 24px;
+      border-top: 1px solid var(--border-color);
+      background: #FFFFFF;
+    }
+
+    .btn-confirm-whatsapp {
+      width: 100%;
+      padding: 14px;
+      background: #25D366;
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .btn-confirm-whatsapp:hover {
+      background: #1EBE5D;
+    }
+
+    /* ── FULL SUBSCRIPTION DETAILS MODAL (عرض تفاصيل الاشتراك المحدثة) ── */
+    .details-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(6px);
+      z-index: 1200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .details-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .details-modal-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-xl);
+      max-width: 650px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-modal);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .details-modal-header {
+      padding: 24px;
+      background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+      color: #FFFFFF;
+      position: relative;
+    }
+
+    .details-modal-header .close-btn {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      border-radius: 999px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+
+    .modal-brand-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .modal-brand-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border-radius: var(--radius-md);
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .modal-brand-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .modal-service-badge {
+      font-size: 12px;
+      background: rgba(255,255,255,0.2);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .modal-header-title {
+      font-size: 20px;
+      font-weight: 900;
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    .details-modal-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .modal-section-card {
+      background: var(--bg-store);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .modal-section-card h4 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-section-card p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      white-space: pre-line;
+    }
+
+    .modal-features-list, .modal-steps-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .modal-features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .modal-features-list li .ui-svg {
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    .modal-steps-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-dark);
+    }
+
+    .step-num-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .modal-prices-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .modal-price-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 8px;
+      text-align: center;
+    }
+
+    .modal-price-box .cur-name {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .modal-price-box .cur-val {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .details-modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      gap: 10px;
+      background: #FFFFFF;
+    }
+
+    .btn-modal-addcart {
+      flex: 1;
+      padding: 12px;
+      background: var(--primary);
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-modal-wa {
+      flex: 1;
+      padding: 12px;
+      background: #25D366;
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* Toast Notification */
+    .cart-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      z-index: 2000;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cart-toast.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 640px) {
+      .modal-prices-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .details-modal-footer {
+        flex-direction: column;
+      }
+      .wallet-options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="container header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/images/logo.svg" alt="الجحفلي للحلول الرقمية" width="140" height="42">
+        </a>
+      </div>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="services.html">خدماتنا</a></li>
+          <li><a href="pricing.html">باقات الأسعار</a></li>
+          <li><a href="subscriptions.html" class="active">الاشتراكات</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions-group">
+        <button class="cart-nav-btn" onclick="toggleCartDrawer()">
+          <svg class="ui-svg" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-nav-text">السلة</span>
+          <span class="cart-nav-badge" id="cartBadge">0</span>
+        </button>
+        <a href="admin.html" class="cart-nav-btn" title="لوحة التحكم بالمنتجات والأسعار">
+          <svg class="ui-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>الإدارة</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- STORE HERO -->
+  <section class="store-hero">
+    <div class="container">
+      <div class="hero-pill">
+        <svg class="ui-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>متجر الاشتراكات الرقمية الرسمي | Al-Jahfali Digital</span>
+      </div>
+      <h1>اشتراكات رقمية رسمية <span>بأعلى موثوقية وضمان معتمد</span></h1>
+      <p>نوفر لك كافة اشتراكات الذكاء الاصطناعي العالمية، برامج التصميم، مايكروسوفت، الأمان والترفيه بتسليم فوري ودعم يمني ودولي لكافة المحافظ والبنوك.</p>
+      
+      <div class="store-stats-row">
+        <div class="stat-pill"><span class="num" id="statTotal">610</span><span class="lbl">إجمالي الاشتراكات</span></div>
+        <div class="stat-pill"><span class="num">103</span><span class="lbl">خدمة ChatGPT & OpenAI</span></div>
+        <div class="stat-pill"><span class="num">536 ر.ي</span><span class="lbl">سعر صرف الدولار (صنعاء)</span></div>
+        <div class="stat-pill"><span class="num">140 ر.ي</span><span class="lbl">سعر صرف الريال السعودي</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTROLS & FILTERS -->
+  <section class="store-controls-section">
+    <div class="container">
+      <div class="controls-top-row">
+        <div class="search-box-wrapper">
+          <svg class="ui-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن اشتراك، برنامج، ذكاء اصطناعي...">
+        </div>
+
+        <div class="currency-selector-bar">
+          <span class="currency-label">
+            <svg class="ui-svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            العملة المعروضة:
+          </span>
+          <button class="cur-btn active" data-cur="all">الكل</button>
+          <button class="cur-btn" data-cur="usd">الدولار ($)</button>
+          <button class="cur-btn" data-cur="sar">السعودي (ر.س)</button>
+          <button class="cur-btn" data-cur="yer_sanaa">صنعاء (536)</button>
+          <button class="cur-btn" data-cur="yer_aden">عدن (2000)</button>
+        </div>
+      </div>
+
+      <!-- Categories Carousel -->
+      <div class="categories-carousel" id="categoriesCarousel">
+        <button class="cat-pill active" data-cat="all">
+          <span>الكل</span>
+          <span class="count" id="catCountAll">610</span>
+        </button>
+        <button class="cat-pill" data-cat="chatgpt">
+          <span>شات جي بي تي (ChatGPT)</span>
+          <span class="count">103</span>
+        </button>
+        <button class="cat-pill" data-cat="claude">
+          <span>Claude AI</span>
+          <span class="count">42</span>
+        </button>
+        <button class="cat-pill" data-cat="google">
+          <span>Google & Gemini</span>
+          <span class="count">38</span>
+        </button>
+        <button class="cat-pill" data-cat="capcut">
+          <span>CapCut Pro</span>
+          <span class="count">25</span>
+        </button>
+        <button class="cat-pill" data-cat="design">
+          <span>Canva & التصميم</span>
+          <span class="count">18</span>
+        </button>
+        <button class="cat-pill" data-cat="entertainment">
+          <span>Netflix والترفيه</span>
+          <span class="count">35</span>
+        </button>
+        <button class="cat-pill" data-cat="microsoft">
+          <span>Microsoft & Windows</span>
+          <span class="count">22</span>
+        </button>
+        <button class="cat-pill" data-cat="security">
+          <span>VPN والأمان</span>
+          <span class="count">15</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS GRID -->
+  <main class="products-grid-section">
+    <div class="container">
+      <div class="grid-header-meta">
+        <h2 id="currentCategoryTitle">جميع الاشتراكات الرقمية</h2>
+        <span class="results-count" id="resultsCountText">جاري تحميل المنتجات...</span>
+      </div>
+
+      <div class="store-cards-grid" id="storeCardsGrid">
+        <!-- Cards rendered via JavaScript -->
+      </div>
+
+      <div class="load-more-container" id="loadMoreBox" style="display: none;">
+        <button class="btn-load-more" id="btnLoadMore">عرض المزيد من المنتجات</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer-overlay" id="cartOverlay" onclick="handleOverlayClick(event)">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3>
+          <svg class="ui-svg" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span>سلة المشتريات</span>
+        </h3>
+        <button class="cart-close-btn" onclick="toggleCartDrawer()">
+          <svg class="ui-svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="cart-items-body" id="cartItemsList">
+        <!-- Rendered items or empty state -->
+      </div>
+
+      <div class="cart-drawer-footer">
+        <div class="cart-total-row">
+          <span>الإجمالي النهائي:</span>
+          <span class="cart-total-val" id="cartTotalVal">$0.00</span>
+        </div>
+        <button class="btn-cart-checkout" id="btnCheckout" onclick="openCheckoutModal()">
+          <svg class="ui-svg" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <span>المتابعة لإتمام الطلب والدفع</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="checkout-modal-overlay" id="checkoutModal">
+    <div class="checkout-modal-card">
+      <div class="checkout-header">
+        <h3>
+          <svg class="ui-svg" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <span>إتمام الطلب وطرق الدفع اليمنية</span>
+        </h3>
+        <button class="cart-close-btn" onclick="closeCheckoutModal()">
+          <svg class="ui-svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="checkout-body">
+        <div class="checkout-field-group">
+          <label class="checkout-field-label">الاسم الكامل للعميل *</label>
+          <input type="text" id="custName" class="checkout-input" placeholder="أدخل اسمك الكريم">
+        </div>
+
+        <div class="checkout-field-group">
+          <label class="checkout-field-label">رقم الواتساب للتسليم المباشر *</label>
+          <input type="tel" id="custPhone" class="checkout-input" placeholder="مثال: 782611415 أو +967...">
+        </div>
+
+        <!-- Wallets Selection -->
+        <div class="wallets-select-box">
+          <h4>
+            <svg class="ui-svg" viewBox="0 0 24 24"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><circle cx="18" cy="12" r="2"/></svg>
+            اختر وسيلة الدفع أو المحفظة الإلكترونية:
+          </h4>
+          
+          <div class="wallet-options-grid">
+            <label class="wallet-radio-label">
+              <input type="radio" name="payMethod" value="بنك الكريمي (حساب الكريمي المميز)" checked>
+              <span>بنك الكريمي المميز</span>
+            </label>
+            <label class="wallet-radio-label">
+              <input type="radio" name="payMethod" value="محفظة جوالي (Jawwali)">
+              <span>محفظة جوالي</span>
+            </label>
+            <label class="wallet-radio-label">
+              <input type="radio" name="payMethod" value="محفظة ون كاش (OneCash)">
+              <span>محفظة ون كاش</span>
+            </label>
+            <label class="wallet-radio-label">
+              <input type="radio" name="payMethod" value="محفظة كاش (Cash)">
+              <span>محفظة كاش</span>
+            </label>
+            <label class="wallet-radio-label">
+              <input type="radio" name="payMethod" value="محفظة بيس (PYes)">
+              <span>محفظة بيس</span>
+            </label>
+            <label class="wallet-radio-label">
+              <input type="radio" name="payMethod" value="محفظة فلوسك (Floosak)">
+              <span>محفظة فلوسك</span>
+            </label>
+            <label class="wallet-radio-label">
+              <input type="radio" name="payMethod" value="محفظة سبأ كاش (SabaCash)">
+              <span>محفظة سبأ كاش</span>
+            </label>
+            <label class="wallet-radio-label">
+              <input type="radio" name="payMethod" value="حوالة صرافة (النجم / العمقي / الامتياز)">
+              <span>حوالة صرافة مباشرة</span>
+            </label>
+          </div>
+
+          <!-- Official Account Data -->
+          <div class="wallet-details-card">
+            <div class="wallet-detail-row">
+              <span><strong>رقم الحساب / المحفظة:</strong> <span id="walletNum">782611415</span></span>
+              <button class="wallet-copy-btn" onclick="copyWallet('782611415')">نسخ الرقم</button>
+            </div>
+            <div class="wallet-detail-row">
+              <span><strong>اسم المستلم المعتمد:</strong> محمد الجحفلي</span>
+              <button class="wallet-copy-btn" onclick="copyWallet('محمد الجحفلي')">نسخ الاسم</button>
+            </div>
+            <div class="wallet-detail-row" style="margin-top: 6px; font-size: 11px; color: var(--text-muted);">
+              جميع المحافظ والبنوك مفعلة بشكل رسمي ومباشر على هذا الرقم.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-footer">
+        <button class="btn-confirm-whatsapp" onclick="submitOrderToWhatsapp()">
+          <svg class="ui-svg" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>تأكيد الطلب وإرسال إشعار التحويل عبر واتساب</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETAILS MODAL -->
+  <div class="details-modal-overlay" id="detailsModal">
+    <div class="details-modal-card">
+      <div class="details-modal-header" id="modalHeaderGradient">
+        <button class="close-btn" onclick="closeProductModal()">
+          <svg class="ui-svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="modal-brand-row">
+          <div class="modal-brand-icon">
+            <img id="modalIcon" src="" alt="">
+          </div>
+          <div>
+            <span class="modal-service-badge" id="modalServiceTag"></span>
+            <div style="font-size: 12px; margin-top: 4px; opacity: 0.9;" id="modalDurationTag"></div>
+          </div>
+        </div>
+        <h3 class="modal-header-title" id="modalTitle"></h3>
+      </div>
+
+      <div class="details-modal-body">
+        <!-- Arabic Translated Description from Bot -->
+        <div class="modal-section-card">
+          <h4>
+            <svg class="ui-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            الوصف الشامل للاشتراك (مترجم بالعربي):
+          </h4>
+          <p id="modalDescArabic"></p>
+        </div>
+
+        <!-- Full Features -->
+        <div class="modal-section-card">
+          <h4>
+            <svg class="ui-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            المميزات والصلاحيات الكاملة:
+          </h4>
+          <ul class="modal-features-list" id="modalFeaturesList"></ul>
+        </div>
+
+        <!-- Where to use & How to use -->
+        <div class="modal-section-card">
+          <h4>
+            <svg class="ui-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            أين وكيف تستخدم هذا الاشتراك:
+          </h4>
+          <div style="margin-bottom: 10px;">
+            <strong style="font-size: 12px; color: var(--primary);">المنصات والأجهزة المدعومة:</strong>
+            <ul class="modal-features-list" id="modalWhereList" style="margin-top: 6px;"></ul>
+          </div>
+          <div>
+            <strong style="font-size: 12px; color: var(--primary);">كيفية الاستخدام الفعال:</strong>
+            <ul class="modal-features-list" id="modalHowList" style="margin-top: 6px;"></ul>
+          </div>
+        </div>
+
+        <!-- Activation Methods & Steps -->
+        <div class="modal-section-card">
+          <h4>
+            <svg class="ui-svg" viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+            طرق التفعيل والخطوات خطوة بخطوة:
+          </h4>
+          <p id="modalActivationMethod" style="margin-bottom: 12px; font-weight: 700; color: var(--text-dark);"></p>
+          <ol class="modal-steps-list" id="modalStepsList"></ol>
+        </div>
+
+        <!-- Prices -->
+        <div class="modal-section-card">
+          <h4>
+            <svg class="ui-svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            الأسعار الرسمية المعتمدة بكافة العملات:
+          </h4>
+          <div class="modal-prices-grid">
+            <div class="modal-price-box">
+              <div class="cur-name">الدولار الأمريكي</div>
+              <div class="cur-val" id="modalPriceUsd"></div>
+            </div>
+            <div class="modal-price-box">
+              <div class="cur-name">الريال السعودي (140)</div>
+              <div class="cur-val" id="modalPriceSar"></div>
+            </div>
+            <div class="modal-price-box">
+              <div class="cur-name">ريال صنعاء (536)</div>
+              <div class="cur-val" id="modalPriceSanaa"></div>
+            </div>
+            <div class="modal-price-box">
+              <div class="cur-name">ريال عدن (2000)</div>
+              <div class="cur-val" id="modalPriceAden"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="details-modal-footer">
+        <button class="btn-modal-addcart" id="modalBtnAddCart">
+          <svg class="ui-svg" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span>إضافة الاشتراك إلى السلة</span>
+        </button>
+        <button class="btn-modal-wa" id="modalBtnWhatsApp">
+          <svg class="ui-svg" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>طلب مباشر عبر واتساب</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="cart-toast" id="cartToast">
+    <svg class="ui-svg" style="color: #10B981;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toastMsg">تمت إضافة المنتج إلى السلة بنجاح!</span>
+  </div>
+
+  <!-- LOAD PRODUCTS CATALOG DATA -->
+  <script src="assets/data/products.js"></script>
+
+  <!-- STORE & CART LOGIC -->
+  <script>
+    // ── APPLICATION STATE ──
+    let allProducts = [];
+    let filteredProducts = [];
+    let displayedCount = 0;
+    const PAGE_BATCH = 24;
+
+    let activeCategory = 'all';
+    let activeCurrency = 'all';
+    let searchQuery = '';
+
+    // Cart State stored in localStorage
+    let cart = JSON.parse(localStorage.getItem('aljahfali_cart') || '[]');
+
+    // ── DOM ELEMENTS ──
+    const cardsGrid = document.getElementById('storeCardsGrid');
+    const resultsCountText = document.getElementById('resultsCountText');
+    const searchInput = document.getElementById('searchInput');
+    const loadMoreBox = document.getElementById('loadMoreBox');
+    const btnLoadMore = document.getElementById('btnLoadMore');
+    const cartBadge = document.getElementById('cartBadge');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartItemsList = document.getElementById('cartItemsList');
+    const cartTotalVal = document.getElementById('cartTotalVal');
+    const checkoutModal = document.getElementById('checkoutModal');
+    const detailsModal = document.getElementById('detailsModal');
+    const cartToast = document.getElementById('cartToast');
+
+    // ── INIT ──
+    document.addEventListener('DOMContentLoaded', () => {
+      const storedCatalog = localStorage.getItem('aljahfali_catalog_custom');
+      if (storedCatalog) {
+        try {
+          allProducts = JSON.parse(storedCatalog);
+        } catch(e) {
+          allProducts = window.PRODUCTS_CATALOG || [];
+        }
+      } else if (window.PRODUCTS_CATALOG && Array.isArray(window.PRODUCTS_CATALOG)) {
+        allProducts = window.PRODUCTS_CATALOG;
+      } else {
+        allProducts = [];
+      }
+
+      updateCartBadge();
+      initEventListeners();
+      applyFilters();
+    });
+
+    function initEventListeners() {
+      // Search
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.trim().toLowerCase();
+        applyFilters();
+      });
+
+      // Categories
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeCategory = btn.dataset.cat;
+          applyFilters();
+        });
+      });
+
+      // Currency
+      document.querySelectorAll('.cur-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.cur-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeCurrency = btn.dataset.cur;
+          reRenderVisiblePrices();
+        });
+      });
+
+      // Load more
+      btnLoadMore.addEventListener('click', renderNextBatch);
+    }
+
+    // ── FILTERING ──
+    function applyFilters() {
+      filteredProducts = allProducts.filter(p => {
+        // Category filter
+        if (activeCategory !== 'all') {
+          if (activeCategory === 'chatgpt') {
+            const isGpt = (p.service_key === 'chatgpt' || 
+                           (p.service_name || '').toLowerCase().includes('chatgpt') || 
+                           (p.raw_name || '').toLowerCase().includes('chatgpt') ||
+                           (p.raw_name || '').toLowerCase().includes('openai'));
+            if (!isGpt) return false;
+          } else if (p.service_key !== activeCategory && p.category !== activeCategory) {
+            return false;
+          }
+        }
+
+        // Search filter
+        if (searchQuery) {
+          const hay = `${p.title} ${p.raw_name || ''} ${p.service_name || ''} ${p.card_desc || ''}`.toLowerCase();
+          if (!hay.includes(searchQuery)) return false;
+        }
+
+        return true;
+      });
+
+      // Update count & header
+      resultsCountText.textContent = `تم العثور على ${filteredProducts.length} اشتراك متاح`;
+      
+      const activeCatBtn = document.querySelector('.cat-pill.active span');
+      document.getElementById('currentCategoryTitle').textContent = activeCatBtn ? activeCatBtn.textContent : 'الاشتراكات المتاحة';
+
+      // Reset grid
+      cardsGrid.innerHTML = '';
+      displayedCount = 0;
+      renderNextBatch();
+    }
+
+    // ── CARD RENDERING (CLEAN DESIGN) ──
+    function renderNextBatch() {
+      const nextBatch = filteredProducts.slice(displayedCount, displayedCount + PAGE_BATCH);
+      
+      nextBatch.forEach(p => {
+        const card = createCleanCard(p);
+        cardsGrid.appendChild(card);
+      });
+
+      displayedCount += nextBatch.length;
+
+      if (displayedCount < filteredProducts.length) {
+        loadMoreBox.style.display = 'block';
+        btnLoadMore.textContent = `عرض المزيد من الاشتراكات (${filteredProducts.length - displayedCount} متبقي)`;
+      } else {
+        loadMoreBox.style.display = 'none';
+      }
+    }
+
+    function createCleanCard(p) {
+      const card = document.createElement('article');
+      card.className = 'clean-store-card';
+      card.dataset.id = p.id;
+
+      const shieldSvg = '<svg class="ui-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>';
+      const alertSvg = '<svg class="ui-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+      const detailsSvg = '<svg class="ui-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>';
+      const cartSvg = '<svg class="ui-svg" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>';
+
+      const isGuar = p.is_guaranteed;
+      const guarClass = isGuar ? 'guaranteed' : 'nowar';
+      const guarText = isGuar ? `ضمان رسمي (${p.duration || 'معتمد'})` : 'استهلاك وتفعيل فوري';
+
+      card.innerHTML = `
+        <div class="card-icon-area">
+          <div class="card-icon-frame" style="background: ${p.brand_gradient || '#0F172A'};">
+            <img src="${p.icon || 'assets/official_icons/openai.svg'}" alt="${p.brand_label || p.service_name}" loading="lazy">
+          </div>
+        </div>
+
+        <div class="card-service-meta">${p.brand_label || p.service_name}</div>
+        <h3 class="card-item-title" title="${p.title}">${p.title}</h3>
+
+        <div class="card-warranty-row ${guarClass}">
+          ${isGuar ? shieldSvg : alertSvg}
+          <span>${guarText}</span>
+        </div>
+
+        <div class="card-pricing-clean" id="pricing_${p.id}">
+          <div class="primary-price-val">${formatActivePrice(p.prices)}</div>
+          <div class="secondary-price-preview">${formatSecondaryPrice(p.prices)}</div>
+        </div>
+
+        <div class="card-actions-grid">
+          <button class="btn-card-details" onclick="openProductModal('${p.id}')">
+            ${detailsSvg}
+            <span>عرض التفاصيل</span>
+          </button>
+          <button class="btn-card-addcart" id="btnCart_${p.id}" onclick="addToCart('${p.id}')">
+            ${cartSvg}
+            <span>إضافة إلى السلة</span>
+          </button>
+        </div>
+      `;
+
+      return card;
+    }
+
+    // ── PRICING FORMATTERS ──
+    function formatActivePrice(prices) {
+      if (!prices) return '$0.00';
+      if (activeCurrency === 'usd') {
+        return `$${prices.usd}`;
+      } else if (activeCurrency === 'sar') {
+        return `${prices.sar} ر.س`;
+      } else if (activeCurrency === 'yer_sanaa') {
+        return `${prices.yer_sanaa.toLocaleString()} ر.ي (صنعاء)`;
+      } else if (activeCurrency === 'yer_aden') {
+        return `${prices.yer_aden.toLocaleString()} ر.ي (عدن)`;
+      } else {
+        // All / Default
+        return `$${prices.usd}`;
+      }
+    }
+
+    function formatSecondaryPrice(prices) {
+      if (!prices) return '';
+      if (activeCurrency === 'all') {
+        return `${prices.sar} ر.س | ${prices.yer_sanaa.toLocaleString()} ر.ي`;
+      } else if (activeCurrency === 'usd') {
+        return `${prices.sar} ر.س | 536 صرف صنعاء`;
+      } else {
+        return `$${prices.usd} بالدولار`;
+      }
+    }
+
+    function reRenderVisiblePrices() {
+      document.querySelectorAll('.clean-store-card').forEach(card => {
+        const pid = card.dataset.id;
+        const p = allProducts.find(x => x.id === pid);
+        if (p) {
+          const pricingBox = card.querySelector('.card-pricing-clean');
+          if (pricingBox) {
+            pricingBox.innerHTML = `
+              <div class="primary-price-val">${formatActivePrice(p.prices)}</div>
+              <div class="secondary-price-preview">${formatSecondaryPrice(p.prices)}</div>
+            `;
+          }
+        }
+      });
+    }
+
+    // ── CART MANAGEMENT ──
+    function addToCart(productId) {
+      const p = allProducts.find(x => x.id === productId);
+      if (!p) return;
+
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          id: p.id,
+          title: p.title,
+          service_name: p.service_name,
+          icon: p.icon,
+          brand_gradient: p.brand_gradient,
+          prices: p.prices,
+          qty: 1
+        });
+      }
+
+      saveCart();
+      updateCartBadge(true);
+      showToast(`تمت إضافة "${p.title}" إلى السلة بنجاح`);
+
+      const btn = document.getElementById(`btnCart_${productId}`);
+      if (btn) {
+        btn.classList.add('added');
+        btn.querySelector('span').textContent = 'في السلة';
+        setTimeout(() => {
+          btn.classList.remove('added');
+          btn.querySelector('span').textContent = 'إضافة إلى السلة';
+        }, 1200);
+      }
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      saveCart();
+      renderCartDrawer();
+      updateCartBadge();
+    }
+
+    function changeQty(productId, delta) {
+      const item = cart.find(x => x.id === productId);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        removeFromCart(productId);
+      } else {
+        saveCart();
+        renderCartDrawer();
+        updateCartBadge();
+      }
+    }
+
+    function saveCart() {
+      localStorage.setItem('aljahfali_cart', JSON.stringify(cart));
+    }
+
+    function updateCartBadge(bump = false) {
+      const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+      cartBadge.textContent = totalCount;
+      if (bump) {
+        cartBadge.classList.add('bump');
+        setTimeout(() => cartBadge.classList.remove('bump'), 300);
+      }
+    }
+
+    function toggleCartDrawer() {
+      cartOverlay.classList.toggle('active');
+      if (cartOverlay.classList.contains('active')) {
+        renderCartDrawer();
+      }
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target === cartOverlay) {
+        toggleCartDrawer();
+      }
+    }
+
+    function renderCartDrawer() {
+      if (cart.length === 0) {
+        cartItemsList.innerHTML = `
+          <div class="cart-empty-state">
+            <svg class="ui-svg" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <p>سلة المشتريات فارغة حالياً</p>
+            <span style="font-size: 12px;">اختر من بين أكثر من 600 اشتراك رقمي وأضفه إلى سلتك</span>
+          </div>
+        `;
+        cartTotalVal.textContent = '$0.00';
+        document.getElementById('btnCheckout').disabled = true;
+        document.getElementById('btnCheckout').style.opacity = '0.5';
+        return;
+      }
+
+      document.getElementById('btnCheckout').disabled = false;
+      document.getElementById('btnCheckout').style.opacity = '1';
+
+      let totalUsd = 0;
+      let totalYer = 0;
+
+      cartItemsList.innerHTML = cart.map(item => {
+        totalUsd += (item.prices.usd * item.qty);
+        totalYer += (item.prices.yer_sanaa * item.qty);
+
+        return `
+          <div class="cart-item-card">
+            <div class="cart-item-icon" style="background: ${item.brand_gradient || '#0F172A'};">
+              <img src="${item.icon || 'assets/official_icons/openai.svg'}" alt="${item.title}">
+            </div>
+            <div class="cart-item-info">
+              <div class="cart-item-title" title="${item.title}">${item.title}</div>
+              <div class="cart-item-price">$${(item.prices.usd * item.qty).toFixed(2)} (${(item.prices.yer_sanaa * item.qty).toLocaleString()} ر.ي)</div>
+            </div>
+            <div class="cart-qty-controls">
+              <button class="qty-btn" onclick="changeQty('${item.id}', -1)">-</button>
+              <span class="qty-val">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+            </div>
+            <button class="cart-item-remove" onclick="removeFromCart('${item.id}')" title="حذف">
+              <svg class="ui-svg" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      cartTotalVal.textContent = `$${totalUsd.toFixed(2)} (${totalYer.toLocaleString()} ر.ي)`;
+    }
+
+    // ── CHECKOUT FLOW ──
+    function openCheckoutModal() {
+      if (cart.length === 0) return;
+      toggleCartDrawer(); // close drawer
+      checkoutModal.classList.add('active');
+    }
+
+    function closeCheckoutModal() {
+      checkoutModal.classList.remove('active');
+    }
+
+    function copyWallet(val) {
+      navigator.clipboard.writeText(val);
+      showToast(`تم نسخ: ${val}`);
+    }
+
+    function submitOrderToWhatsapp() {
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const methodRadio = document.querySelector('input[name="payMethod"]:checked');
+      const method = methodRadio ? methodRadio.value : 'بنك الكريمي المميز';
+
+      if (!name) {
+        alert('يرجى كتابة اسمك الكريم للمتابعة');
+        document.getElementById('custName').focus();
+        return;
+      }
+
+      let totalUsd = 0;
+      let totalSar = 0;
+      let totalYerSanaa = 0;
+      let totalYerAden = 0;
+
+      const itemsLines = cart.map((item, idx) => {
+        totalUsd += item.prices.usd * item.qty;
+        totalSar += item.prices.sar * item.qty;
+        totalYerSanaa += item.prices.yer_sanaa * item.qty;
+        totalYerAden += item.prices.yer_aden * item.qty;
+
+        return `${idx + 1}. ${item.title} (الكمية: ${item.qty}) - $${(item.prices.usd * item.qty).toFixed(2)}`;
+      }).join('\n');
+
+      const invoiceMsg = `مرحباً أخي محمد الجحفلي، أود تأكيد طلب السلة التالي من متجرك الرقمي:
+
+الاسم: ${name}
+هاتف العميل: ${phone || 'غير محدد'}
+
+الاشتراكات المطلوبة:
+${itemsLines}
+
+الإجمالي المعتمد:
+- بالدولار: $${totalUsd.toFixed(2)}
+- بالريال السعودي: ${totalSar.toFixed(1)} ر.س
+- بريال صنعاء (536): ${totalYerSanaa.toLocaleString()} ر.ي
+- بريال عدن (2000): ${totalYerAden.toLocaleString()} ر.ي
+
+طريقة التحويل المختارة: ${method}
+حساب المستلم المعتمد: محمد الجحفلي (782611415)
+
+أرجو تأكيد استلام الحوالة وتسليم بيانات الحسابات وتفعيلها فوراً. شكراً لك!`;
+
+      const waUrl = `https://wa.me/967782611415?text=${encodeURIComponent(invoiceMsg)}`;
+      window.open(waUrl, '_blank');
+      closeCheckoutModal();
+    }
+
+    // ── DETAILS MODAL ──
+    let activeModalProduct = null;
+
+    function openProductModal(productId) {
+      const p = allProducts.find(x => x.id === productId);
+      if (!p) return;
+
+      activeModalProduct = p;
+
+      document.getElementById('modalTitle').textContent = p.title;
+      document.getElementById('modalServiceTag').textContent = p.brand_label || p.service_name;
+      document.getElementById('modalDurationTag').textContent = `المدة: ${p.duration || 'غير محدد'} | ${p.is_guaranteed ? 'ضمان رسمي' : 'استهلاك فوري'}`;
+      document.getElementById('modalHeaderGradient').style.background = p.brand_gradient || 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)';
+      document.getElementById('modalIcon').src = p.icon || 'assets/official_icons/openai.svg';
+
+      const m = p.modal_data || {};
+
+      // Description
+      document.getElementById('modalDescArabic').textContent = m.raw_description_ar || p.card_desc || 'اشتراك رسمي في خدمة الذكاء الاصطناعي مع تسليم فوري وضمان معتمد.';
+
+      // Features
+      const checkSvg = '<svg class="ui-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+      const features = m.features || [
+        "وصول رسمي وفوري لكافة نماذج الذكاء الاصطناعي المتطورة",
+        "توليد وتعديل الصور بدقة واحترافية",
+        "تحليل الملفات والمستندات البرمجية والبيانات",
+        "دعم التطبيقات الذكية على كافة المنصات"
+      ];
+      document.getElementById('modalFeaturesList').innerHTML = features.map(f => `<li>${checkSvg}<span>${f}</span></li>`).join('');
+
+      // Where to use
+      const whereList = m.where_to_use || [
+        "متصفح الإنترنت chatgpt.com على كافة أجهزة الكمبيوتر",
+        "التطبيقات الرسمية على iOS و Android",
+        "تطبيقات سطح المكتب لنظامي Windows و Mac"
+      ];
+      document.getElementById('modalWhereList').innerHTML = whereList.map(w => `<li>${checkSvg}<span>${w}</span></li>`).join('');
+
+      // How to use
+      const howList = m.how_to_use || [
+        "إدخال الأوامر المتقدمة والتعليمات لتحليل الأبحاث والمشاريع",
+        "المحادثة الصوتية التفاعلية المباشرة",
+        "بناء واستخدام الروبوتات المخصصة Custom GPTs"
+      ];
+      document.getElementById('modalHowList').innerHTML = howList.map(h => `<li>${checkSvg}<span>${h}</span></li>`).join('');
+
+      // Activation Method & Steps
+      document.getElementById('modalActivationMethod').textContent = `نوع وطريقة التفعيل: ${m.activation_methods || m.account_type || 'حساب رسمي جاهز للتسليم الفوري'}`;
+
+      const steps = m.step_by_step_activation || [
+        "استلم بيانات الحساب أو رابط التفعيل عبر واتساب فور تأكيد الدفع.",
+        "سجل الدخول للموقع الرسمي chatgpt.com بالبيانات المرفقة.",
+        "تأكد من تفعيل الاشتراك وابدأ الاستخدام مباشرة."
+      ];
+      document.getElementById('modalStepsList').innerHTML = steps.map((s, idx) => `
+        <li>
+          <span class="step-num-badge">${idx + 1}</span>
+          <span>${s}</span>
+        </li>
+      `).join('');
+
+      // Prices
+      document.getElementById('modalPriceUsd').textContent = `$${p.prices.usd}`;
+      document.getElementById('modalPriceSar').textContent = `${p.prices.sar} ر.س`;
+      document.getElementById('modalPriceSanaa').textContent = `${p.prices.yer_sanaa.toLocaleString()} ر.ي`;
+      document.getElementById('modalPriceAden').textContent = `${p.prices.yer_aden.toLocaleString()} ر.ي`;
+
+      // Modal Buttons
+      document.getElementById('modalBtnAddCart').onclick = () => {
+        addToCart(p.id);
+        closeProductModal();
+      };
+
+      document.getElementById('modalBtnWhatsApp').onclick = () => {
+        const waMsg = `مرحباً أخي محمد الجحفلي، أود طلب الاشتراك التالي مباشرة:
+الاسم: ${p.title}
+القسم: ${p.service_name}
+الضمان: ${p.warranty_text || p.duration}
+السعر: $${p.prices.usd} (${p.prices.sar} ر.س / ${p.prices.yer_sanaa} ر.ي صنعاء)
+كود المنتج: ${p.id}
+يرجى إرسال بيانات الدفع والتسليم الفوري.`;
+        window.open(`https://wa.me/967782611415?text=${encodeURIComponent(waMsg)}`, '_blank');
+      };
+
+      detailsModal.classList.add('active');
+    }
+
+    function closeProductModal() {
+      detailsModal.classList.remove('active');
+    }
+
+    // ── TOAST NOTIFICATION ──
+    function showToast(msg) {
+      document.getElementById('toastMsg').textContent = msg;
+      cartToast.classList.add('active');
+      setTimeout(() => cartToast.classList.remove('active'), 2500);
+    }
+  </script>
+</body>
+</html>
+'''
+
+def main():
+    with open('subscriptions.html', 'w', encoding='utf-8') as f:
+        f.write(HTML_CONTENT)
+    print("Successfully updated subscriptions.html with clean cards, cart drawer, Yemeni checkout, and details modal!")
+
+if __name__ == '__main__':
+    main()

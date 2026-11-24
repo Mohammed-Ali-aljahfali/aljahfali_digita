@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم بالمنتجات والأسعار | الجحفلي للحلول الرقمية</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #0284C7;
+      --primary-hover: #0369A1;
+      --primary-tint: #F0F9FF;
+      --secondary: #0F172A;
+      --accent: #10B981;
+      --accent-hover: #059669;
+      --bg-dash: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text-dark: #0F172A;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+    }
+
+    body {
+      background-color: var(--bg-dash);
+      color: var(--text-dark);
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .ui-svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    /* Header */
+    .admin-header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .admin-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .admin-logo-row img {
+      height: 38px;
+    }
+
+    .admin-badge {
+      background: var(--primary-tint);
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid rgba(2, 132, 199, 0.2);
+    }
+
+    .admin-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-action {
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-family: 'Cairo', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-secondary {
+      background: #FFFFFF;
+      border-color: var(--border);
+      color: var(--text-dark);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-dash);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .btn-accent:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Container */
+    .admin-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* Stats Grid */
+    .stats-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card .title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .stat-card .value {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--primary);
+    }
+
+    /* Config Box */
+    .config-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .config-box h3 {
+      margin: 0 0 16px;
+      font-size: 16px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      align-items: flex-end;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-group label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .field-group input {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      outline: none;
+    }
+
+    .field-group input:focus {
+      border-color: var(--primary);
+    }
+
+    /* Table Section */
+    .table-section {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .table-controls {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .search-input-box {
+      min-width: 280px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Cairo', sans-serif;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .cat-filter-select {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Cairo', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      outline: none;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+      font-size: 13px;
+    }
+
+    th {
+      background: var(--bg-dash);
+      padding: 12px 16px;
+      font-weight: 800;
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    tr:hover {
+      background: var(--primary-tint);
+    }
+
+    .product-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 250px;
+    }
+
+    .product-thumb {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 4px;
+    }
+
+    .product-thumb img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .price-input-table {
+      width: 70px;
+      padding: 6px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Cairo', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .stock-input-table {
+      width: 60px;
+      padding: 6px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Cairo', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .badge-guar {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .badge-guar.yes {
+      background: #ECFDF5;
+      color: #059669;
+    }
+
+    .badge-guar.no {
+      background: #FFFBEB;
+      color: #B45309;
+    }
+
+    /* Modal */
+    .edit-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .edit-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .edit-modal-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 24px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+    }
+
+    .toast-box {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 700;
+      z-index: 200;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .toast-box.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="admin-header">
+    <div class="admin-logo-row">
+      <a href="index.html">
+        <img src="assets/images/logo.svg" alt="الجحفلي للحلول الرقمية">
+      </a>
+      <span class="admin-badge">لوحة الإدارة والتحكم بالمتجر</span>
+      <span style="font-size: 13px; font-weight: 700; color: var(--text-dark); margin-right: 12px;">
+        المدير العام: محمد الجحفلي (782611415)
+      </span>
+    </div>
+
+    <div class="admin-header-actions">
+      <button class="btn-action btn-accent" onclick="exportUpdatedJson()">
+        <svg class="ui-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>تصدير ملف products.json</span>
+      </button>
+      <button class="btn-action btn-secondary" onclick="resetDefaults()">
+        <svg class="ui-svg" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        <span>استعادة الافتراضي</span>
+      </button>
+      <a href="subscriptions.html" class="btn-action btn-primary">
+        <svg class="ui-svg" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <span>عرض المتجر مباشر</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="admin-container">
+    
+    <!-- STATS -->
+    <div class="stats-cards-grid">
+      <div class="stat-card">
+        <div class="title">إجمالي الاشتراكات والمنتجات</div>
+        <div class="value" id="statProductsCount">610</div>
+      </div>
+      <div class="stat-card">
+        <div class="title">منتجات ChatGPT & OpenAI</div>
+        <div class="value" id="statChatGptCount">103</div>
+      </div>
+      <div class="stat-card">
+        <div class="title">صرف الدولار / صنعاء</div>
+        <div class="value" id="dispSanaaRate">536 ر.ي</div>
+      </div>
+      <div class="stat-card">
+        <div class="title">صرف السعودي / صنعاء</div>
+        <div class="value" id="dispSarRate">140 ر.ي</div>
+      </div>
+    </div>
+
+    <!-- EXCHANGE RATES SETTINGS -->
+    <div class="config-box">
+      <h3>
+        <svg class="ui-svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span>إدارة أسعار الصرف والعملات (تحديث تلقائي لكافة المنتجات)</span>
+      </h3>
+      <div class="rates-grid">
+        <div class="field-group">
+          <label>سعر صرف الدولار (ريال صنعاء)</label>
+          <input type="number" id="inputSanaaRate" value="536">
+        </div>
+        <div class="field-group">
+          <label>سعر صرف الريال السعودي (ريال صنعاء)</label>
+          <input type="number" id="inputSarRate" value="140">
+        </div>
+        <div class="field-group">
+          <label>سعر صرف الدولار (ريال عدن الجديد)</label>
+          <input type="number" id="inputAdenRate" value="2000">
+        </div>
+        <button class="btn-action btn-primary" style="height: 42px;" onclick="applyExchangeRates()">
+          <svg class="ui-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>تطبيق وحفظ أسعار الصرف</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- PRODUCTS TABLE -->
+    <div class="table-section">
+      <div class="table-controls">
+        <input type="text" id="adminSearch" class="search-input-box" placeholder="ابحث باسم المنتج أو الكود...">
+        <select id="adminCatFilter" class="cat-filter-select">
+          <option value="all">جميع الأقسام (610)</option>
+          <option value="chatgpt" selected>ChatGPT & OpenAI (103)</option>
+          <option value="claude">Claude AI</option>
+          <option value="google">Google & Gemini</option>
+          <option value="capcut">CapCut Pro</option>
+          <option value="design">التصميم والمونتاج</option>
+          <option value="entertainment">الترفيه والبث</option>
+        </select>
+        <span style="font-size: 13px; font-weight: 700; color: var(--text-muted);" id="tableCountText"></span>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>المنتج</th>
+              <th>القسم</th>
+              <th>السعر ($ USD)</th>
+              <th>السعودي (ر.س)</th>
+              <th>صنعاء (ر.ي)</th>
+              <th>الضمان</th>
+              <th>المخزون</th>
+              <th>إجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="adminProductsTable">
+            <!-- Table rows rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EDIT PRODUCT MODAL -->
+  <div class="edit-modal-overlay" id="editModal">
+    <div class="edit-modal-card">
+      <h3 style="margin-top: 0; font-size: 18px;" id="editModalTitle">تعديل بيانات المنتج</h3>
+      
+      <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 16px;">
+        <div class="field-group">
+          <label>عنوان المنتج العربي</label>
+          <input type="text" id="editTitle">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="field-group">
+            <label>السعر بالدولار ($ USD)</label>
+            <input type="number" step="0.01" id="editPriceUsd">
+          </div>
+          <div class="field-group">
+            <label>المخزون المتوفر</label>
+            <input type="number" id="editStock">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="field-group">
+            <label>المدة الزمنية</label>
+            <input type="text" id="editDuration">
+          </div>
+          <div class="field-group">
+            <label>حالة الضمان</label>
+            <select id="editIsGuar" style="padding: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: 'Cairo';">
+              <option value="true">مضمون 100%</option>
+              <option value="false">استهلاك وتفعيل فوري</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>الوصف العربي للمنتج</label>
+          <textarea id="editDesc" rows="3" style="padding: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: 'Cairo'; font-size: 13px;"></textarea>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+          <button class="btn-action btn-primary" style="flex: 1; justify-content: center;" onclick="saveProductEdit()">حفظ التعديلات</button>
+          <button class="btn-action btn-secondary" onclick="closeEditModal()">إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-box" id="adminToast">تم الحفظ بنجاح!</div>
+
+  <script src="assets/data/products.js"></script>
+  <script>
+    let products = [];
+    let exchangeRates = {
+      sanaa: 536,
+      sar: 140,
+      aden: 2000
+    };
+
+    let activeEditPid = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Load products from localStorage or window.PRODUCTS_CATALOG
+      const storedCatalog = localStorage.getItem('aljahfali_catalog_custom');
+      if (storedCatalog) {
+        try {
+          products = JSON.parse(storedCatalog);
+        } catch(e) {
+          products = window.PRODUCTS_CATALOG || [];
+        }
+      } else {
+        products = window.PRODUCTS_CATALOG || [];
+      }
+
+      // Load rates
+      const storedRates = localStorage.getItem('aljahfali_rates');
+      if (storedRates) {
+        try {
+          exchangeRates = JSON.parse(storedRates);
+        } catch(e) {}
+      }
+
+      document.getElementById('inputSanaaRate').value = exchangeRates.sanaa;
+      document.getElementById('inputSarRate').value = exchangeRates.sar;
+      document.getElementById('inputAdenRate').value = exchangeRates.aden;
+      document.getElementById('dispSanaaRate').textContent = `${exchangeRates.sanaa} ر.ي`;
+      document.getElementById('dispSarRate').textContent = `${exchangeRates.sar} ر.ي`;
+
+      updateCounts();
+      renderTable();
+
+      document.getElementById('adminSearch').addEventListener('input', renderTable);
+      document.getElementById('adminCatFilter').addEventListener('change', renderTable);
+    });
+
+    function updateCounts() {
+      document.getElementById('statProductsCount').textContent = products.length;
+      const gptCount = products.filter(p => p.service_key === 'chatgpt' || (p.raw_name||'').toLowerCase().includes('chatgpt')).length;
+      document.getElementById('statChatGptCount').textContent = gptCount;
+    }
+
+    function applyExchangeRates() {
+      const sanaa = parseFloat(document.getElementById('inputSanaaRate').value) || 536;
+      const sar = parseFloat(document.getElementById('inputSarRate').value) || 140;
+      const aden = parseFloat(document.getElementById('inputAdenRate').value) || 2000;
+
+      exchangeRates = { sanaa, sar, aden };
+      localStorage.setItem('aljahfali_rates', JSON.stringify(exchangeRates));
+
+      // Recalculate all products
+      products.forEach(p => {
+        const usd = p.prices.usd;
+        p.prices.sar = Math.round((usd * (sanaa / sar)) * 10) / 10;
+        p.prices.yer_sanaa = Math.round(usd * sanaa);
+        p.prices.yer_aden = Math.round(usd * aden);
+      });
+
+      saveCatalogLocally();
+      document.getElementById('dispSanaaRate').textContent = `${sanaa} ر.ي`;
+      document.getElementById('dispSarRate').textContent = `${sar} ر.ي`;
+
+      showToast('تم تحديث وحفظ أسعار الصرف وإعادة حساب كافة المنتجات!');
+      renderTable();
+    }
+
+    function renderTable() {
+      const q = document.getElementById('adminSearch').value.trim().toLowerCase();
+      const cat = document.getElementById('adminCatFilter').value;
+
+      const filtered = products.filter(p => {
+        if (cat !== 'all') {
+          if (cat === 'chatgpt') {
+            const isGpt = (p.service_key === 'chatgpt' || 
+                           (p.service_name || '').toLowerCase().includes('chatgpt') || 
+                           (p.raw_name || '').toLowerCase().includes('chatgpt') ||
+                           (p.raw_name || '').toLowerCase().includes('openai'));
+            if (!isGpt) return false;
+          } else if (p.service_key !== cat && p.category !== cat) {
+            return false;
+          }
+        }
+        if (q) {
+          const hay = `${p.id} ${p.title} ${p.raw_name || ''} ${p.service_name || ''}`.toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById('tableCountText').textContent = `عرض ${filtered.length} منتج`;
+
+      const tbody = document.getElementById('adminProductsTable');
+      tbody.innerHTML = filtered.slice(0, 100).map(p => `
+        <tr>
+          <td>
+            <div class="product-cell">
+              <div class="product-thumb" style="background: ${p.brand_gradient || '#0F172A'};">
+                <img src="${p.icon || 'assets/official_icons/openai.svg'}" alt="">
+              </div>
+              <div>
+                <strong>${p.title}</strong>
+                <div style="font-size: 11px; color: var(--text-muted);">كود: ${p.id}</div>
+              </div>
+            </div>
+          </td>
+          <td>${p.brand_label || p.service_name}</td>
+          <td>
+            <input type="number" step="0.01" class="price-input-table" value="${p.prices.usd}" onchange="updateProductPrice('${p.id}', this.value)">
+          </td>
+          <td>${p.prices.sar} ر.س</td>
+          <td>${p.prices.yer_sanaa.toLocaleString()} ر.ي</td>
+          <td>
+            <span class="badge-guar ${p.is_guaranteed ? 'yes' : 'no'}">
+              ${p.is_guaranteed ? 'مضمون' : 'فوري'}
+            </span>
+          </td>
+          <td>
+            <input type="number" class="stock-input-table" value="${p.stock}" onchange="updateProductStock('${p.id}', this.value)">
+          </td>
+          <td>
+            <button class="btn-action btn-secondary" style="padding: 4px 8px; font-size: 11px;" onclick="openEditModal('${p.id}')">تعديل كامل</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function updateProductPrice(id, newUsd) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      const usd = parseFloat(newUsd) || p.prices.usd;
+      p.prices.usd = usd;
+      p.prices.sar = Math.round((usd * (exchangeRates.sanaa / exchangeRates.sar)) * 10) / 10;
+      p.prices.yer_sanaa = Math.round(usd * exchangeRates.sanaa);
+      p.prices.yer_aden = Math.round(usd * exchangeRates.aden);
+      saveCatalogLocally();
+      showToast(`تم تحديث سعر "${p.title}" إلى $${usd}`);
+      renderTable();
+    }
+
+    function updateProductStock(id, newStock) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      p.stock = parseInt(newStock) || 0;
+      p.in_stock = p.stock > 0;
+      saveCatalogLocally();
+      showToast(`تم تحديث مخزون "${p.title}" إلى ${p.stock}`);
+    }
+
+    function openEditModal(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      activeEditPid = id;
+
+      document.getElementById('editModalTitle').textContent = `تعديل: ${p.title}`;
+      document.getElementById('editTitle').value = p.title;
+      document.getElementById('editPriceUsd').value = p.prices.usd;
+      document.getElementById('editStock').value = p.stock;
+      document.getElementById('editDuration').value = p.duration || '';
+      document.getElementById('editIsGuar').value = p.is_guaranteed ? 'true' : 'false';
+      document.getElementById('editDesc').value = p.card_desc || '';
+
+      document.getElementById('editModal').classList.add('active');
+    }
+
+    function closeEditModal() {
+      document.getElementById('editModal').classList.remove('active');
+    }
+
+    function saveProductEdit() {
+      const p = products.find(x => x.id === activeEditPid);
+      if (!p) return;
+
+      p.title = document.getElementById('editTitle').value.trim();
+      const usd = parseFloat(document.getElementById('editPriceUsd').value) || p.prices.usd;
+      p.prices.usd = usd;
+      p.prices.sar = Math.round((usd * (exchangeRates.sanaa / exchangeRates.sar)) * 10) / 10;
+      p.prices.yer_sanaa = Math.round(usd * exchangeRates.sanaa);
+      p.prices.yer_aden = Math.round(usd * exchangeRates.aden);
+
+      p.stock = parseInt(document.getElementById('editStock').value) || 0;
+      p.in_stock = p.stock > 0;
+      p.duration = document.getElementById('editDuration').value.trim();
+      p.is_guaranteed = document.getElementById('editIsGuar').value === 'true';
+      p.card_desc = document.getElementById('editDesc').value.trim();
+
+      saveCatalogLocally();
+      closeEditModal();
+      showToast('تم حفظ تعديلات المنتج بنجاح!');
+      renderTable();
+    }
+
+    function saveCatalogLocally() {
+      localStorage.setItem('aljahfali_catalog_custom', JSON.stringify(products));
+    }
+
+    function exportUpdatedJson() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(products, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "products.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast('تم تنزيل ملف products.json المحدث بنجاح!');
+    }
+
+    function resetDefaults() {
+      if (confirm('هل أنت متأكد من استعادة النسخة الأصلية للمنتجات وأسعار الصرف؟')) {
+        localStorage.removeItem('aljahfali_catalog_custom');
+        localStorage.removeItem('aljahfali_rates');
+        location.reload();
+      }
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('adminToast');
+      t.textContent = msg;
+      t.classList.add('active');
+      setTimeout(() => t.classList.remove('active'), 2500);
+    }
+  </script>
+</body>
+</html>
