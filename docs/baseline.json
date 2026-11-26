@@ -1,0 +1,46 @@
+{
+  "commit": "c2425ac",
+  "recordedOn": "2026-11-25",
+  "files": [
+    {
+      "path": "subscriptions.html",
+      "bytes": 77436,
+      "sha256": "29b630d975dd573b6cf535afebd9d2fbf7a579edbaad6077f3a032bc932b04d2"
+    },
+    {
+      "path": "admin.html",
+      "bytes": 64753,
+      "sha256": "1368a0881b8cbd14a1ed816c705e641f56c7b97eb646909261b44f8f3e4b0306"
+    },
+    {
+      "path": "account.html",
+      "bytes": 19631,
+      "sha256": "9bb116fc649d7b6613ee913e142707eda6c6a6d3b14ade522f1e1f67a6150e71"
+    },
+    {
+      "path": "login.html",
+      "bytes": 21070,
+      "sha256": "6f1f9d2ecd855ae929990c06d39b9bde04f6c0b9154aa50cdd9779767d9c6749"
+    },
+    {
+      "path": "assets/js/supabase-client.js",
+      "bytes": 16993,
+      "sha256": "c0c0971048e89df493c9cf3d59ab320f5cf7dba87e9d8ffaf9aafdc4b51b9541"
+    },
+    {
+      "path": "assets/data/products.json",
+      "bytes": 95903,
+      "sha256": "32e966c94af877016e7b6e6887bd9a07d0817d5c34157c895117f2d203cab31a"
+    },
+    {
+      "path": "assets/data/products.js",
+      "bytes": 95932,
+      "sha256": "56f3d767fa123c8bcef1fcf11a97781fb7f4aa2b57a14710abac254db9c16655"
+    },
+    {
+      "path": "database_schema.sql",
+      "bytes": 5919,
+      "sha256": "2062cea703a7aa75bf094ace6de930b4a8a9618297270e1c8118c387178addd6"
+    }
+  ]
+}

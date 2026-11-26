@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
+Disallow: /admin.html
+Disallow: /account.html
+Disallow: /checkout.html
+Disallow: /cart.html
+Disallow: /login.html
+Disallow: /.backups/
+Disallow: /supabase/
+Disallow: /docs/
+Disallow: /scratch/
+
 Sitemap: https://aljahfalidigital.com/sitemap.xml

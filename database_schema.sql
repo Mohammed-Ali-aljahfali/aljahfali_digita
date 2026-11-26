@@ -1,7 +1,10 @@
+-- OBSOLETE: DO NOT RUN this file on staging or production.
+-- Use supabase/migrations/202611250001_secure_store.sql instead.
+-- See docs/SUPABASE-DEPLOYMENT.md for migration and safe rollback.
 -- ==============================================================================
 -- الجحفلي للحلول الرقمية - Al-Jahfali Digital Solutions
 -- Schema: PostgreSQL on Supabase (Products, Settings, Orders, Profiles, Auth)
--- 100% Secure Architecture with Row-Level Security (RLS) & Automated Triggers
+-- Historical schema retained for review; contains obsolete permissive policies.
 -- ==============================================================================
 
 -- 1. Create Profiles Table (Linked with Supabase Auth users)

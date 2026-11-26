@@ -4,3 +4,11 @@ __pycache__/
 
 assets/clean_3d_products/
 
+node_modules/
+.cache/
+.backups/
+test-results/
+.env
+.env.*
+!.env.example
+

@@ -1,0 +1,17 @@
+{
+  "name": "aljahfali-digital-store",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Existing static Aljahfali storefront with Supabase commerce",
+  "scripts": {
+    "dev": "node --preserve-symlinks --preserve-symlinks-main scripts/serve.mjs",
+    "test": "node --preserve-symlinks --preserve-symlinks-main --test tests/*.test.mjs && node --preserve-symlinks --preserve-symlinks-main scripts/test-storefront.cjs && node --preserve-symlinks --preserve-symlinks-main scripts/test-portals.cjs && node --preserve-symlinks --preserve-symlinks-main scripts/test-database.mjs",
+    "check": "node --preserve-symlinks --preserve-symlinks-main scripts/check-site.mjs && node --preserve-symlinks --preserve-symlinks-main scripts/sync-assistant-knowledge.mjs --check",
+    "assistant:sync": "node --preserve-symlinks --preserve-symlinks-main scripts/sync-assistant-knowledge.mjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.3.14",
+    "@supabase/supabase-js": "2.119.2",
+    "jsdom": "^29.1.1"
+  }
+}

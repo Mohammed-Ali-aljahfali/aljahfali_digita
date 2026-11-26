@@ -1,0 +1,7 @@
+# No project reference or credentials are stored here. Select the isolated project explicitly.
+[functions.upload-payment-receipt]
+verify_jwt = true
+
+# Public catalog questions accept guests; the function validates account JWTs itself.
+[functions.store-assistant]
+verify_jwt = false
