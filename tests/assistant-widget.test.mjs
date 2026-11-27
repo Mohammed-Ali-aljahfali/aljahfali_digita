@@ -127,16 +127,56 @@ test('pending requests prevent duplicate sends, support cancel and ignore late r
   assert.equal(h.window.document.querySelectorAll('.sa-message').length, 1);
 });
 
+test('welcome suggestions and reply indicator follow accepted requests, cancel and reset', async t => {
+  const replies = [];
+  const h = harness(t, { configured: true, answer: () => new Promise(resolve => { replies.push(resolve); }) });
+  assert.equal(h.get('.sa-welcome').hidden, false);
+  assert.equal(h.get('.sa-typing').hidden, true);
+  assert.equal(h.get('.sa-welcome').querySelectorAll('.sa-chip').length, 4);
+
+  h.send('');
+  h.send('password: privatevalue');
+  assert.equal(h.calls.length, 0, 'rejected input does not start a conversation');
+  assert.equal(h.get('.sa-welcome').hidden, false);
+  assert.equal(h.get('.sa-typing').hidden, true);
+
+  h.button('طريقة الشراء').click();
+  assert.equal(h.calls.length, 1);
+  assert.equal(h.get('.sa-welcome').hidden, true, 'suggestions leave the interaction flow after a question');
+  assert.equal(h.get('.sa-typing').hidden, false);
+  h.button('إيقاف الرد').click();
+  assert.equal(h.get('.sa-typing').hidden, true, 'cancel removes the pending indicator');
+  assert.equal(h.get('.sa-welcome').hidden, true, 'cancel retains the current conversation');
+
+  h.button('إعادة المحاولة').click();
+  assert.equal(h.calls.length, 2);
+  assert.equal(h.get('.sa-typing').hidden, false);
+  h.button('محادثة جديدة').click();
+  assert.equal(h.calls[1].requestOptions.signal.aborted, true);
+  assert.equal(h.get('.sa-typing').hidden, true);
+  assert.equal(h.get('.sa-welcome').hidden, false);
+  assert.equal(h.get('.sa-welcome').querySelectorAll('.sa-chip:not([disabled])').length, 4);
+  assert.equal(h.window.document.querySelectorAll('.sa-message-user').length, 0);
+
+  replies.forEach(resolve => resolve({ answer: 'Old cancelled answer', mode: 'ai', sources: [] }));
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(h.get('#storeAssistant').textContent.includes('Old cancelled answer'), false);
+  assert.equal(h.get('.sa-welcome').hidden, false);
+  assert.equal(h.get('.sa-typing').hidden, true);
+});
+
 test('a failed request retries once without adding a duplicate message and without exposing raw errors', async t => {
   let attempt = 0;
   const h = harness(t, { configured: true, answer: async () => { if (!attempt++) throw Error('secret-provider-key and private internal stack'); return { answer: 'تمت الإجابة بعد إعادة المحاولة', mode: 'ai', sources: [] }; } });
   h.send('هل توجد باقة سنوية؟');
   await settle(() => !h.button('إعادة المحاولة').hidden);
   assert.equal(h.get('#storeAssistant').textContent.includes('secret-provider-key'), false);
+  assert.equal(h.get('.sa-typing').hidden, true, 'failure does not leave a reply indicator running');
   h.button('إعادة المحاولة').click();
   await settle(() => h.calls.length === 2 && h.get('.sa-form').getAttribute('aria-busy') === 'false');
   assert.equal(h.window.document.querySelectorAll('.sa-message-user').length, 1);
   assert.match(h.lastReply(), /إعادة المحاولة/);
+  assert.equal(h.get('.sa-typing').hidden, true, 'a completed reply clears the pending indicator');
 });
 
 test('sign-out clears all messages and aborts pending private reads', async t => {
